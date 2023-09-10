@@ -4,7 +4,7 @@ on:
     branches:
       - 'github-actions-test'
 jobs:
-  run-deploy-with-ansible:
+  run-rolling-deploy-with-ansible:
     runs-on: ubuntu-latest
     steps:
       - name: Install ansible
@@ -16,12 +16,8 @@ jobs:
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v2
         with:
-          # Required, playbook filepath
           playbook: ${{ github.workspace }}/simple_site/v1/ansible/upload_site.yaml
-          # Optional, directory where playbooks live
           directory: ${{ github.workspace }}/simple_site/v1/ansible/
-          # Optional, SSH private key
           key: ${{secrets.YCLOUD_SSH_PRIVATE_KEY}}
-          # Optional, literal inventory file contents
           options: |
             --inventory ${{ github.workspace }}/simple_site/v1/ansible/hosts.yaml
