@@ -1,0 +1,49 @@
+---
+- name: Upload laste version of site to vm
+  hosts: localhost
+  become: yes
+  vars:
+    site_git_repo: "https://github.com/prafdin/devops-course.git"
+    site_git_branch: master
+    site_root_folder: "/var/www/simple-site"
+  tasks:
+    - name: Install required tools
+      apt:
+        name={{ item.name }}
+        state={{ item.state }}
+      loop:
+        - { name: 'nginx', state: 'latest' }
+        - { name: 'git', state: 'latest' }
+
+    - name: Create site directory
+      file:
+        path: "{{ site_root_folder }}"
+        state: directory
+
+    - name: Delete tmp folder if present
+      file: 
+        path: "/tmp/simple_site_temp"
+        state: absent 
+
+    - name: Clone site to tmp folder on host 
+      git:
+        repo: "{{ site_git_repo }}"
+        dest: "/tmp/simple_site_temp"
+        version: "{{ site_git_branch }}"
+      register: clone_info
+
+    - name: Copy site content to root site directory
+      copy: 
+        src: "/tmp/simple_site_temp/simple_site/www/"
+        dest: "{{ site_root_folder }}"
+        remote_src: yes
+
+    - name: Update nginx.conf file
+      template: 
+        src: templates/nginx.conf.j2
+        dest: /etc/nginx/nginx.conf
+
+    - name: Restart nginx
+      service: 
+        name: nginx 
+        state: restarted
