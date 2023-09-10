@@ -3,7 +3,7 @@ on:
   push: 
     branches:
       - 'github-actions-test'
-    paths:
+    paths: 
         - 'simple_site/**'
 jobs:
   run-deploy-with-ansible:
