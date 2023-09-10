@@ -11,15 +11,17 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install ansible 
+      - name: Check out repository code
+        uses: actions/checkout@v3
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v2
         with:
           # Required, playbook filepath
-          playbook: simple_site/v1/ansible/upload_site.yaml
+          playbook: ${GITHUB_WORKSPACE}/simple_site/v1/ansible/upload_site.yaml
           # Optional, directory where playbooks live
-          directory: simple_site/v1/ansible/
+          directory: ${GITHUB_WORKSPACE}/simple_site/v1/ansible/
           # Optional, SSH private key
           key: ${{secrets.YCLOUD_SSH_PRIVATE_KEY}}
           # Optional, literal inventory file contents
           options: |
-            --inventory simple_site/v1/ansible/hosts.yaml
+            --inventory ${GITHUB_WORKSPACE}/simple_site/v1/ansible/hosts.yaml
