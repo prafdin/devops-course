@@ -19,9 +19,8 @@ resource "yandex_vpc_subnet" "vsubnet" {
 
 }
 
-
 resource "yandex_compute_instance" "machine" {
-  name        = "vm-from-tf"
+  name        = "frontend-from-tf"
   folder_id = var.folder_id
   platform_id = "standard-v3"
   allow_stopping_for_update = true
@@ -30,7 +29,11 @@ resource "yandex_compute_instance" "machine" {
     cores  = 2
     memory = 2
   }
-
+  
+  metadata = {
+     ssh-keys = "ubuntu:${file("${var.ssh_pub_key_path}")}"
+  }
+ 
   boot_disk {
     initialize_params {
       image_id = var.image_id
@@ -43,13 +46,21 @@ resource "yandex_compute_instance" "machine" {
   }
 }
 
-
 variable "folder_id" {
   type = string
-  default = "b1g2cqilh48vlvlik6ug"
+  default = "b1g2cqilh48vlvlik6ug" # test-catalog
 }
 
 variable "image_id" {
   type = string
-  default = "fd8g5aftj139tv8u2mo1"
+  default = "fd8g5aftj139tv8u2mo1" # https://cloud.yandex.ru/marketplace/products/yc/ubuntu-22-04-lts
+}
+
+variable "ssh_pub_key_path" {
+  type = string
+  default = "~/.ssh/id_rsa_ycloud.pub"
+}
+
+output "vm_address" {
+  value = yandex_compute_instance.machine.network_interface[0].nat_ip_address
 }

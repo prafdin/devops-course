@@ -1,6 +1,6 @@
 ---
 - name: Upload laste version of site to vm
-  hosts: localhost
+  hosts: frontend
   become: yes
   vars:
     site_git_repo: "https://github.com/prafdin/devops-course.git"
