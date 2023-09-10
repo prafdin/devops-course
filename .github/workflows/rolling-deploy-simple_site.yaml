@@ -17,11 +17,11 @@ jobs:
         uses: dawidd6/action-ansible-playbook@v2
         with:
           # Required, playbook filepath
-          playbook: ${GITHUB_WORKSPACE}/simple_site/v1/ansible/upload_site.yaml
+          playbook: ${{GITHUB_WORKSPACE}}/simple_site/v1/ansible/upload_site.yaml
           # Optional, directory where playbooks live
-          directory: ${GITHUB_WORKSPACE}/simple_site/v1/ansible/
+          directory: ${{GITHUB_WORKSPACE}}/simple_site/v1/ansible/
           # Optional, SSH private key
           key: ${{secrets.YCLOUD_SSH_PRIVATE_KEY}}
           # Optional, literal inventory file contents
           options: |
-            --inventory ${GITHUB_WORKSPACE}/simple_site/v1/ansible/hosts.yaml
+            --inventory ${{GITHUB_WORKSPACE}}/simple_site/v1/ansible/hosts.yaml
