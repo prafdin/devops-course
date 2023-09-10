@@ -1,6 +1,6 @@
 name: Deploy simple_site project to existing VM
 on: 
-  push:
+  push: 
     branches:
       - 'github-actions-test'
     paths:
