@@ -1,3 +1,4 @@
+This guide provide simple way for deploy simple site to new virtual machine.
 ### Prerequsites
 - Generate public and private keys on control VM.  
 Rename public key 'id_rsa_ycloud.pub' and put public and private keys to ~/.ssh folder. 
@@ -10,8 +11,8 @@ git clone https://github.com/prafdin/devops-course.git ~/devops-course
 cd ~/devops-course/simple_site/v1/terraform
 terraform init
 terraform apply -auto-approve
-```
-### Output IP of new VM
+```  
+Output IP of new VM  
 ```
 terraform output vm_address
 ```
@@ -19,7 +20,8 @@ terraform output vm_address
 ```
 cd ~/devops-course/simple_site/v1/ansible
 ```
-Change ansible_host variable to output of terraform output command
+Change ansible_host variable to output of terraform output command in `hosts.yaml` file
 ```
 ansible-playbook upload_site.yaml -i hosts.yaml
 ```
+

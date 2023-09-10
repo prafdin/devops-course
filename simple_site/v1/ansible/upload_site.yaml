@@ -1,5 +1,5 @@
 ---
-- name: Upload laste version of site to vm
+- name: Upload latest version of site to VM
   hosts: frontend
   become: yes
   vars:

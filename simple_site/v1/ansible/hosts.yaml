@@ -1,6 +1,5 @@
 ungrouped:
   hosts:
     frontend:
-      ansible_host: x.x.x.x
+      ansible_host: 51.250.0.237
       ansible_user: ubuntu
-      ansible_ssh_private_key_file: ~/.ssh/id_rsa_ycloud
