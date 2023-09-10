@@ -3,8 +3,8 @@ on:
   push:
     branches:
       - 'github-actions-test'
-  paths:
-      - 'simple_site/**'
+    paths:
+        - 'simple_site/**'
 jobs:
   run-deploy-with-ansible:
     runs-on: ubuntu-latest
