@@ -2,7 +2,7 @@ name: Deploy simple_site project to existing VM
 on: 
   push: 
     branches:
-      - 'rolling-update-test'
+      - 'prod'
 jobs:
   run-rolling-deploy-with-ansible:
     runs-on: ubuntu-latest
