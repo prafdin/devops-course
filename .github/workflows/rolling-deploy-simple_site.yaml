@@ -19,7 +19,7 @@ jobs:
           yq -i -y 'del(.ungrouped.hosts.frontend.ansible_ssh_private_key_file)' ${{ github.workspace }}/simple_site/v1/ansible/hosts.yaml
       - name: Replace front ip fron variable
         run: |
-           yq -y -i '.ungrouped.hosts.frontend.ansible_host = "${{ PROD_FRONT_IP }}"' ${{ github.workspace }}/simple_site/v1/ansible/hosts.yaml
+           yq -y -i '.ungrouped.hosts.frontend.ansible_host = "${{ vars.PROD_FRONT_IP }}"' ${{ github.workspace }}/simple_site/v1/ansible/hosts.yaml
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v2
         with:
