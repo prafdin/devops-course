@@ -7,12 +7,16 @@ jobs:
   run-rolling-deploy-with-ansible:
     runs-on: ubuntu-latest
     steps:
-      - name: Install ansible
+      - name: Install tools
         run: |
           sudo apt-get update
-          sudo apt-get install ansible 
+          sudo apt-get install ansible
+          python3 -m pip yq
       - name: Check out repository code
         uses: actions/checkout@v3
+      - name: Delete ssh key from hosts
+        run: |
+          yq -i 'del(.ungrouped.hosts.frontend.ansible_ssh_private_key_file)' hosts.yaml
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v2
         with:
