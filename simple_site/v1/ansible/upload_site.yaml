@@ -4,7 +4,7 @@
   become: yes
   vars:
     site_git_repo: "https://github.com/prafdin/devops-course.git"
-    site_git_branch: master
+    site_git_branch: prod
     site_root_folder: "/var/www/simple-site"
   tasks:
     - name: Install required tools
