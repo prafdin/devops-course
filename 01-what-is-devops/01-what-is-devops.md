@@ -56,8 +56,11 @@
 
 #### Неэффективное использование обратной связи и мониторинга
 
-[//]: # (TODO)
+[//]: # (TODO В этой части можно построить рассказ на основе 2 way из https://itrevolution.com/articles/the-three-ways-principles-underpinning-devops/)
 
+#### Отсутствие гибкости 
+
+[//]: # (TODO В этой части можно рассказать про технические требования agile и 3 way из https://itrevolution.com/articles/the-three-ways-principles-underpinning-devops/)
 
 Итого, можно выделить три основных фактора к развитию культуры DevOps:
 1) Проблема взаимодействия Dev и Ops
