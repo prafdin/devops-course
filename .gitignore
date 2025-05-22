@@ -1,0 +1,52 @@
+# === Основные временные файлы LaTeX ===
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+*.xdv
+*.bbl
+*.blg
+
+# === Файлы редакторов ===
+*.bak
+*~
+*.swp
+*.swo
+*.tmp
+*.DS_Store
+
+# === TeXStudio и TeXMaker специфичное ===
+*.synctex(busy)
+*.synctex.gz(busy)
+*.log.gz
+
+# === latexmk специфичное ===
+latexmkrc
+*.dvi
+*.ps
+
+# === Папки сборки (если используешь build dir) ===
+_build/
+build/
+output/
+
+# === Overleaf специфичное ===
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+
+# === BibTeX и BibLaTeX ===
+*.bcf
+*.run.xml
