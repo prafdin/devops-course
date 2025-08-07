@@ -1,0 +1,86 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{svg}
+
+% Подключение общего шаблона для лабораторных работ
+\input{../lab-common}
+
+% Настройка переменных для данной лабораторной работы
+\renewcommand{\labtitle}{Лабораторная работа №1}
+\renewcommand{\labsubtitle}{GitHub webhooks}
+
+\begin{document}
+
+% Титульная страница
+\makelabcover
+
+% Общие инструкции
+\commoninstructions
+
+\section{Цель работы}
+
+Научиться использовать GitHub webhooks для решения задач автоматизации сборки приложения и его развертывания.
+
+\section{Содержание работы}
+%@startuml
+%actor Разработчик
+%
+%rectangle "GitHub Репозиторий" as GitHub
+%rectangle "Реверс-прокси" as Proxy
+%rectangle "Обработчик\n(виртуальная машина)" as Handler
+%rectangle "Приложение\n(виртуальная машина)" as App
+%
+%Разработчик --> GitHub : Событие
+%
+%GitHub --> Proxy : Вызов webhook
+%Proxy --> Handler : Форвард webhook
+%
+%Handler --> App : Собрать/развернуть
+%Handler ..> GitHub : Статус деплоя
+%@enduml
+\begin{figure}[H]
+\centering
+\includesvg{webhooks-schema}
+\caption{Схема работы GitHub webhooks}
+\label{fig:webhooks-schema}
+\end{figure}
+
+В данной работе мы изучим механизм GitHub webhooks — автоматических HTTP запросов, которые отправляются при определенных событиях в репозитории.
+Как показано на схеме выше, процесс работы состоит из следующих этапов:
+\begin{enumerate}
+    \item \textbf{Событие в репозитории}: разработчик выполняет push, создает pull request или другое действие
+    \item \textbf{Активация webhook}: GitHub автоматически отправляет HTTP POST-запрос на настроенный URL
+    \item \textbf{Обработка через прокси}: реверс-прокси перенаправляет запрос к обработчику
+    \item \textbf{Автоматическое развертывание}: обработчик получает webhook и запускает процесс сборки/развертывания приложения
+    \item \textbf{Обратная связь}: система может отправить статус выполнения обратно в GitHub
+\end{enumerate}
+
+Этот подход позволяет использовать Git-репозиторий не только как средство совместной работы с кодом, но и как центральный
+элемент автоматизации процессов разработки и развертывания ПО, что является ключевой практикой DevOps.
+
+\begin{task}{1}
+    Настроить виртуальную машину с Ubuntu 24.
+\end{task}
+
+\begin{task}{2}
+    На виртуальной машине настроить доступ до прокси сервера frp.
+\end{task}
+
+\begin{task}{3}
+    \begin{enumerate}
+        \item \textbf{Easy}: задеплоить статический сайт с помощью nginx. Событие - любой коммит в main ветку.
+        \item \textbf{Medium}: задеплоить новую версию python web приложения. Событие - создание любого тега. Выставить статус деплоя на коммит тега.
+        \item \textbf{Hard}: собрать Java/C Sharp/C++ web приложение, задеплоить новую версию приложения. Событие - создание GitHub Release. Выставить статус деплоя на коммит релиза.
+    \end{enumerate}
+    Все необходимые зависимости приложения предварительно могут быть установлены вручную на виртуальной машине.
+\end{task}
+
+\section{Контрольные вопросы}
+\begin{enumerate}
+    \item TBD
+\end{enumerate}
+
+\section{Выводы}
+TBD
+\end{document}

@@ -50,3 +50,4 @@ output/
 # === BibTeX и BibLaTeX ===
 *.bcf
 *.run.xml
+/*/svg-inkscape/
