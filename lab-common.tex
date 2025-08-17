@@ -1,0 +1,233 @@
+% lab-common.tex - Общий шаблон для лабораторных работ курса DevOps
+% Подключается через \input{../lab-common.tex}
+
+% Шрифты и локализация
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage{russian}
+\usepackage{csquotes}
+
+% Настройка шрифтов (используем те же шрифты, что и в презентациях)
+\setmainfont[
+    Path = ../01-what-is-devops/fonts/elektratextpro/,
+    Extension = .otf,
+    UprightFont = elektratextpro,
+    BoldFont = elektratextpro_bold,
+    ItalicFont = elektratextpro_italic,
+    BoldItalicFont = elektratextpro_bolditalic
+]{elektratextpro}
+
+\setmonofont[
+    Path = ../01-what-is-devops/fonts/elektratextpro/,
+    Extension = .otf,
+    UprightFont = elektratextpro,
+    BoldFont = elektratextpro_bold,
+    ItalicFont = elektratextpro_italic,
+    BoldItalicFont = elektratextpro_bolditalic
+]{elektratextpro}
+
+\newfontfamily\cyrillicfont[
+    Path = ../01-what-is-devops/fonts/elektratextpro/,
+    Extension = .otf,
+    UprightFont = elektratextpro,
+    BoldFont = elektratextpro_bold,
+    ItalicFont = elektratextpro_italic,
+    BoldItalicFont = elektratextpro_bolditalic
+]{elektratextpro}
+
+\newfontfamily\cyrillicfonttt[
+    Path = ../01-what-is-devops/fonts/elektratextpro/,
+    Extension = .otf,
+    UprightFont = elektratextpro,
+    BoldFont = elektratextpro_bold,
+    ItalicFont = elektratextpro_italic,
+    BoldItalicFont = elektratextpro_bolditalic
+]{elektratextpro}
+
+\newfontfamily\cyrillicfontsf[
+    Path = ../01-what-is-devops/fonts/elektratextpro/,
+    Extension = .otf,
+    UprightFont = elektratextpro,
+    BoldFont = elektratextpro_bold,
+    ItalicFont = elektratextpro_italic,
+    BoldItalicFont = elektratextpro_bolditalic
+]{elektratextpro}
+
+% Геометрия страницы
+\usepackage[margin=2.5cm]{geometry}
+
+% Цвета (используем фирменный цвет курса)
+\usepackage{xcolor}
+\definecolor{ssaublue}{RGB}{77,144,205}
+
+% Форматирование заголовков
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries\color{ssaublue}}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries\color{ssaublue}}{\thesubsection}{1em}{}
+
+% Полезные пакеты
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{fancyvrb}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,backgrounds,shadows,calc}
+
+% Цвета для диаграмм
+\definecolor{githubcolor}{RGB}{36,41,46}
+\definecolor{servercolor}{RGB}{67,133,244}
+\definecolor{clientcolor}{RGB}{52,168,83}
+\definecolor{appcolor}{RGB}{251,188,5}
+\definecolor{cloudcolor}{RGB}{102,102,102}
+
+% TikZ стили для диаграмм
+\tikzset{
+    actor/.style={circle, draw=black, fill=white, thick, minimum width=1.2cm, text centered, drop shadow},
+    github/.style={rectangle, draw=githubcolor, fill=githubcolor!10, thick, minimum width=2.5cm, minimum height=1cm, text centered, rounded corners=4pt, drop shadow},
+    server/.style={rectangle, draw=servercolor, fill=servercolor!10, thick, minimum width=2.5cm, minimum height=1cm, text centered, rounded corners=4pt, drop shadow},
+    client/.style={rectangle, draw=clientcolor, fill=clientcolor!10, thick, minimum width=2.2cm, minimum height=0.8cm, text centered, rounded corners=3pt, drop shadow},
+    application/.style={rectangle, draw=appcolor, fill=appcolor!10, thick, minimum width=2.2cm, minimum height=0.8cm, text centered, rounded corners=3pt, drop shadow},
+    package/.style={rectangle, draw=blue!70, fill=blue!5, thick, dashed, rounded corners=5pt, inner sep=8pt},
+    arrow/.style={thick, ->, >=Stealth, line width=1.5pt},
+    label/.style={font=\small\sffamily, text=black!80}
+}
+
+% Настройка гиперссылок
+\hypersetup{
+    colorlinks=true,
+    linkcolor=ssaublue,
+    urlcolor=ssaublue,
+    citecolor=ssaublue
+}
+
+% Настройка листингов кода
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{ssaublue}\bfseries,
+    commentstyle=\color{gray}\itshape,
+    stringstyle=\color{orange},
+    numberstyle=\tiny\color{gray},
+    numbers=left,
+    numbersep=5pt,
+    frame=single,
+    breaklines=true,
+    backgroundcolor=\color{gray!10},
+    captionpos=b
+}
+
+% Настройка колонтитулов
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textbf{\labtitle}}
+\fancyhead[R]{\today}
+\fancyfoot[C]{\thepage\ из \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Переменные для настройки документа (должны быть определены в основном файле)
+\providecommand{\labtitle}{Лабораторная работа}
+\providecommand{\labsubtitle}{Название работы}
+\providecommand{\studentname}{Фамилия И.О.}
+\providecommand{\groupnumber}{Группа}
+\providecommand{\instructor}{Преподаватель}
+\providecommand{\labdate}{\today}
+
+% Команда для создания титульной страницы
+\newcommand{\makelabcover}{
+    \begin{titlepage}
+        \centering
+        
+        {\Large Курс DevOps}
+        
+        \vspace{2cm}
+        
+        {\huge\bfseries\color{ssaublue} \labtitle}
+        
+        \vspace{0.5cm}
+        
+        {\Large \labsubtitle}
+        
+        \vspace{3cm}
+        
+        \begin{tabular}{ll}
+            \textbf{Дата:} & \labdate \\
+        \end{tabular}
+        
+        \vfill
+        
+        {\large \today}
+    \end{titlepage}
+    \newpage
+}
+
+% Команда для задания
+\newenvironment{task}[1]{
+    \subsection{Задание #1}
+    \begin{quote}
+    \itshape
+}{
+    \end{quote}
+}
+
+% Команда для решения
+\newenvironment{solution}{
+    \subsection{Решение}
+}{
+}
+
+% Команда для вывода/результата
+\newenvironment{result}{
+    \subsection{Результат}
+    \begin{quote}
+    \ttfamily\small
+}{
+    \end{quote}
+}
+
+% Команда для замечания/примечания
+\newenvironment{note}{
+    \begin{quote}
+    \textbf{Примечание:} \itshape
+}{
+    \end{quote}
+}
+
+% Общие инструкции для всех лабораторных работ
+\newcommand{\commoninstructions}{
+    \section*{Общие инструкции}
+
+    \subsection*{Рекомендации к выполнению}
+    \begin{itemize}
+        \item Настоятельно рекомендуется выполнять команды из листинга отдельно, одну за другой.
+        \item Рекомендуется копировать команды через промежуточную вставку в текстовый редактор во избежание лишних символов.
+    \end{itemize}
+
+    \subsection*{Требования к оформлению}
+    \begin{itemize}
+        \item Все команды должны быть задокументированы с объяснением их назначения
+        \item Скриншоты результатов выполнения команд обязательны
+        \item Код должен быть оформлен с использованием синтаксической подсветки
+        \item Обязательно указывать версии используемого ПО
+    \end{itemize}
+    
+    \subsection*{Структура отчета}
+    \begin{enumerate}
+        \item Цель работы
+        \item Задания с решениями
+        \item Результаты выполнения
+        \item Выводы
+    \end{enumerate}
+    
+    \subsection*{Критерии оценки}
+    \begin{itemize}
+        \item \textbf{Отлично (5):} Все задания выполнены правильно, отчет оформлен согласно требованиям
+        \item \textbf{Хорошо (4):} Большинство заданий выполнено правильно, незначительные недочеты в оформлении
+        \item \textbf{Удовлетворительно (3):} Основные задания выполнены, есть ошибки или недочеты
+        \item \textbf{Неудовлетворительно (2):} Задания выполнены неправильно или не выполнены
+    \end{itemize}
+    
+    \newpage
+}
