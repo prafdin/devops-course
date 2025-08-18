@@ -1,0 +1,3 @@
+[submodule "02-git/demo-website"]
+	path = 02-git/demo-website
+	url = https://github.com/prafdin/devops-demo-website.git
