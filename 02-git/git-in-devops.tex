@@ -9,280 +9,136 @@
 \begin{document}
     \maketitle
 
-    % ====================================
-    % БЛОК 1: ЗАЧЕМ GIT В DEVOPS (8-10 минут)
-    % ====================================
-
-    \begin{frame}{Какую проблему решает Git в DevOps?}
-        \begin{columns}
-
-            \begin{column}{0.48\textwidth}
-                \textbf{Без системы контроля версий}
-                \begin{itemize}
-                    \item Код только на компьютере разработчика
-                    \item Нет истории изменений
-                    \item Нет координации в команде
-                \end{itemize}
-            \end{column}
-
-            \begin{column}{0.48\textwidth}
-                \textbf{С Git}
-                \begin{itemize}
-                    \item Центральное хранилище кода
-                    \item Полная история изменений
-                    \item Совместная работа команды
-                \end{itemize}
-            \end{column}
-
-        \end{columns}
-
-        \vspace{0.5cm}
-
-        Git — это основа для всех DevOps практик
-    \end{frame}
-
-    \begin{frame}{Git как центр DevOps процессов}
-        \textbf{Git репозиторий содержит не только код:}
-        \begin{itemize}
-        \item Исходный код приложения
-        \item Конфигурацию инфраструктуры
-        \item CI/CD пайплайны
-        \item Документацию
-        \end{itemize}
-
-        \vspace{0.5cm}
-
-        \textbf{Принцип:} всё что влияет на продукт должно быть в Git
-    \end{frame}
-
-    \begin{frame}{Git события как триггеры автоматизации}
-        \textbf{DevOps процессы запускаются от Git событий:}
-
-        \begin{itemize}
-            \item Push в ветку → автоматическое тестирование
-            \item Pull Request → код-ревью и проверки
-            \item Создание тега → релиз новой версии
-            \item Merge в main → деплой на прод
-        \end{itemize}
-
-        \vspace{0.5cm}
-
-        \textbf{Git становится пультом управления для всех процессов}
-    \end{frame}
-
-    \begin{frame}{Зачем изучать Git в контексте DevOps?}
-        \begin{enumerate}
-            \item Git — основа любой CI/CD системы
-            \item Понимание Git workflow критично для DevOps
-            \item Git hooks и webhooks — инструменты автоматизации
-        \end{enumerate}
-    \end{frame}
-
-    \begin{frame}{План лекции}
-        \begin{enumerate}
-            \item Git workflow в DevOps командах
-            \item Ветвление и стратегии слияния
-            \item Git hooks для автоматизации
-            \item GitHub/GitLab как DevOps платформа
-            \item Webhooks для интеграций
-            \item Infrastructure as Code в Git
-            \item Практика: настройка автоматизации через Git
-        \end{enumerate}
-    \end{frame}
-
-    % ====================================
-    % БЛОК 2: GIT WORKFLOW В DEVOPS (20-25 минут)
-    % ====================================
-
-    \begin{frame}{Git Flow vs GitHub Flow}
+    \begin{frame}{Эволюция роли Git}
         \begin{columns}
             \begin{column}{0.48\textwidth}
-                \textbf{Git Flow}
+                \textbf{Git для разработчика}
                 \begin{itemize}
-                    \item Сложная модель веток
-                    \item develop, release, hotfix ветки  
-                    \item Подходит для больших проектов
-                    \item Медленная доставка изменений
+                    \item Хранилище исходного кода
+                    \item Версионирование файлов
+                    \item Работа с ветками
+                    \item Совместная разработка
                 \end{itemize}
             \end{column}
 
             \begin{column}{0.48\textwidth}
-                \textbf{GitHub Flow}
+                \textbf{Git в DevOps}
                 \begin{itemize}
-                    \item Простая модель: main + feature ветки
-                    \item Быстрая доставка в продакшн
-                    \item Идеально для DevOps
-                    \item Требует хорошие тесты и CI/CD
+                    \item Центр управления системой
+                    \item Source of Truth для всего
+                    \item Триггер автоматизации
+                    \item Аудит изменений
                 \end{itemize}
             \end{column}
         \end{columns}
 
         \vspace{0.5cm}
 
-        \textbf{В DevOps предпочитают GitHub Flow}
+        \textbf{Git репозиторий} становится местом хранения состояния \textbf{всей системы}
     \end{frame}
 
-    \begin{frame}{Feature Flags и Git}
-        \textbf{Проблема:} как деплоить незавершённые функции?
-
-        \vspace{0.5cm}
-
-        \textbf{Решение: Feature Flags}
-        \begin{itemize}
-            \item Код новой функции в main ветке, но отключен
-            \item Включается через конфигурацию
-            \item Позволяет деплоить часто без риска
-        \end{itemize}
-
-        \vspace{0.5cm}
-
-        \textbf{Git + Feature Flags = непрерывная доставка}
-    \end{frame}
-
-    \begin{frame}{Монорепозиторий vs Мультирепозиторий}
-        \begin{columns}
-            \begin{column}{0.48\textwidth}
-                \textbf{Монорепозиторий}
-                \begin{itemize}
-                    \item Весь код в одном репозитории
-                    \item Проще координация изменений
-                    \item Единые CI/CD пайплайны
-                    \item Используют Google, Facebook
-                \end{itemize}
-            \end{column}
-
-            \begin{column}{0.48\textwidth}
-                \textbf{Мультирепозиторий}
-                \begin{itemize}
-                    \item Каждый сервис в своём репозитории
-                    \item Независимые релизы
-                    \item Изоляция команд
-                    \item Больше настроек CI/CD
-                \end{itemize}
-            \end{column}
-        \end{columns}
-
-        \vspace{0.5cm}
-
-        \textbf{Выбор зависит от размера команды и архитектуры}
-    \end{frame}
-
-    % ====================================
-    % БЛОК 3: АВТОМАТИЗАЦИЯ ЧЕРЕЗ GIT (15-20 минут)  
-    % ====================================
-
-    \begin{frame}{Git Hooks: автоматизация на стороне сервера}
-        \textbf{Server-side hooks:}
-        \begin{itemize}
-            \item pre-receive — проверка перед принятием push
-            \item post-receive — действия после push
-            \item post-update — обновление веб-интерфейса
-        \end{itemize}
-
-        \vspace{0.5cm}
-
-        \textbf{Применение в DevOps:}
-        \begin{itemize}
-            \item Запуск тестов при push
-            \item Автоматический деплой
-            \item Отправка уведомлений в чат
-        \end{itemize}
-    \end{frame}
-
-    \begin{frame}{Webhooks: интеграция с внешними системами}
-        \textbf{Webhook = HTTP запрос при Git событии}
-
-        \vspace{0.5cm}
-
-        \textbf{Типичные сценарии:}
-        \begin{itemize}
-            \item Push → запуск Jenkins job
-            \item Pull Request → уведомление в Slack
-            \item Tag создан → релиз в производство
-            \item Issue создана → задача в Jira
-        \end{itemize}
-
-        \vspace{0.5cm}
-
-        \textbf{GitHub, GitLab, Bitbucket поддерживают webhooks}
-    \end{frame}
-
-    \begin{frame}{GitHub Actions: CI/CD встроенный в Git}
-        \textbf{YAML файлы в .github/workflows/}
-        
-        \vspace{0.5cm}
-        
-        Автоматически выполняют:
-        \begin{itemize}
-            \item Сборку и тестирование кода
-            \item Линтинг и проверки безопасности  
-            \item Деплой в различные окружения
-            \item Создание релизов
-        \end{itemize}
-
-        \vspace{0.5cm}
-
-        \textbf{Git событие → GitHub Action → результат}
-    \end{frame}
-
-    % ====================================
-    % БЛОК 4: INFRASTRUCTURE AS CODE (10 минут)
-    % ====================================
-
-    \begin{frame}{Infrastructure as Code в Git}
-        \textbf{Принцип:} инфраструктура описывается кодом и хранится в Git
-
-        \vspace{0.5cm}
-
-        \textbf{Инструменты:}
-        \begin{itemize}
-            \item Terraform — создание инфраструктуры
-            \item Ansible — настройка серверов  
-            \item Kubernetes YAML — оркестрация контейнеров
-            \item Docker Compose — локальная разработка
-        \end{itemize}
-
-        \vspace{0.5cm}
-
-        \textbf{Изменение инфраструктуры = Pull Request}
-    \end{frame}
-
-    \begin{frame}{GitOps: Git как источник истины}
-        \textbf{GitOps = Infrastructure as Code + автоматизация}
-
-        \vspace{0.5cm}
-
-        \textbf{Принципы GitOps:}
-        \begin{itemize}
-            \item Декларативное описание системы в Git
-            \item Git как единственный источник истины
-            \item Автоматическая синхронизация с кластером
-            \item Откат изменений через Git revert
-        \end{itemize}
-
-        \vspace{0.5cm}
-
-        \textbf{Инструменты: ArgoCD, Flux, Jenkins X}
-    \end{frame}
-
-    % ====================================
-    % ЗАКЛЮЧЕНИЕ
-    % ====================================
-
-    \begin{frame}{Что запомнить}
-        \begin{itemize}
-            \item Git — центральный элемент DevOps процессов
-            \item Простые workflow лучше сложных в DevOps
-            \item Webhooks и hooks — основа автоматизации
-            \item Infrastructure as Code должен быть в Git
-            \item GitOps — эволюция DevOps практик
-        \end{itemize}
-
-        \vspace{1cm}
-
+    \begin{frame}{Что хранится в DevOps репозитории?}
         \begin{center}
-            \textbf{Вопросы?}
+            \large
+            \texttt{my-project/}
         \end{center}
+
+        \begin{itemize}
+            \item \texttt{src/} \textcolor{gray}{— исходный код приложения}
+            \item \texttt{config/} \textcolor{gray}{— файлы конфигурации}
+            \item \texttt{scripts/} \textcolor{gray}{— скрипты развертывания}
+            \item \texttt{docs/} \textcolor{gray}{— документация и инструкции}
+            \item \texttt{tests/} \textcolor{gray}{— тесты и проверки}
+        \end{itemize}
+
+        \vspace{0.5cm}
+
+        \textbf{Принцип:} если это влияет на систему — это должно быть в Git
+    \end{frame}
+
+    \begin{frame}{Демонстрация: проект в DevOps стиле}
+        \begin{center}
+            \large
+            \textbf{Создаём простой веб-сайт}
+        \end{center}
+        
+        \vspace{0.2cm}
+        
+        \textbf{Что покажем:}
+        \begin{itemize}
+            \item Создание репозитория с веб-сайтом
+            \item Конфигурация nginx в Git
+            \item Скрипт автоматического развертывания
+            \item Изменение сайта через Git
+        \end{itemize}
+        
+        \vspace{0.2cm}
+        
+        \textbf{Демо-репозиторий:} \\
+        \href{https://github.com/prafdin/devops-demo-website}{\texttt{https://github.com/prafdin/devops-demo-website}}
+        
+        \vspace{0.2cm}
+        
+        \textbf{Идея:} показать Git как источник правды для всей системы
+    \end{frame}
+
+    \begin{frame}{Git как триггер автоматизации}
+        \begin{center}
+            \large
+            \textbf{События в Git запускают процессы}
+        \end{center}
+        
+        \vspace{0.5cm}
+        
+        \begin{columns}
+            \begin{column}{0.48\textwidth}
+                \textbf{Традиционный подход:}
+                \begin{itemize}
+                    \item Ручное развертывание
+                    \item Разделенные процессы
+                    \item Человеческий фактор
+                    \item Нет связи код <-> система
+                \end{itemize}
+            \end{column}
+            
+            \begin{column}{0.48\textwidth}
+                \textbf{DevOps подход:}
+                \begin{itemize}
+                    \item git push → автодеплой
+                    \item git tag → релиз
+                    \item Pull Request → тестирование
+                    \item Коммит = событие системы
+                \end{itemize}
+            \end{column}
+        \end{columns}
+        
+        \vspace{0.5cm}
+        
+        \textbf{Принцип:} каждое изменение в Git автоматически влияет на систему
+    \end{frame}
+
+    \begin{frame}{Демонстрация: GitHub Webhook}
+        \begin{center}
+            \large
+            \textbf{Как Git события запускают автоматизацию}
+        \end{center}
+        
+        \vspace{0.5cm}
+        
+        \textbf{Что покажем:}
+        \begin{itemize}
+            \item Настройка GitHub webhook
+            \item Настройка доступа до прокси сервера
+            \item Автоматический запуск деплоя по событию в репозитории
+        \end{itemize}
+        
+        \vspace{0.2cm}
+        \textbf{Демо-репозиторий:} \\
+        \href{https://github.com/prafdin/devops-demo-website/tree/webhook-demo}{\texttt{https://github.com/prafdin/devops-demo-website/tree/webhook-demo}}
+        
+        \vspace{0.2cm}
+        
+        \textbf{Это основа} для CI/CD
     \end{frame}
 
 \end{document}
