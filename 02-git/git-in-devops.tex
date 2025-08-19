@@ -141,4 +141,55 @@
         \textbf{Это основа} для CI/CD
     \end{frame}
 
+    \begin{frame}{Git ветки = Окружения системы}
+        \begin{center}
+            \large
+            \textbf{Каждому окружению - своя ветка}
+        \end{center}
+        
+        \vspace{0.5cm}
+        
+        \begin{itemize}
+            \item \texttt{main} → Продакшн окружение
+            \item \texttt{develop} → Тестовое окружение
+            \item \texttt{feature/*} → Локальная разработка / персональное тестовое окружение
+        \end{itemize}
+        
+        \vspace{0.2cm}
+
+        Ветки в git - одно из средств управлениями окружениями в DevOps репозитории
+    \end{frame}
+
+    \begin{frame}{Демонстрация: Environments через Git}
+        \begin{center}
+            \large
+            \textbf{Как Git ветки управляют окружениями}
+        \end{center}
+        
+        \vspace{0.3cm}
+        
+        \textbf{Что покажем:}
+        \begin{itemize}
+            \item Webhook сервер определяет окружение по ветке из payload
+            \item Деплой скрипт умеет работать с разными окружениями
+            \item Изменения в develop отображаются в app-test.prafdin.course.prafdin.ru, а изменения в основное ветке в app.prafdin.course.prafdin.ru
+        \end{itemize}
+        
+        \vspace{0.2cm}
+        \textbf{Демо-репозиторий:} \\
+        \href{https://github.com/prafdin/devops-demo-website/tree/environments-demo}{\texttt{https://github.com/prafdin/devops-demo-website/tree/environments-demo}}
+        
+        \vspace{0.2cm}
+
+        Управление окружениями через Git ветки часто используется в DevOps репозитории.
+    \end{frame}
+
+    \begin{frame}{Проблемы текущего подхода}
+        \begin{itemize}
+            \item Webhook сервер нужно запускать и обновлять вручную.
+            \item Под Webhook сервер нужна отдельная ВМ.
+            \item Отсутствие наглядности: логи доступны только на ВМ, в репозитории не видно статуса выполнения.
+        \end{itemize}
+    \end{frame}
+
 \end{document}
