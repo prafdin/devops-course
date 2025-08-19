@@ -22,8 +22,7 @@
         \begin{itemize}
             \item Изменения вебхук сервера требуют ручного вмешательства.
             \item Нет простого доступа к логам скриптов, нет статуса деплоя.
-            \item Требуются вычислительные мощности под работу вебхук сервера.
-        \item \end{itemize}
+        \end{itemize}
     \end{frame}
 
     \begin{frame}{Индустриальные решения}
@@ -43,38 +42,37 @@
     \end{frame}
 
     \begin{frame}{Преимущества и недостатки платформ}
-        \begin{columns}
-            \begin{column}{0.48\textwidth}
+        \begin{columns}[t]
+            \begin{column}[t]{0.48\textwidth}
                 \textbf{Плюсы:}
                 \begin{itemize}
-                    \item \textbf{Надежность} — профессиональное администрирование, бэкапы, мониторинг
-                    \item \textbf{Масштабируемость} — одна платформа под несколько проектов
-                    \item \textbf{Удобство} — веб-интерфейс, история запусков, логи
-                    \item \textbf{Безопасность} — управление паролями и ключами
-                    \item \textbf{Интеграции} — уведомления, мониторинг, тесты
-                    \item \textbf{Поддержка} — обновления, документация, сообщество
+                    \item {Надежность}
+                    \item {Масштабируемость}
+                    \item {Удобство}
+                    \item {Интеграции}
+                    \item Переиспользуемые скрипты автоматизации
                 \end{itemize}
             \end{column}
             
-            \begin{column}{0.48\textwidth}
+            \begin{column}[t]{0.48\textwidth}
                 \textbf{Минусы:}
                 \begin{itemize}
-                    \item \textbf{Дополнительная сложность} — нужно изучать новые технологии, настраивать, администрировать
-                    \item \textbf{Свой синтаксис} — у каждой платформы свои команды и настройки
-                    \item \textbf{Ограниченные возможности} — не все можно сделать в рамках платформы
+                    \item {Дополнительная сложность}
+                    \item {Свой язык автоматизации}
+                    \item {Ограниченные возможности}
                 \end{itemize}
             \end{column}
         \end{columns}
     \end{frame}
 
     \begin{frame}{Концепция Pipeline}
-        \textbf{У всех этих платформ есть общая концепция — Pipeline}
+        У всех этих платформ есть общая концепция — \textbf{Pipeline}
         
-        \vspace{0.3cm}
+        \vspace{0.2cm}
         
         \textbf{Pipeline} — структурированная последовательность шагов автоматизации
         
-        \vspace{0.3cm}
+        \vspace{0.2cm}
         
         \textbf{Типичные шаги:}
         \begin{enumerate}
@@ -82,8 +80,10 @@
             \item Собрать приложение (если нужно)
             \item Запустить тесты
             \item Задеплоить на сервер
-            \item Проверить что все работает
         \end{enumerate}
+
+        \vspace{0.2cm}
+        Большинство типовых шагов уже написаны для всех популярных платформ.
         
     \end{frame}
 
@@ -109,7 +109,7 @@
         \textbf{Триггеры:} push, pull request, расписание, ручной запуск
     \end{frame}
 
-    \begin{frame}{Демонстрация:: Переносим webhook на GitHub Actions}
+    \begin{frame}{Демонстрация: Переносим webhook на GitHub Actions}
         \textbf{Задача:} воспроизвести логику нашего webhook сервера в GitHub
 
         
@@ -119,37 +119,12 @@
         \begin{itemize}
             \item Как добавить workflow в GitHub репозиторий
             \item Описание workflow
-            \item Работа с секретами в GitHub
+            \item Работа с секретами в GitHub Actions
         \end{itemize}
 
         \vspace{0.2cm}
         \textbf{Демо-репозиторий:} \\
         \href{https://github.com/prafdin/devops-demo-website/tree/cicd-demo}{\texttt{https://github.com/prafdin/devops-demo-website/tree/cicd-demo}}
-    \end{frame}
-
-    \begin{frame}{Что получили в результате}
-        \textbf{Сравнение с webhook сервером:}
-        
-        \begin{columns}
-            \begin{column}{0.48\textwidth}
-                \textbf{Было (webhook)}
-                \begin{itemize}
-                    \item Свой сервер на ВМ
-                    \item Логи в консоли
-                    \item Один проект = один скрипт
-                    \item Нужно следить за работой
-                \end{itemize}
-            \end{column}
-            
-            \begin{column}{0.48\textwidth}
-                \textbf{Стало (GitHub Actions)}
-                \begin{itemize}
-                    \item Управляемая инфраструктура
-                    \item Веб-интерфейс с историей
-                    \item Один файл конфигурации
-                \end{itemize}
-            \end{column}
-        \end{columns}
     \end{frame}
 
     \begin{frame}{Наш pipeline — это CI/CD pipeline}
@@ -173,8 +148,8 @@
     \end{frame}
 
     \begin{frame}{Что такое CI и CD}
-        \begin{columns}
-            \begin{column}{0.48\textwidth}
+        \begin{columns}[t]
+            \begin{column}[t]{0.48\textwidth}
                 \textbf{CI задачи это шлюзы:}
                 \begin{itemize}
                     \item Линтинг
@@ -186,7 +161,7 @@
                 \textbf{Цель:} убедиться что код рабочий
             \end{column}
             
-            \begin{column}{0.48\textwidth}
+            \begin{column}[t]{0.48\textwidth}
                 \textbf{CD задачи это преобразования:}
                 \begin{itemize}
                     \item Сборка приложения
@@ -200,7 +175,7 @@
         
         \vspace{0.5cm}
         
-        \textbf{CI + CD = Continuous Delivery}
+        CI + CD = Continuous Delivery (непрерывная доставка)
     \end{frame}
 
 
