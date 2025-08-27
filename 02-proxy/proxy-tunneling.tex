@@ -1,0 +1,155 @@
+\documentclass[aspectratio=169]{beamer}
+
+\input{../slides-common}
+
+\title{Веб-сервер, прокси и туннелирование}
+\author{Правдин Иван}
+\date{24.05.2025}
+
+\begin{document}
+    \maketitle
+
+    \begin{frame}{Что такое веб-сервер?}
+        \textbf{Веб-сервер} — программное обеспечение, которое принимает HTTP-запросы от клиентов, обрабатывает и возвращает HTTP-ответы
+        
+        \vspace{0.5cm}
+        
+        \textbf{Принцип работы:}
+        \begin{enumerate}
+            \item Клиент отправляет HTTP запрос
+            \item Сервер обрабатывает запрос и возвращает HTTP ответ
+        \end{enumerate}
+        
+        \vspace{0.5cm}
+        
+        \textbf{Примеры веб-серверов:}
+        \begin{itemize}
+            \item \textbf{Apache}
+            \item \textbf{Nginx}
+            \item \textbf{Python http.server}
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Демонстрация: запустим простой веб-сервер}
+        \textbf{Что покажем:}
+        \begin{itemize}
+            \item Запуск статического и динамического веб-сервера
+            \item Обращение к веб-серверу из браузера, developers tools
+            \item Обращение к веб-серверу с помощью curl
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Прокси}
+        \textbf{Прокси сервер} — сервер-посредник между клиентом и сервером
+        
+        \vspace{0.5cm}
+        
+        \begin{columns}[t]
+            \begin{column}[t]{0.48\textwidth}
+                \textbf{Forward proxy:}
+                \begin{itemize}
+                    \item Клиент → Прокси → Интернет
+                    \item Скрывает клиента от сервера
+                    \item Пример: корпоративный прокси
+                \end{itemize}
+            \end{column}
+            
+            \begin{column}[t]{0.48\textwidth}
+                \textbf{Reverse proxy:}
+                \begin{itemize}
+                    \item Интернет → Прокси → Сервер
+                    \item Скрывает сервер от клиента
+                    \item Пример: nginx перед приложением
+                \end{itemize}
+            \end{column}
+        \end{columns}
+    \end{frame}
+
+    \begin{frame}{Демонстрация: nginx в качестве reverse proxy}
+        \textbf{Что покажем:}
+        \begin{itemize}
+            \item Маршрутизация по портам
+            \item Маршрутизация по path
+            \item Маршрутизация по заголовку Host
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Туннелирование}
+        Туннелирование — технология инкапсуляции одного сетевого протокола в другой для создания канала передачи данных
+        
+        \vspace{0.5cm}
+        
+        \textbf{Назначение:}
+        \begin{itemize}
+            \item Обход сетевых ограничений (NAT, firewall)
+            \item Обеспечение безопасности передачи данных
+            \item Соединение изолированных сетей
+        \end{itemize}
+        
+        \vspace{0.5cm}
+        
+        \textbf{Принцип работы:}
+        \begin{enumerate}
+            \item Исходный трафик упаковывается в другой протокол
+            \item Передается через промежуточный сервер
+            \item Распаковывается на стороне получателя
+        \end{enumerate}
+    \end{frame}
+
+    \begin{frame}{Демонстрация: Туннелирование через SSH}
+        \textbf{Что покажем:}
+        \begin{itemize}
+            \item Запуск веб-сервера на удаленной машине
+            \item Создание SSH туннеля: локальный порт → удаленный сервис
+            \item Доступ к удаленному сайту через локальный адрес
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{FRP: reverse proxy + тунель}
+        \textbf{Fast Reverse Proxy (FRP)} — обратный прокси сервер с поддержкой туннелирования до клиентов
+        
+        \vspace{0.5cm}
+        
+        \textbf{Возможности FRP:}
+        \begin{itemize}
+            \item HTTP туннели
+            \item TCP туннели
+            \item UDP туннели
+            \item Работа через NAT и firewall
+        \end{itemize}
+        
+        \vspace{0.5cm}
+        
+        \textbf{Архитектура:}
+        \begin{center}
+            Клиент → FRP Server ← FRP Client ← Сервер
+        \end{center}
+        
+    \end{frame}
+
+    \begin{frame}{Демонстрация: FRP в действии}
+        \textbf{Что покажем:}
+        \begin{itemize}
+            \item Установка и настройка FRP клиента
+            \item Создание HTTP туннеля для веб-сервера
+            \item Создание TCP туннеля для SSH доступа
+            \item Доступ к внутренним сервисам через внешний домен
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Что запомнить}
+        \begin{itemize}
+            \item \textbf{HTTP} — основа веб-коммуникации (заголовки, статус коды)
+            \item \textbf{Forward Proxy} — клиент → прокси → интернет
+            \item \textbf{Reverse Proxy} — интернет → прокси → сервер
+            \item \textbf{Туннелирование} — создание канала передачи данных через сеть
+        \end{itemize}
+
+        \vspace{1cm}
+
+        \begin{center}
+            \textbf{Вопросы?}
+        \end{center}
+    \end{frame}
+
+\end{document}
