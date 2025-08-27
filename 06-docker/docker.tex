@@ -1,0 +1,225 @@
+\documentclass[aspectratio=169]{beamer}
+\input{../slides-common.tex}
+
+\title{Контейнеризация}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Проблема изоляции}
+
+\begin{frame}{Что мы имеем после прошлых лекций}
+\textbf{Наш CI/CD pipeline работает:}
+
+\begin{itemize}
+\item Git push → автоматический деплой через GitHub Actions
+\item Ansible настраивает nginx на сервере
+\item deploy.sh копирует файлы приложения
+\end{itemize}
+
+\textbf{Но есть проблема:}
+
+Тестовый и основной сайт находятся на одном сервере и управляются одним nginx.
+\end{frame}
+
+\begin{frame}{Почему это проблема?}
+\textbf{Наша текущая ситуация:}
+
+\begin{itemize}
+\item \textbf{Продакшн} — app.prafdin.course.prafdin.ru → /var/www/demo
+\item \textbf{Тест} — app-test.prafdin.course.prafdin.ru → /var/www/demo-test
+\item Два сервер блока в одном nginx.conf на порту 8181
+\item Один процесс nginx обслуживает оба окружения
+\end{itemize}
+
+\vspace{0.2cm}
+
+\textbf{Проблемы отсутствия изоляции:}
+\begin{itemize}
+\item \textbf{Перезапуск nginx} — ребут теста прерывает продакшн
+\item \textbf{Версия nginx} — нельзя тестировать обновления безопасно
+\end{itemize}
+
+\vspace{0.2cm}
+
+\textbf{Вопрос:} как изолировать приложения друг от друга?
+\end{frame}
+
+\begin{frame}{Возможные решения}
+\textbf{Как можно решить проблему изоляции?}
+
+\begin{itemize}
+\item \textbf{Отдельные машины} — изыточно для нашего случая
+\item \textbf{Разные процессы nginx} — сложно настраивать
+\item \textbf{Контейнеризация} — индустриальный стандарт
+\end{itemize}
+\end{frame}
+
+\section{Что такое контейнеризация?}
+
+\begin{frame}{Что такое контейнеризация?}
+\textbf{Контейнеризация} — технология изоляции приложений с их зависимостями в отдельные исполняемые единицы.
+
+\textbf{Контейнер} — приложение, запущенное с использованием технологии контейнеризации.
+
+\vspace{0.2cm}
+
+\textbf{Основные особенности:}
+\begin{itemize}
+\item \textbf{Изоляция} — каждый контейнер работает независимо от других
+\item \textbf{Переносимость} — одинаково работает везде, где есть контейнер runtime
+\item \textbf{Эффективность} — общее ядро ОС, минимальные накладные расходы
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Контейнеры vs Виртуальные машины}
+\begin{columns}[t]
+\begin{column}[t]{0.5\textwidth}
+\textbf{Виртуальные машины}
+\begin{itemize}
+\item Полная ОС для каждого приложения
+\item Большой overhead
+\item Медленный старт
+\item Изоляция на уровне железа
+\end{itemize}
+\end{column}
+
+\begin{column}[t]{0.5\textwidth}
+\textbf{Контейнеры}
+\begin{itemize}
+\item Общее ядро ОС
+\item Минимальный overhead
+\item Быстрый старт (секунды)
+\item Изоляция на уровне процессов
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Способы контейнеризации}
+\textbf{Существует несколько технологий контейнеризации:}
+
+\begin{itemize}
+\item \textbf{Docker} — самая популярная платформа контейнеризации
+\item \textbf{Podman} — альтернатива Docker без демона
+\item \textbf{LXC/LXD} — системные контейнеры
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Основные понятия Docker}
+\textbf{Ключевые абстракции Docker:}
+
+\begin{itemize}
+\item \textbf{Image} — неизменяемый шаблон для создания контейнеров
+\item \textbf{Container} — выполняющийся экземпляр образа
+\item \textbf{Dockerfile} — инструкции для сборки образа
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Принцип работы:}
+\begin{enumerate}
+\item Описываем приложение в Dockerfile
+\item Собираем образ (image) из Dockerfile
+\item Запускаем контейнер из образа
+\end{enumerate}
+\end{frame}
+
+\section{Docker на практике}
+
+\begin{frame}{Что изолирует Docker?}
+\textbf{Docker создает изоляцию по нескольким уровням:}
+
+\begin{itemize}
+\item \textbf{Файловая система} — каждый контейнер видит только свои файлы
+\item \textbf{Процессы} — контейнеры не видят процессы друг друга
+\item \textbf{Сеть} — свои порты, IP-адреса
+\item \textbf{Ресурсы} — изолированное использование CPU, памяти
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Docker Registry}
+\textbf{Два типа registry:}
+
+\begin{itemize}
+\item \textbf{Локальный registry} — образы хранятся на локальной машине
+\item \textbf{Удаленный registry} — образы хранятся на удаленном сервере
+  \begin{itemize}
+  \item Docker Hub
+  \item GitLab Registry  
+  \item GitHub Container Registry
+  \end{itemize}
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Основные операции:}
+\begin{itemize}
+\item \textbf{Push} — загрузка образа в удаленный registry
+\item \textbf{Pull} — скачивание образа из registry
+\end{itemize}
+\end{frame}
+
+\section{Демонстрация}
+
+\begin{frame}{Демонстрация: Контейнеризация сайта}
+\textbf{Что покажем:}
+\begin{enumerate}
+\item Dockerfile для сайта
+\item Работа с контейнерами через docker cli
+\item Использование контейнера в CI/CD пайплайне
+\end{enumerate}
+
+\vspace{0.2cm}
+
+\textbf{Демо-репозиторий:} \\
+\href{https://github.com/prafdin/devops-demo-website/tree/docker-demo}{\texttt{https://github.com/prafdin/devops-demo-website/tree/docker-demo}}
+
+\end{frame}
+
+\section{Docker в CI/CD}
+
+\begin{frame}{Эволюция нашего pipeline}
+\begin{columns}[t]
+\begin{column}[t]{0.5\textwidth}
+\textbf{Было:}
+\begin{itemize}
+\item Ansible устанавливаете nginx
+\item deploy.sh копирует файлы
+\end{itemize}
+\end{column}
+
+\begin{column}[t]{0.5\textwidth}
+\textbf{Стало:}
+\begin{itemize}
+\item Ansible устанавливает только docker
+\item Docker build, push в pipeline
+\item Запуск на сервере
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+\section{Заключение}
+
+\begin{frame}{Что запомнить}
+\begin{itemize}
+\item \textbf{Контейнеризация} — ключевой принцип современной инфраструктуры
+\item \textbf{Контейнеризация решает проблемы} переносимости и конфликтов зависимостей
+\item \textbf{Контейнеризация стандартизирует окружение} и упрощает развертывание
+\end{itemize}
+
+\vspace{1cm}
+\begin{center}
+\textbf{Вопросы?}
+\end{center}
+\end{frame}
+
+\end{document}
