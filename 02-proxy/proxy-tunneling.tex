@@ -50,7 +50,7 @@
         \vspace{0.5cm}
         
         \begin{columns}[t]
-            \begin{column}[t]{0.48\textwidth}
+            \begin{column}[t]{0.465\textwidth}
                 \textbf{Forward proxy:}
                 \begin{itemize}
                     \item Клиент → Прокси → Интернет
@@ -59,7 +59,7 @@
                 \end{itemize}
             \end{column}
             
-            \begin{column}[t]{0.48\textwidth}
+            \begin{column}[t]{0.465\textwidth}
                 \textbf{Reverse proxy:}
                 \begin{itemize}
                     \item Интернет → Прокси → Сервер
@@ -68,6 +68,16 @@
                 \end{itemize}
             \end{column}
         \end{columns}
+    \end{frame}
+
+    \begin{frame}
+        \vfill
+        \begin{center}
+            \includegraphics[width=0.95\textwidth]{media/proxy.jpg}
+        \end{center}
+        \vfill
+        
+        \footnotesize{\url{https://youtu.be/4NB0NDtOwIQ?si=PTjH0R9xBrfBxlBr}}
     \end{frame}
 
     \begin{frame}{Демонстрация: nginx в качестве reverse proxy}
@@ -96,7 +106,7 @@
             \item Соединение изолированных сетей
         \end{itemize}
         
-        \vspace{0.5cm}
+        \vspace{0.3cm}
         
         \textbf{Принцип работы:}
         \begin{enumerate}
@@ -106,12 +116,29 @@
         \end{enumerate}
     \end{frame}
 
+    \begin{frame}
+        \vfill
+        \begin{center}
+            \includegraphics[width=0.95\textwidth]{media/ssh-tunneling}
+        \end{center}
+        \vfill
+    \end{frame}
+
+    \begin{frame}
+        \vfill
+        \begin{center}
+            \includegraphics[width=0.75\textwidth]{media/traverse-nat}
+        \end{center}
+        \vfill
+    \end{frame}
+
     \begin{frame}{Демонстрация: Туннелирование через SSH}
         \textbf{Что покажем:}
         \begin{itemize}
             \item Запуск веб-сервера на удаленной машине
             \item Создание SSH туннеля: локальный порт → удаленный сервис
-            \item Доступ к удаленному сайту через локальный адрес
+            \item Доступ к удаленному серверу через локальный порт
+            \item Перенаправление запросов с удаленного сервера на локальный порт
         \end{itemize}
 
         \vspace{0.2cm}
