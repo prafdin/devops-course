@@ -9,7 +9,7 @@
 
 % Настройка шрифтов (используем те же шрифты, что и в презентациях)
 \setmainfont[
-    Path = ../01-what-is-devops/fonts/elektratextpro/,
+    Path = ../fonts/elektratextpro/,
     Extension = .otf,
     UprightFont = elektratextpro,
     BoldFont = elektratextpro_bold,
@@ -18,7 +18,7 @@
 ]{elektratextpro}
 
 \setmonofont[
-    Path = ../01-what-is-devops/fonts/elektratextpro/,
+    Path = ../fonts/elektratextpro/,
     Extension = .otf,
     UprightFont = elektratextpro,
     BoldFont = elektratextpro_bold,
@@ -27,7 +27,7 @@
 ]{elektratextpro}
 
 \newfontfamily\cyrillicfont[
-    Path = ../01-what-is-devops/fonts/elektratextpro/,
+    Path = ../fonts/elektratextpro/,
     Extension = .otf,
     UprightFont = elektratextpro,
     BoldFont = elektratextpro_bold,
@@ -36,7 +36,7 @@
 ]{elektratextpro}
 
 \newfontfamily\cyrillicfonttt[
-    Path = ../01-what-is-devops/fonts/elektratextpro/,
+    Path = ../fonts/elektratextpro/,
     Extension = .otf,
     UprightFont = elektratextpro,
     BoldFont = elektratextpro_bold,
@@ -45,7 +45,7 @@
 ]{elektratextpro}
 
 \newfontfamily\cyrillicfontsf[
-    Path = ../01-what-is-devops/fonts/elektratextpro/,
+    Path = ../fonts/elektratextpro/,
     Extension = .otf,
     UprightFont = elektratextpro,
     BoldFont = elektratextpro_bold,
@@ -72,6 +72,7 @@
 \usepackage{fancyvrb}
 \usepackage{hyperref}
 \usepackage{enumitem}
+\usepackage{hyperref}
 \usepackage{fancyhdr}
 \usepackage{lastpage}
 \usepackage{tikz}
@@ -150,12 +151,6 @@
         
         {\Large \labsubtitle}
         
-        \vspace{3cm}
-        
-        \begin{tabular}{ll}
-            \textbf{Дата:} & \labdate \\
-        \end{tabular}
-        
         \vfill
         
         {\large \today}
@@ -205,28 +200,13 @@
         \item Рекомендуется копировать команды через промежуточную вставку в текстовый редактор во избежание лишних символов.
     \end{itemize}
 
-    \subsection*{Требования к оформлению}
+    \subsection*{Формат сдачи}
     \begin{itemize}
-        \item Все команды должны быть задокументированы с объяснением их назначения
-        \item Скриншоты результатов выполнения команд обязательны
-        \item Код должен быть оформлен с использованием синтаксической подсветки
-        \item Обязательно указывать версии используемого ПО
-    \end{itemize}
-    
-    \subsection*{Структура отчета}
-    \begin{enumerate}
-        \item Цель работы
-        \item Задания с решениями
-        \item Результаты выполнения
-        \item Выводы
-    \end{enumerate}
-    
-    \subsection*{Критерии оценки}
-    \begin{itemize}
-        \item \textbf{Отлично (5):} Все задания выполнены правильно, отчет оформлен согласно требованиям
-        \item \textbf{Хорошо (4):} Большинство заданий выполнено правильно, незначительные недочеты в оформлении
-        \item \textbf{Удовлетворительно (3):} Основные задания выполнены, есть ошибки или недочеты
-        \item \textbf{Неудовлетворительно (2):} Задания выполнены неправильно или не выполнены
+        \item Создайте GitHub репозиторий для выполнения лабораторной работы или заведите отдельную ветку в репозитории с прошлой работы
+        \item Добавьте в репозиторий все необходимые файлы: код приложения, файлы конфигурации и скрипты
+        \item Предварительно отправьте ссылку на репозиторий преподавателю, а также ссылку на результат работы (если применимо)
+        \item Во время сдачи будьте готовы описать и продемонстрировать выполненые шаги, а также ответить на возникающие вопросы
+        \item Контрольный вопрос может быть задан на усмотрение преподавателя
     \end{itemize}
     
     \newpage
