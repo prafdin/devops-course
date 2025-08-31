@@ -83,6 +83,7 @@ cat ~/.ssh/github_actions
     Настроить SSH доступ до вашей виртуальной машины через FRP для работы CD workflow.
     
     \begin{enumerate}
+        \textbf{Внимание! Будьте осторожны, открывая SSH доступ всему миру! Позаботьтесь о том, что у вас стоит надежный пароль, а лучше всего чтобы на виртуальной машине была \href{https://stackoverflow.com/questions/20898384/disable-password-authentication-for-ssh}{отключена аутентификация по паролю}}
         \item Обновите конфигурацию FRP для работы с GitHub Actions:
         
         \begin{lstlisting}[language=bash, numbers=none, frame=single, basicstyle=\ttfamily\footnotesize, columns=fullflexible, keepspaces=true, breaklines=false, commentstyle=\color{gray}\itshape, extendedchars=true, texcl=true, showstringspaces=false]
