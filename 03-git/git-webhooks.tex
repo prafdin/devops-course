@@ -90,7 +90,7 @@ customDomains = ["app.$ID.$PROXY"]
 EOF # Конец команды
 
 # Запустите frp client. Команда запросит пароль текущего пользователя
-sudo systemctl status frpc
+sudo systemctl start frpc
 
 # Проверьте корректность настройки
 echo "Адрес для проверки: webhook.$ID.$PROXY"
