@@ -26,3 +26,9 @@
 [Лекция 5: Configuration Management](05-configuration-management/configuration-management.pdf)
 
 [Лекция 6: Docker](06-docker/docker.pdf)
+
+## Лабораторные работы 
+
+[Лабораторная работа 1](03-git/git-webhooks.pdf)
+
+[Лабораторная работа 2](04-cicd/github-actions.pdf)
