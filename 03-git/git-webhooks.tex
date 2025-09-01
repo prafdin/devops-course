@@ -27,6 +27,22 @@
 
 \section{Содержание работы}
 
+%@startuml
+%actor Разработчик
+%
+%rectangle "GitHub Репозиторий" as GitHub
+%rectangle "Реверс-прокси" as Proxy
+%rectangle "Обработчик\n(виртуальная машина)" as Handler
+%rectangle "Приложение\n(виртуальная машина)" as App
+%
+%Разработчик --> GitHub : Событие
+%
+%GitHub --> Proxy : Вызов webhook
+%Proxy --> Handler : Форвард webhook
+%
+%Handler --> App : Собрать/развернуть
+%Handler ..> GitHub : Статус деплоя
+%@enduml
 \begin{figure}[H]
 \centering
 \includesvg{webhooks-schema}
