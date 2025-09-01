@@ -5,7 +5,6 @@
 \setdefaultlanguage{russian}
 \usepackage{csquotes}
 \usetheme{metropolis}
-
 \metroset{background=light}
 \metroset{sectionpage=none}
 \metroset{numbering=fraction}
@@ -67,3 +66,15 @@
     ItalicFont = elektratextpro_italic,
     BoldItalicFont = elektratextpro_bolditalic
 ]{elektratextpro}
+
+% Настройка листингов для Beamer
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    commentstyle=\color{gray},
+    columns=fullflexible,
+    keepspaces=true,
+    breaklines=false,
+    extendedchars=true,
+    texcl=true,
+    showstringspaces=false
+}

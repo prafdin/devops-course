@@ -27,6 +27,8 @@
 
 [Лекция 6: Docker](06-docker/docker.pdf)
 
+[Лекция 7: Docker Compose](07-docker-compose/docker-compose.pdf)
+
 ## Лабораторные работы 
 
 [Лабораторная работа 1](03-git/git-webhooks.pdf)
