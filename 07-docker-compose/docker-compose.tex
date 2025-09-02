@@ -14,9 +14,9 @@
 \textbf{Текущее состояние нашего приложения:}
 
 \begin{itemize}
-\item Статический веб-сайт работает в nginx контейнере
-\item Развертывается автоматически через CI/CD pipeline
-\item Изолирован от других приложений на сервере
+\item nginx работает в контейнере и раздает html
+\item Настройки сервера выполняются через ansible
+\item Настроен автоматический деплой через CI/CD pipeline
 \end{itemize}
 
 \vspace{0.3cm}
@@ -69,10 +69,10 @@
 
 \begin{verbatim}
 docker network create demo-net
-docker run -d --rm --name backend-1 busybox:stable sleep 250
-docker run -d --rm --name backend-2 busybox:stable sleep 250
-docker run -d --rm --name backend-3 busybox:stable sleep 250
-docker run -d --network demo-net -p 8080:80 --name nginx nginx:alpine
+docker run -d --rm --network demo-net --name backend-1 busybox:stable sleep 250
+docker run -d --rm --network demo-net --name backend-2 busybox:stable sleep 250
+docker run -d --rm --network demo-net --name backend-3 busybox:stable sleep 250
+docker run -d --rm --network demo-net -p 8080:80 --name nginx nginx:alpine
 \end{verbatim}
 
 \vspace{0.2cm}
@@ -175,8 +175,8 @@ app-backend-3
 \begin{itemize}
   \item \textbf{Docker Swarm} — простая альтернатива Kubernetes от Docker
   \item \textbf{Nomad} — от HashiCorp, поддерживает не только контейнеры
-  \item \textbf{OpenShift} — enterprise платформа на базе Kubernetes
   \item \textbf{Kubernetes} — индустриальный стандарт оркестрации
+  \item \textbf{OpenShift} — enterprise платформа на базе Kubernetes
 \end{itemize}
 
 \end{frame}
@@ -185,9 +185,8 @@ app-backend-3
 
 \begin{frame}{Что запомнить}
   \begin{itemize}
-    \item TBD
-    \item TBD
-    \item TBD
+    \item Docker Compose решает проблему сложности управления множеством связанных контейнеров
+    \item Декларативный подход лучше императивного — надёжнее и проще в поддержке
   \end{itemize}
 
   \vspace{1cm}
