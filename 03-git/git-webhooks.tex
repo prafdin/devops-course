@@ -142,14 +142,14 @@ prafdin/b9ff40c8bc6dc8c55ca7ac911e278ecc\
     
     \begin{enumerate}
         \item Создайте веб-сервер — обработчик webhook, который будет получать HTTP запросы от GitHub
-        \item Реализуйте логику автоматического развертывания приложения при получении события:
+        \item В качестве обработки события реализуйте логику автоматического развертывания приложения при получении события:
         \begin{itemize}
             \item Клонирование или обновление кода из репозитория
             \item Сборка приложения (если требуется)
             \item Запуск тестов (при наличии)
             \item Развертывание и перезапуск веб-сервера или приложения
         \end{itemize}
-        \item Протестируйте работу webhook, создав событие в репозитории
+        \item Протестируйте работу webhook сервера, создав событие в репозитории
         \item Убедитесь, что приложение успешно разворачивается и доступно
         \item Отправьте статус развертывания в GitHub через \href{https://docs.github.com/en/rest/commits/statuses?apiVersion=2022-11-28#create-a-commit-status}{REST API} в случае push события. Опционально
     \end{enumerate}
@@ -161,14 +161,19 @@ prafdin/b9ff40c8bc6dc8c55ca7ac911e278ecc\
         \item Веб-сервер — обработчик должен быть запущен на порту 8080, а развертываемое приложение должно быть доступно по адресу \texttt{http://app.\$ID.\$PROXY} и запущено на порту 8181
         \item Автоматическое развертывание должно работать для любой ветки в репозитории
         \item Перед выполнением задания необходимо выбрать приложение, событие для активации webhook (push, pull request, release) и решить о необходимости реализации обратной связи GitHub API.
+        \item Учтите, что основное приложение должно работать, даже если webhook сервер отключен.
+        Для решения этой задачи рекомендуется превратить приложение в systemd сервис (\href{https://webdock.io/en/docs/how-guides/app-installation-and-setup/how-daemonize-application-systemd}{инструкция 1}, \href{https://medium.com/@benmorel/creating-a-linux-service-with-systemd-611b5c8b91d6}{инструкция 2})
     \end{itemize}
 
     \textbf{Рекомендуемые приложения:}
     \begin{itemize}
-        \item \textbf{Статический сайт:} \url{https://github.com/cloudacademy/static-website-example.git}
-        \item \textbf{C\# приложение:} \url{https://github.com/danlla/Csharp-example}
-        \item \textbf{Python веб приложение:} \url{https://github.com/prafdin/catty-reminders-app.git}
+        \item \textbf{Статический сайт:} \href{https://github.com/cloudacademy/static-website-example.git}{cloudacademy/static-website-example}
+        \item \textbf{C\# приложение:} \href{https://github.com/danlla/Csharp-example}{danlla/Csharp-example}
+        \item \textbf{Python веб приложение:} \href{https://github.com/prafdin/catty-reminders-app.git}{prafdin/catty-reminders-app}
     \end{itemize}
+
+    \textbf{Шаблон веб-сервера обработчика webhook:}
+    \href{https://github.com/prafdin/devops-demo-website/blob/webhook-demo/webhook-server.py}{prafdin/devops-demo-website}
 \end{task}
 
 \section{Контрольные вопросы}
