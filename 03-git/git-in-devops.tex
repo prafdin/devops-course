@@ -3,8 +3,7 @@
 \input{../slides-common}
 
 \title{Git в DevOps}
-\author{Правдин Иван}
-\date{24.05.2025}
+\date{17 сентября 2025 г.}
 
 \begin{document}
     \maketitle
@@ -12,7 +11,7 @@
     \begin{frame}{Эволюция роли Git}
         \begin{columns}
             \begin{column}{0.48\textwidth}
-                \textbf{Git для разработчика}
+                \textbf{Git ранее}
                 \begin{itemize}
                     \item Хранилище исходного кода
                     \item Версионирование файлов
@@ -25,7 +24,7 @@
                 \textbf{Git в DevOps}
                 \begin{itemize}
                     \item Центр управления системой
-                    \item Source of Truth для всего
+                    \item Source of Truth для системы
                     \item Триггер автоматизации
                     \item Аудит изменений
                 \end{itemize}
@@ -51,19 +50,15 @@
             \item \texttt{tests/} \textcolor{gray}{— тесты и проверки}
         \end{itemize}
 
-        \vspace{0.5cm}
+        \vspace{0.2cm}
 
         \textbf{Принцип:} если это влияет на систему — это должно быть в Git
+
+        \footnotesize{\textcolor{gray}{\url{https://octopus.com/blog/what-is-everything-as-code}}}
     \end{frame}
 
     \begin{frame}{Демонстрация: проект в DevOps стиле}
-        \begin{center}
-            \large
-            \textbf{Создаём простой веб-сайт}
-        \end{center}
-        
-        \vspace{0.2cm}
-        
+
         \textbf{Что покажем:}
         \begin{itemize}
             \item Создание репозитория с веб-сайтом
@@ -76,10 +71,6 @@
         
         \textbf{Демо-репозиторий:} \\
         \href{https://github.com/prafdin/devops-demo-website}{\texttt{https://github.com/prafdin/devops-demo-website}}
-        
-        \vspace{0.2cm}
-        
-        \textbf{Идея:} показать Git как источник правды для всей системы
     \end{frame}
 
     \begin{frame}{Git как триггер автоматизации}
@@ -114,17 +105,10 @@
         
         \vspace{0.5cm}
         
-        \textbf{Принцип:} каждое изменение в Git автоматически влияет на систему
+        \textbf{Принцип:} каждое изменение в Git влияет на всю систему
     \end{frame}
 
     \begin{frame}{Демонстрация: GitHub Webhook}
-        \begin{center}
-            \large
-            \textbf{Как Git события запускают автоматизацию}
-        \end{center}
-        
-        \vspace{0.5cm}
-        
         \textbf{Что покажем:}
         \begin{itemize}
             \item Настройка GitHub webhook
@@ -135,10 +119,6 @@
         \vspace{0.2cm}
         \textbf{Демо-репозиторий:} \\
         \href{https://github.com/prafdin/devops-demo-website/tree/webhook-demo}{\texttt{https://github.com/prafdin/devops-demo-website/tree/webhook-demo}}
-        
-        \vspace{0.2cm}
-        
-        \textbf{Это основа} для CI/CD
     \end{frame}
 
     \begin{frame}{Git ветки = Окружения системы}
@@ -161,13 +141,6 @@
     \end{frame}
 
     \begin{frame}{Демонстрация: Environments через Git}
-        \begin{center}
-            \large
-            \textbf{Как Git ветки управляют окружениями}
-        \end{center}
-        
-        \vspace{0.3cm}
-        
         \textbf{Что покажем:}
         \begin{itemize}
             \item Webhook сервер определяет окружение по ветке из payload
@@ -178,10 +151,6 @@
         \vspace{0.2cm}
         \textbf{Демо-репозиторий:} \\
         \href{https://github.com/prafdin/devops-demo-website/tree/environments-demo}{\texttt{https://github.com/prafdin/devops-demo-website/tree/environments-demo}}
-        
-        \vspace{0.2cm}
-
-        Управление окружениями через Git ветки часто используется в DevOps репозитории.
     \end{frame}
 
     \begin{frame}{Проблемы текущего подхода}
