@@ -20,7 +20,7 @@
 
 \section{Цель работы}
 
-Заменить самописный webhook обработчик из предыдущей лабораторной работы на CI/CD pipeline с помощью GitHub Actions.
+Заменить самописный webhook обработчик из предыдущей лабораторной работы на CI/CD pipeline на платформе GitHub Actions.
 Сравнить подходы и изучить преимущества CI/CD платформ.
 
 \section{Содержание работы}
@@ -133,7 +133,7 @@ ssh -p $SSH_PORT $USER@$PROXY
     \begin{enumerate}
         \item Создайте файл \texttt{.github/workflows/ci.yml}
         \item Добавьте простые тесты для вашего приложения (если их нет)
-        \item Настройте workflow для запуска тестов при push нового коммита и создания pull request
+        \item Настройте workflow для запуска тестов при push нового коммита и создании pull request
         \item Убедитесь, что workflow запускается и успешно проходит
     \end{enumerate}
 
@@ -157,7 +157,7 @@ ssh -p $SSH_PORT $USER@$PROXY
 
     \begin{enumerate}
         \item Создайте файл \texttt{.github/workflows/deploy.yml}
-        \item Настройте workflow для запуска только после успешного выполнения CI workflow в заданной ветке (например, \texttt{github-actions})
+        \item Настройте запуск workflow по наступлению события \href{https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#release}{release}
         \item Реализуйте ту же логику развертывания, что была в webhook веб-сервере
         \item Протестируйте развертывание
         \item Убедитесь, что приложение обновляется и доступно по тому же адресу: \texttt{http://app.\$ID.\$PROXY}
@@ -169,7 +169,6 @@ ssh -p $SSH_PORT $USER@$PROXY
 
     \textbf{Полезная информация:}
     \begin{itemize}
-        \item \href{https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#workflow_run}{Инструкция по настройке запуска workflow на основании статуса другого workflow}
         \item Полезные GitHub Actions:
         \begin{itemize}
             \item \href{https://github.com/appleboy/ssh-action}{appleboy/ssh-action@v1}
