@@ -62,15 +62,17 @@
 \begin{frame}{Что такое контейнеризация?}
 \textbf{Контейнеризация} — технология изоляции приложений с их зависимостями в отдельные исполняемые единицы.
 
-\textbf{Контейнер} — приложение, запущенное с использованием технологии контейнеризации.
+\textbf{Контейнер} — процесс или группа процессов, запущенные в изолированном окружении.
 
 \vspace{0.2cm}
 
-\textbf{Основные особенности:}
+\textbf{Изоляция на уровне:}
 \begin{itemize}
-\item \textbf{Изоляция} — каждый контейнер работает независимо от других
-\item \textbf{Переносимость} — одинаково работает везде, где есть контейнер runtime
-\item \textbf{Эффективность} — общее ядро ОС, минимальные накладные расходы
+\item \textbf{Процессов} — у каждого контейнера своё дерево процессов
+\item \textbf{Сети} — у каждого контейнера свои сетевые интерфейсы, настройки маршрутизации
+\item \textbf{Ресурсов } — cpu, ram, IO
+\item \textbf{Файловой системы } — у каждого контейнера своя файловая система
+\item \textbf{...} — а также много других механизмов ядра
 \end{itemize}
 \end{frame}
 
@@ -98,7 +100,17 @@
 \end{columns}
 \end{frame}
 
-\begin{frame}{Способы контейнеризации}
+\begin{frame}{Контейнеры vs Виртуальные машины}
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{media/vm-vs-cont}
+  \end{center}
+
+  \vfill
+
+  \footnotesize{\textcolor{gray}{\url{https://dzone.com/articles/evolution-of-linux-containers-future}}}
+\end{frame}
+
+\begin{frame}{Способы работы с контейнерами}
 \textbf{Существует несколько технологий контейнеризации:}
 
 \begin{itemize}
@@ -109,14 +121,21 @@
 
 \end{frame}
 
+\begin{frame}{Docker}
+  \begin{center}
+    \includegraphics[width=0.64\textwidth]{media/docker-arch}
+  \end{center}
+
+  \footnotesize{\textcolor{gray}{\url{https://labs.iximiuz.com/challenges/docker-install-on-ubuntu}}}
+\end{frame}
 
 \begin{frame}{Основные понятия Docker}
 \textbf{Ключевые абстракции Docker:}
 
 \begin{itemize}
-\item \textbf{Image} — неизменяемый шаблон для создания контейнеров
-\item \textbf{Container} — выполняющийся экземпляр образа
-\item \textbf{Dockerfile} — инструкции для сборки образа
+  \item \textbf{Container} — процесс или группа процессов, запущенные в изолированном окружении
+  \item \textbf{Image} — неизменяемый шаблон для создания контейнеров
+  \item \textbf{Dockerfile} — инструкции для сборки образа
 \end{itemize}
 
 \vspace{0.3cm}
