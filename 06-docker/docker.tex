@@ -134,45 +134,40 @@
 
 \begin{itemize}
   \item \textbf{Container} — процесс или группа процессов, запущенные в изолированном окружении
-  \item \textbf{Image} — неизменяемый шаблон для создания контейнеров
-  \item \textbf{Dockerfile} — инструкции для сборки образа
+  \item \textbf{Image} — шаблон контейнера, содержащий снимок файловой системы и метаданные
+  \item \textbf{Dockerfile} — инструкции для сборки образа (image)
 \end{itemize}
 
 \vspace{0.3cm}
 
 \textbf{Принцип работы:}
 \begin{enumerate}
-\item Описываем приложение в Dockerfile
-\item Собираем образ (image) из Dockerfile
+\item Описываем как собрать образ в Dockerfile
+\item Собираем образ из Dockerfile
 \item Запускаем контейнер из образа
 \end{enumerate}
 \end{frame}
 
-\section{Docker на практике}
 
-\begin{frame}{Что изолирует Docker?}
-\textbf{Docker создает изоляцию по нескольким уровням:}
+\begin{frame}{Docker контейнер}
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{media/container-is}
+  \end{center}
 
-\begin{itemize}
-\item \textbf{Файловая система} — каждый контейнер видит только свои файлы
-\item \textbf{Процессы} — контейнеры не видят процессы друг друга
-\item \textbf{Сеть} — свои порты, IP-адреса
-\item \textbf{Ресурсы} — изолированное использование CPU, памяти
-\end{itemize}
+  \footnotesize{\textcolor{gray}{\url{https://labs.iximiuz.com/tutorials/docker-container-management-commands}}}
 
 \end{frame}
 
 \begin{frame}{Docker Registry}
-\textbf{Два типа registry:}
 
+\textbf{Docker Registry} — это сервер для хранения и распространения Docker-образов.
+
+Примеры:
 \begin{itemize}
-\item \textbf{Локальный registry} — образы хранятся на локальной машине
-\item \textbf{Удаленный registry} — образы хранятся на удаленном сервере
-  \begin{itemize}
   \item Docker Hub
-  \item GitLab Registry  
+  \item GitLab Registry
   \item GitHub Container Registry
-  \end{itemize}
+  \item Harbor
 \end{itemize}
 
 \vspace{0.5cm}
@@ -184,7 +179,29 @@
 \end{itemize}
 \end{frame}
 
-\section{Демонстрация}
+\begin{frame}{Docker Image}
+  \begin{center}
+    \includegraphics[width=0.5\textwidth]{media/image-format}
+  \end{center}
+
+  \footnotesize{\textcolor{gray}{\url{https://labs.iximiuz.com/challenges/build-and-publish-container-image-with-docker}}}
+
+\end{frame}
+
+\begin{frame}{Демонстрация: Docker Image, Container, Registry}
+  \textbf{Что покажем:}
+  \begin{enumerate}
+    \item Устройство слоёв имеджей
+    \item Базовая работа с контейнерами через docker cli
+    \item Работа с docker registry
+  \end{enumerate}
+
+  \vspace{0.2cm}
+
+  \textbf{Демо-репозиторий:} \\
+  \href{https://github.com/prafdin/devops-course-demos/tree/docker}{\texttt{https://github.com/prafdin/devops-course-demos/tree/docker}}
+
+\end{frame}
 
 \begin{frame}{Демонстрация: Контейнеризация сайта}
 \textbf{Что покажем:}
