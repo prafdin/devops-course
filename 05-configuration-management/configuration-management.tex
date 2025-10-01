@@ -18,11 +18,11 @@
 
         \textbf{Но есть проблема:}
 
-        Сервер (окружение) настраивается руками.
+        Сервер (окружение) настраивается полуавтоматически
     \end{frame}
 
     \begin{frame}{Почему это проблема?}
-        \textbf{Проблемы ручной настройки серверов:}
+        \textbf{Проблемы (полу)ручной настройки серверов:}
         
         \begin{itemize}
             \item \textbf{Ошибки} — человеческий фактор при настройке
@@ -38,11 +38,10 @@
     \begin{frame}{Два подхода к автоматизации}
         \begin{columns}[t]
             \begin{column}[t]{0.48\textwidth}
-                \textbf{Baked (образы):}
+                \textbf{Baked:}
                 \begin{itemize}
-                    \item Заранее готовим образ с настроенным ПО
-                    \item Разворачиваем готовые серверы из образа
-                    \item Быстрый запуск
+                    \item Заранее готовим образ с настроенным ПО (руками или скриптами)
+                    \item Разворачиваем сервер из образа
                 \end{itemize}
                 
                 \vspace{0.3cm}
@@ -50,15 +49,14 @@
             \end{column}
             
             \begin{column}[t]{0.48\textwidth}
-                \textbf{Fry (конфигурация):}
+                \textbf{Fry:}
                 \begin{itemize}
-                    \item Берем чистый сервер
-                    \item Автоматически настраиваем его скриптами
-                    \item Гибкость в настройке
+                    \item Готовим скрипты по настройке
+                    \item Каждый сервер настраивается через скрипт
                 \end{itemize}
                 
                 \vspace{0.3cm}
-                \textbf{Примеры:} Ansible, Chef, и др.
+                \textbf{Примеры:} Bash скрипты, Ansible, Chef, и др.
             \end{column}
         \end{columns}
         
@@ -105,6 +103,27 @@
             \item copy, template — работа с файлами
             \item service — управление сервисами
         \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Ansible архитектура}
+        \begin{center}
+            \includegraphics[width=0.8\textwidth]{media/ansible}
+        \end{center}
+    \end{frame}
+
+    \begin{frame}{Демонстрация: Ansible adhoc, playbooks}
+        \textbf{Что покажем:}
+        \begin{enumerate}
+            \item Установка Ansible
+            \item Ansible adhoc
+            \item Ansible Playbook
+        \end{enumerate}
+
+        \vspace{0.2cm}
+
+        \textbf{Демо-репозиторий:} \\
+        \href{https://github.com/prafdin/devops-course-demos/tree/ansible}{\texttt{https://github.com/prafdin/devops-course-demos/tree/ansible}}
+
     \end{frame}
 
     \begin{frame}{Демонстрация: Настраиваем nginx с Ansible}
