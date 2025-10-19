@@ -64,6 +64,7 @@
 \usepackage{titlesec}
 \titleformat{\section}{\Large\bfseries\color{ssaublue}}{\thesection}{1em}{}
 \titleformat{\subsection}{\large\bfseries\color{ssaublue}}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\large\bfseries\color{ssaublue}}{\thesubsubsection}{1em}{}
 
 % Полезные пакеты
 \usepackage{amsmath,amssymb}
@@ -209,4 +210,37 @@
     \end{itemize}
     
     \newpage
+}
+
+\usepackage{listingsutf8}
+
+\lstdefinelanguage{docker-compose-2}{
+    keywords={version, volumes, services, networks},
+    keywordstyle=\color{ssaublue}\bfseries,
+    keywords=[2]{image, environment, ports, container_name, ports, links, build},
+    keywordstyle=[2]\color{ssaublue}\bfseries,
+    identifierstyle=\color{black},
+    sensitive=false,
+    comment=[l]{\#},
+    commentstyle=\color{purple}\ttfamily,
+    stringstyle=\color{red}\ttfamily,
+    morestring=[b]',
+    morestring=[b]"
+}
+
+\renewcommand{\lstlistingname}{Листинг}
+
+\newenvironment{tightitemize}{
+    \begin{itemize}
+        \setlength{\itemsep}{0pt}
+        \setlength{\parskip}{0pt}
+        \setlength{\parsep}{0pt}
+        }{
+    \end{itemize}
+}
+
+\newcommand{\listtitle}[1]{%
+    \vspace{0.75em}%
+    \textbf{#1:}%
+    \vspace{-0.3em}%
 }
