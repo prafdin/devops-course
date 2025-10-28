@@ -4,7 +4,7 @@
 \usepackage{svg}
 
 \title{Docker Compose}
-\date{\today}
+\date{29 октября 2025 г.}
 
 \begin{document}
 
@@ -15,7 +15,7 @@
 
 \begin{itemize}
 \item nginx работает в контейнере и раздает html
-\item Настройки сервера выполняются через ansible
+\item Сервер настраивается через ansible
 \item Настроен автоматический деплой через CI/CD pipeline
 \end{itemize}
 
@@ -54,14 +54,14 @@
 \textbf{Для реализации нашей архитектуры потребуется:}
 
 \begin{itemize}
-\item \textbf{1 nginx контейнер} — веб-сервер и reverse proxy
+\item \textbf{1 nginx контейнер} — веб-сервер и load balancer
 \item \textbf{3 backend контейнера} — Python Flask API
 \item \textbf{Docker сеть} — для связи между контейнерами
 \end{itemize}
 
 \vspace{0.3cm}
 
-\textbf{Задача:} как эффективно управлять всеми этими контейнерами?
+Как это запустить?
 \end{frame}
 
 \begin{frame}[fragile]{Попробуем запустить вручную}
@@ -93,7 +93,6 @@ docker run -d --rm --network demo-net -p 8080:80 --name nginx nginx:alpine
 \item \textbf{Простое управление} — одна команда для запуска всего стека
 \item \textbf{Автоматическое масштабирование} — легко увеличить количество экземпляров
 \item \textbf{Управление зависимостями} — контейнеры запускаются в правильном порядке
-\item \textbf{Изоляция сетей} — автоматическое создание внутренних сетей
 \end{itemize}
 
 \vspace{0.2cm}
@@ -147,13 +146,21 @@ app-backend-3
 \begin{itemize}
   \item \href{https://docs.docker.com/compose/compose-file/06-networks/}{Сети} — изоляция и связь между сервисами
   \item \href{https://docs.docker.com/compose/use-secrets/}{Секреты} — безопасное управление паролями и ключами
-  \item \href{https://docs.docker.com/compose/compose-file/07-volumes/}{Тома} — постоянное хранение данных
+  \item \href{https://docs.docker.com/compose/compose-file/07-volumes/}{Volumes} — постоянное хранение данных
   \item \href{https://docs.docker.com/compose/compose-file/05-services/\#healthcheck}{Health checks} — мониторинг состояния сервисов
   \item \href{https://docs.docker.com/compose/compose-file/05-services/\#depends_on}{Зависимости} — контроль порядка запуска сервисов
 \end{itemize}
 \vspace{0.3cm}
 
 \textbf{Полная документация:} \href{https://docs.docker.com/compose/}{docs.docker.com/compose/}
+\end{frame}
+
+\begin{frame}{Несколько Docker Compose файлов}
+  \begin{center}
+    \includegraphics[width=1\textwidth]{media/compose-merge}
+  \end{center}
+
+  \footnotesize{\textcolor{gray}{\url{https://docs.docker.com/compose/how-tos/multiple-compose-files/}}}
 \end{frame}
 
 \begin{frame}{Демонстрация: Docker Compose}
@@ -173,12 +180,24 @@ app-backend-3
 \begin{frame}{Альтернативы Docker Compose}
 
 \begin{itemize}
-  \item \textbf{Docker Swarm} — простая альтернатива Kubernetes от Docker
+  \item \textbf{Docker Swarm} — расширение функционала docker compose
   \item \textbf{Nomad} — от HashiCorp, поддерживает не только контейнеры
   \item \textbf{Kubernetes} — индустриальный стандарт оркестрации
   \item \textbf{OpenShift} — enterprise платформа на базе Kubernetes
 \end{itemize}
 
+\end{frame}
+
+\begin{frame}{Docker Swarm}
+  \begin{center}
+    \includegraphics[width=0.65\textwidth]{media/swarm}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Kubernetes}
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{media/kuber}
+  \end{center}
 \end{frame}
 
 \section{Заключение}
