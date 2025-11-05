@@ -2,8 +2,8 @@
 
 \input{../slides-common}
 
-\title{Baked Configuration + Packer}
-\date{\today}
+\title{Packer}
+\date{05 ноября 2025 г. }
 
 \begin{document}
     \maketitle
@@ -56,17 +56,11 @@
         \end{itemize}
     \end{frame}
 
-    \begin{frame}{От текущего к целевому состоянию}
-        \begin{figure}
-            \centering
-            \includegraphics[width=0.9\textwidth]{media/app-before-after}
-        \end{figure}
-    \end{frame}
-
     \begin{frame}{Как реализуется baked подход?}
 
-        \textbf{Образ} — это снимок готовой системы со всеми настройками и приложениями
+        \textbf{Образ} — это снимок (копия) готовой системы со всеми настройками и приложениями
 
+        \textbf{Применяется для:}
         \begin{itemize}
         \item \textbf{Виртуализация}: создание образов виртуальных машин (\href{https://en.wikipedia.org/wiki/Virtual_appliance}{Virtual appliance})
         \item \textbf{Контейнеризация}: создание образов контейнеров
@@ -125,6 +119,13 @@
         \end{itemize}
     \end{frame}
 
+    \begin{frame}{От текущего к целевому состоянию}
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.9\textwidth]{media/app-before-after}
+        \end{figure}
+    \end{frame}
+
     \begin{frame}{Демонстрация: Packer + VirtualBox}
         \textbf{Что покажем:}
         \begin{itemize}
@@ -144,7 +145,6 @@
         \begin{itemize}
             \item \textbf{Packer} позволяет описать создание образа VM через код
             \item \textbf{Virtual Appliance} — готовые образы виртуальных машин
-            \item \textbf{Immutable Infrastructure} — образы не изменяются, только заменяются
         \end{itemize}
 
         \vspace{1cm}
