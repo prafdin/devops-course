@@ -1,0 +1,79 @@
+\documentclass[aspectratio=169]{beamer}
+
+\input{../slides-common}
+
+\title{Infrastructure as Code}
+\date{19 ноября 2025 г.}
+
+\begin{document}
+    \maketitle
+
+    \begin{frame}{Infrastructure as Code}
+        Инфраструктура как код (Infrastructure as Code, IaC) - модель управления IT инфраструктурой, при которой
+            инфраструктурные ресурсы описываются в виде кода.
+
+        Преимущества такого подхода:
+        \begin{itemize}
+            \item Появляется инструментарий для работы с кодом: git, CI/CD, MR, Code Review, тесты
+            \item Самодокументирование
+            \item Воспроизводимость
+            \item Гибкость управления
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{IaC Flow}
+        \vfill
+        \begin{center}
+            \includegraphics[width=0.95\textwidth]{media/infrastructure-as-code}
+        \end{center}
+        \vfill
+    \end{frame}
+
+    \begin{frame}{Terraform}
+        \href{https://developer.hashicorp.com/terraform}{Terraform} - типичный инструмент управления инфраструктурой по модели IaC.
+        Для описания инфраструктуры используется язык конфигурации \href{https://developer.hashicorp.com/terraform/language/syntax/configuration}{HCL}.
+
+        Поддерживает:
+        \begin{itemize}
+            \item Публичные облака (AWS, Azure, Yandex Cloud и др.)
+            \item Приватные облака
+            \item Гипервизоры
+            \item K8S
+            \item \href{https://registry.terraform.io/browse/providers}{Другое}
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Terraform Flow}
+        \vfill
+        \begin{center}
+            \includegraphics[width=0.95\textwidth]{media/terraform-flow}
+        \end{center}
+        \vfill
+    \end{frame}
+
+    \begin{frame}{Аналоги Terraform}
+        \begin{itemize}
+            \item \href{https://opentofu.org/}{OpenTofu}
+            \item \href{https://www.crossplane.io/}{Crossplane}
+            \item \href{https://www.pulumi.com}{Pulumi}
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Демонстрация: Terraform \& Yandex Cloud}
+        \textbf{Что посмотрим:}
+        \begin{itemize}
+            \item Создание VM через terraform
+            \item Создание stateless версии веб сайта \href{https://github.com/prafdin/devops-demo-website}{devops-demo-website} через terraform
+        \end{itemize}
+        \vspace{0.5cm}
+        \textbf{Демо-репозиторий:}
+        \href{https://github.com/prafdin/devops-course-demos/tree/terraform}{\texttt{https://github.com/prafdin/devops-course-demos/tree/terraform}}
+    \end{frame}
+
+    \begin{frame}{Ссылки по теме}
+        \begin{itemize}
+            \item \url{https://yandex.cloud/ru/training/terraform}
+            \item \url{https://developer.hashicorp.com/terraform}
+        \end{itemize}
+    \end{frame}
+\end{document}
