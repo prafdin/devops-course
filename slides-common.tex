@@ -84,3 +84,12 @@
     urlcolor=ssaublue,
     citecolor=ssaublue
 }
+
+\newenvironment{tightitemize}{
+    \begin{itemize}
+        \setlength{\itemsep}{0pt}
+        \setlength{\parskip}{0pt}
+        \setlength{\parsep}{0pt}
+        }{
+    \end{itemize}
+}
