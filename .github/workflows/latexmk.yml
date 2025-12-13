@@ -23,5 +23,5 @@ jobs:
         with:
           branch: gh-pages
           folder: package
-          clean: false
+          clean: true
         if: github.ref == 'refs/heads/master'
