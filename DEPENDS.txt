@@ -1,0 +1,14 @@
+fontspec
+polyglossia
+beamer
+beamertheme-metropolis
+xcolor
+csquotes
+hyperref
+listings
+listingsutf8
+geometry
+pgfopts
+float
+svg
+titlesec

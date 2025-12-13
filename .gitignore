@@ -37,6 +37,7 @@ latexmkrc
 _build/
 build/
 output/
+package/
 
 # === Overleaf специфичное ===
 *.acn

@@ -1,0 +1,79 @@
+%% Creator: Inkscape 1.2.2 (b0a8486541, 2022-12-01), www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'webhooks-schema_svg-tex.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{224.68950842bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,1.87620172)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{webhooks-schema_svg-tex.pdf}}%
+    \put(0.30174974,1.63338297){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Разработчик\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{webhooks-schema_svg-tex.pdf}}%
+    \put(0.20998979,1.2885738){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}GitHub Репозиторий\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{webhooks-schema_svg-tex.pdf}}%
+    \put(0.03421388,0.91038529){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Реверс-прокси\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{webhooks-schema_svg-tex.pdf}}%
+    \put(0.1521099,0.53223009){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Обработчик\end{tabular}}}}%
+    \put(0.1521099,0.477832){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}(виртуальная машина)\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{webhooks-schema_svg-tex.pdf}}%
+    \put(0.1521099,0.0996331){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Приложение\end{tabular}}}}%
+    \put(0.1521099,0.04523511){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}(виртуальная машина)\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{webhooks-schema_svg-tex.pdf}}%
+    \put(0.46050216,1.47859672){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Событие\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{webhooks-schema_svg-tex.pdf}}%
+    \put(0.24353607,1.10040815){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Вызов webhook\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{webhooks-schema_svg-tex.pdf}}%
+    \put(0.18345316,0.72225295){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Форвард webhook\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{webhooks-schema_svg-tex.pdf}}%
+    \put(0.43713659,0.28965606){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Собрать/развернуть\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{webhooks-schema_svg-tex.pdf}}%
+    \put(0.66745442,0.91134731){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}Статус деплоя\end{tabular}}}}%
+  \end{picture}%
+\endgroup%

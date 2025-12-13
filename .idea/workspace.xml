@@ -1,0 +1,818 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d6044093-33b7-4a67-83a7-af0c453c009b" name="Changes" comment="Final devsecops lecture">
+      <change afterPath="$PROJECT_DIR$/2025/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2025/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2026/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DEPENDS.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/collect-deps.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/makefile.defs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitmodules" beforeDir="false" afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/00-intro/00-intro.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/00-intro/devops_definitions.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/01-intro.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/01-what-is-devops.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/02-cases.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/03-devops-engineer.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/ChatGPT Image Apr 21, 2025, 12_49_09 AM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/DevOpsLoop.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/What_is_DevOps.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/01-what-is-devops/What_is_DevOps.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/contexts/Juk-25.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/contexts/Jul-24.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/csed.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/example.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/images/2gis-new.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/images/2gis-old.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/images/Lenna.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/images/digital-ai-periodic-table-of-devsecops-2025-March.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/images/figma-new.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/images/old-vs-new.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/images/photoshop-old.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/images/spectrum.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/images/spectrum.xcf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/images/steam-new 1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/images/volumes-old.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/notes.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/script.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/thesis.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/what-is-devops.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/01-what-is-devops/what-is-devops.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/01-what-is-devops/01-what-is-devops.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02-proxy/media/HTTP.svg" beforeDir="false" afterPath="$PROJECT_DIR$/2025/02-proxy/media/HTTP.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02-proxy/media/URI.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/2025/02-proxy/media/URI.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02-proxy/media/frp.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/02-proxy/media/frp.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02-proxy/media/http-request.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/02-proxy/media/http-request.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02-proxy/media/http-response.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/02-proxy/media/http-response.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02-proxy/media/http.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/02-proxy/media/http.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02-proxy/media/proxy.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/2025/02-proxy/media/proxy.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02-proxy/media/ssh-tunneling.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/2025/02-proxy/media/ssh-tunneling.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02-proxy/media/traverse-nat.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/02-proxy/media/traverse-nat.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/02-proxy/proxy-tunneling.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/02-proxy/proxy-tunneling.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/02-proxy/02-proxy.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03-git/git-in-devops.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/03-git/git-in-devops.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/03-git/03-git.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03-git/git-webhooks.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/03-git/git-webhooks.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/03-git/git-webhooks.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03-git/git-webhooks.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/03-git/git-webhooks.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03-git/webhooks-schema.svg" beforeDir="false" afterPath="$PROJECT_DIR$/2025/03-git/webhooks-schema.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/04-cicd/cicd.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/04-cicd/cicd.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/04-cicd/04-cicd.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/04-cicd/github-actions.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/04-cicd/github-actions.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/04-cicd/github-actions.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/04-cicd/github-actions.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/04-cicd/github-actions.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/04-cicd/media/new-schema.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/04-cicd/media/new-schema.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/04-cicd/media/new-schema.svg" beforeDir="false" afterPath="$PROJECT_DIR$/2025/04-cicd/media/new-schema.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/04-cicd/media/old-schema.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/04-cicd/media/old-schema.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/04-cicd/media/old-schema.svg" beforeDir="false" afterPath="$PROJECT_DIR$/2025/04-cicd/media/old-schema.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/04-cicd/media/result.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/04-cicd/media/result.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/05-configuration-management/configuration-management.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/05-configuration-management/configuration-management.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/05-configuration-management/05-configuration-management.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/05-configuration-management/media/ansible.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/05-configuration-management/media/ansible.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/06-docker-additional/docker-additional.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/06-docker-additional/docker-additional.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/06-docker-additional.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/06-docker-additional/media/bind-mount.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/media/bind-mount.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/06-docker-additional/media/bridge.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/media/bridge.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/06-docker-additional/media/cnm-model.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/media/cnm-model.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/06-docker-additional/media/cont-to-internet.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/media/cont-to-internet.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/06-docker-additional/media/container-layers.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/media/container-layers.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/06-docker-additional/media/container-volumes.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/media/container-volumes.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/06-docker-additional/media/docker-storage.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/media/docker-storage.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/06-docker-additional/media/libnetwork.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/media/libnetwork.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/06-docker-additional/media/net-bridge.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/media/net-bridge.PNG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/06-docker-additional/media/switch.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/media/switch.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/06-docker-additional/media/to-cont.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/media/to-cont.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/06-docker/docker-assignment.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/06-docker/docker-assignment.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker/docker-assignment.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/06-docker/docker-assignment.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker/docker-assignment.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/06-docker/docker.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/06-docker/docker.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker/06-docker.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/06-docker/media/container-is.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker/media/container-is.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/06-docker/media/docker-arch.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker/media/docker-arch.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/06-docker/media/image-format.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker/media/image-format.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/06-docker/media/vm-vs-cont.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker/media/vm-vs-cont.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/07-docker-compose/compose-assignment.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/07-docker-compose/compose-assignment.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/07-docker-compose/compose-assignment.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/07-docker-compose/compose-assignment.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/07-docker-compose/docker-compose.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/07-docker-compose/docker-compose.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/07-docker-compose/07-docker-compose.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/07-docker-compose/lb-schema.svg" beforeDir="false" afterPath="$PROJECT_DIR$/2025/07-docker-compose/lb-schema.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/07-docker-compose/media/compose-merge.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/07-docker-compose/media/compose-merge.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/07-docker-compose/media/kuber.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/2025/07-docker-compose/media/kuber.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/07-docker-compose/media/multicontainers-app.svg" beforeDir="false" afterPath="$PROJECT_DIR$/2025/07-docker-compose/media/multicontainers-app.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/07-docker-compose/media/swarm.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/07-docker-compose/media/swarm.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/08-packer/media/app-before-after.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/08-packer/media/app-before-after.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/08-packer/packer.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/08-packer/packer.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/08-packer/08-packer.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/09-cloud/cloud.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/09-cloud/cloud.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/09-cloud/09-cloud.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/09-cloud/media/iaas_paas_saas.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/09-cloud/media/iaas_paas_saas.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/09-cloud/media/infras.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/09-cloud/media/infras.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/09-cloud/media/infras.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/09-cloud/media/infras.xcf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/10-IaC/IaC.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/10-IaC/IaC.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/10-IaC/10-IaC.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/11-DevSecOps/DevSecOps.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/11-DevSecOps/DevSecOps.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/11-DevSecOps/11-DevSecOps.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/11-DevSecOps/media/devops-flow.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/11-DevSecOps/media/devops-flow.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/11-DevSecOps/media/secure-sdlc.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/11-DevSecOps/media/secure-sdlc.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/11-DevSecOps/media/shift-left-2.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/11-DevSecOps/media/shift-left-2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/11-DevSecOps/media/shift-left-2.webp" beforeDir="false" afterPath="$PROJECT_DIR$/2025/11-DevSecOps/media/shift-left-2.webp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/11-DevSecOps/media/shift-left.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/11-DevSecOps/media/shift-left.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo-website" beforeDir="false" afterPath="$PROJECT_DIR$/2025/demo-website" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/devops-course-demos" beforeDir="false" afterPath="$PROJECT_DIR$/2025/devops-course-demos" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/elektratextpro/COPYRIGHT.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2025/fonts/elektratextpro/COPYRIGHT.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/elektratextpro/elektratextpro.otf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/fonts/elektratextpro/elektratextpro.otf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/elektratextpro/elektratextpro_bold.otf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/fonts/elektratextpro/elektratextpro_bold.otf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/elektratextpro/elektratextpro_bolditalic.otf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/fonts/elektratextpro/elektratextpro_bolditalic.otf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fonts/elektratextpro/elektratextpro_italic.otf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/fonts/elektratextpro/elektratextpro_italic.otf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lab-common.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/lab-common.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/slides-common.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/slides-common.tex" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Pull.Settings">
+    <option name="OPTIONS">
+      <set>
+        <option value="REBASE" />
+      </set>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/demo-website" value="compose-demo" />
+        <entry key="$PROJECT_DIR$/devops-course-demos" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;prafdin&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:prafdin/devops-course.git",
+    "accountId": "101e6eb3-17b1-40fc-95b4-6408f70d94a9"
+  }
+}]]></component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2yHJh93NZMShg5LqaoIGjGIWhFp" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "LaTeX.1.executor": "Run",
+    "LaTeX.DevSecOps.executor": "Run",
+    "LaTeX.IaC.executor": "Run",
+    "LaTeX.cicd.executor": "Run",
+    "LaTeX.cloud.executor": "Run",
+    "LaTeX.compose-assignment.executor": "Run",
+    "LaTeX.configuration-management.executor": "Run",
+    "LaTeX.docker-additional.executor": "Run",
+    "LaTeX.docker-assignment.executor": "Run",
+    "LaTeX.docker-compose.executor": "Run",
+    "LaTeX.docker.executor": "Run",
+    "LaTeX.git-in-devops.executor": "Run",
+    "LaTeX.git-webhooks.executor": "Run",
+    "LaTeX.github-actions.executor": "Run",
+    "LaTeX.iac.executor": "Run",
+    "LaTeX.lab-common.executor": "Run",
+    "LaTeX.packer.executor": "Run",
+    "LaTeX.poor-mans-gitops.executor": "Run",
+    "LaTeX.proxy-tunneling.executor": "Run",
+    "LaTeX.what-is-devops.executor": "Run",
+    "LaTeX.yandex-cloud-packer.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHELLCHECK.PATH": "I do mind",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/home/prafdin/repos/devops-course/2026",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.4239905",
+    "settings.editor.selected.configurable": "terminal"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "TEXT"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/2026" />
+      <recent name="$PROJECT_DIR$/2024" />
+      <recent name="$PROJECT_DIR$/2025" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/09-cloud" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/2025" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/common" />
+      <recent name="$PROJECT_DIR$/devops-course-demos/yacloud-site" />
+      <recent name="$PROJECT_DIR$/06-docker-additional/media" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="ll" />
+    </option>
+  </component>
+  <component name="RunManager" selected="LaTeX.DevSecOps">
+    <configuration name="DevSecOps" type="LATEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory" temporary="true">
+      <texify>
+        <compiler>XELATEX</compiler>
+        <compiler-path />
+        <pdf-viewer>none</pdf-viewer>
+        <require-focus>true</require-focus>
+        <viewer-command />
+        <compiler-arguments />
+        <envs />
+        <expand-macros-in-environment-variables>false</expand-macros-in-environment-variables>
+        <before-run-command />
+        <main-file>$PROJECT_DIR$/2025/11-DevSecOps/11-DevSecOps.tex</main-file>
+        <output-path>$PROJECT_DIR$/11-DevSecOps</output-path>
+        <auxil-path>{projectDir}/auxil</auxil-path>
+        <compile-twice>false</compile-twice>
+        <output-format>PDF</output-format>
+        <latex-distribution>TEXLIVE</latex-distribution>
+        <has-been-run>true</has-been-run>
+        <bib-run-config>[]</bib-run-config>
+        <makeindex-run-config>[]</makeindex-run-config>
+      </texify>
+      <method v="2" />
+    </configuration>
+    <configuration name="IaC" type="LATEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory" temporary="true">
+      <texify>
+        <compiler>XELATEX</compiler>
+        <compiler-path />
+        <pdf-viewer>none</pdf-viewer>
+        <require-focus>true</require-focus>
+        <viewer-command />
+        <compiler-arguments />
+        <envs />
+        <expand-macros-in-environment-variables>false</expand-macros-in-environment-variables>
+        <before-run-command />
+        <main-file>$PROJECT_DIR$/2025/10-IaC/10-IaC.tex</main-file>
+        <output-path>$PROJECT_DIR$/10-IaC</output-path>
+        <auxil-path>{projectDir}/auxil</auxil-path>
+        <compile-twice>false</compile-twice>
+        <output-format>PDF</output-format>
+        <latex-distribution>TEXLIVE</latex-distribution>
+        <has-been-run>true</has-been-run>
+        <bib-run-config>[]</bib-run-config>
+        <makeindex-run-config>[]</makeindex-run-config>
+      </texify>
+      <method v="2" />
+    </configuration>
+    <configuration name="compose-assignment" type="LATEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory" temporary="true">
+      <texify>
+        <compiler>XELATEX</compiler>
+        <compiler-path />
+        <pdf-viewer>none</pdf-viewer>
+        <require-focus>true</require-focus>
+        <viewer-command />
+        <compiler-arguments>-shell-escape</compiler-arguments>
+        <envs />
+        <expand-macros-in-environment-variables>false</expand-macros-in-environment-variables>
+        <before-run-command />
+        <main-file>$PROJECT_DIR$/2025/07-docker-compose/compose-assignment.tex</main-file>
+        <output-path>$PROJECT_DIR$/07-docker-compose</output-path>
+        <auxil-path>{projectDir}/auxil</auxil-path>
+        <compile-twice>false</compile-twice>
+        <output-format>PDF</output-format>
+        <latex-distribution>TEXLIVE</latex-distribution>
+        <has-been-run>true</has-been-run>
+        <bib-run-config>[]</bib-run-config>
+        <makeindex-run-config>[]</makeindex-run-config>
+      </texify>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-additional" type="LATEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory" temporary="true">
+      <texify>
+        <compiler>XELATEX</compiler>
+        <compiler-path />
+        <pdf-viewer>none</pdf-viewer>
+        <require-focus>true</require-focus>
+        <viewer-command />
+        <compiler-arguments />
+        <envs />
+        <expand-macros-in-environment-variables>false</expand-macros-in-environment-variables>
+        <before-run-command />
+        <main-file>$PROJECT_DIR$/2025/06-docker-additional/06-docker-additional.tex</main-file>
+        <output-path>$PROJECT_DIR$/06-docker-additional</output-path>
+        <auxil-path>{projectDir}/auxil</auxil-path>
+        <compile-twice>false</compile-twice>
+        <output-format>PDF</output-format>
+        <latex-distribution>TEXLIVE</latex-distribution>
+        <has-been-run>true</has-been-run>
+        <bib-run-config>[]</bib-run-config>
+        <makeindex-run-config>[]</makeindex-run-config>
+      </texify>
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose" type="LATEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory" temporary="true">
+      <texify>
+        <compiler>XELATEX</compiler>
+        <compiler-path />
+        <pdf-viewer>none</pdf-viewer>
+        <require-focus>true</require-focus>
+        <viewer-command />
+        <compiler-arguments />
+        <envs />
+        <expand-macros-in-environment-variables>false</expand-macros-in-environment-variables>
+        <before-run-command />
+        <main-file>$PROJECT_DIR$/2025/07-docker-compose/07-docker-compose.tex</main-file>
+        <output-path>$PROJECT_DIR$/07-docker-compose</output-path>
+        <auxil-path>{projectDir}/auxil</auxil-path>
+        <compile-twice>false</compile-twice>
+        <output-format>PDF</output-format>
+        <latex-distribution>TEXLIVE</latex-distribution>
+        <has-been-run>true</has-been-run>
+        <bib-run-config>[]</bib-run-config>
+        <makeindex-run-config>[]</makeindex-run-config>
+      </texify>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="LaTeX.what-is-devops" />
+      <item itemvalue="LaTeX.DevSecOps" />
+      <item itemvalue="LaTeX.compose-assignment" />
+      <item itemvalue="LaTeX.IaC" />
+      <item itemvalue="LaTeX.docker-compose" />
+      <item itemvalue="LaTeX.docker-additional" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="LaTeX.DevSecOps" />
+        <item itemvalue="LaTeX.IaC" />
+        <item itemvalue="LaTeX.docker-additional" />
+        <item itemvalue="LaTeX.compose-assignment" />
+        <item itemvalue="LaTeX.docker-compose" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d6044093-33b7-4a67-83a7-af0c453c009b" name="Changes" comment="" />
+      <created>1749485683178</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1749485683178</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Небольшое замечание">
+      <option name="closed" value="true" />
+      <created>1756672346181</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1756672346181</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Вернул uml диаграмму">
+      <option name="closed" value="true" />
+      <created>1756748116709</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1756748116709</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Драфт 7 лекции">
+      <option name="closed" value="true" />
+      <created>1756757844152</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1756757844152</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Up 7 лекция">
+      <option name="closed" value="true" />
+      <created>1756799433316</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1756799433316</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Фикс 1 лекции">
+      <option name="closed" value="true" />
+      <created>1756837738794</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1756837738794</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Upd lab1">
+      <option name="closed" value="true" />
+      <created>1757021905574</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1757021905574</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Upd lab1">
+      <option name="closed" value="true" />
+      <created>1757067404844</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1757067404844</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Добавил картинок для л2">
+      <option name="closed" value="true" />
+      <created>1757177354770</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1757177354770</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Link to doc">
+      <option name="closed" value="true" />
+      <created>1757182981672</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1757182981672</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Upd l2">
+      <option name="closed" value="true" />
+      <created>1757501279935</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1757501279935</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Final 02-proxy">
+      <option name="closed" value="true" />
+      <created>1758564941716</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1758564941716</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Final 03-git">
+      <option name="closed" value="true" />
+      <created>1758565040150</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1758565040150</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Корректировки по лекции и лабе">
+      <option name="closed" value="true" />
+      <created>1758571658374</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1758571658374</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Корректировки по лекции и лабе">
+      <option name="closed" value="true" />
+      <created>1758572379202</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1758572379202</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Добавлен рецепт по сборке машины">
+      <option name="closed" value="true" />
+      <created>1758659069901</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1758659069901</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Добавлена лекция по packer">
+      <option name="closed" value="true" />
+      <created>1758828680550</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1758828680550</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Обновил дату для cm lec">
+      <option name="closed" value="true" />
+      <created>1758832261173</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1758832261173</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Частично переработана лекция docker">
+      <option name="closed" value="true" />
+      <created>1758917921922</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1758917921922</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Часть демки про докер">
+      <option name="closed" value="true" />
+      <created>1758917938006</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1758917938006</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Демка ansible">
+      <option name="closed" value="true" />
+      <created>1759316930894</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1759316930895</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Лекция ansible done">
+      <option name="closed" value="true" />
+      <created>1759317086523</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1759317086523</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Демка ansible">
+      <option name="closed" value="true" />
+      <created>1759317127751</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1759317127751</updated>
+    </task>
+    <task id="LOCAL-00073" summary="Лекция ansible done">
+      <option name="closed" value="true" />
+      <created>1759318968787</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1759318968787</updated>
+    </task>
+    <task id="LOCAL-00074" summary="Add docker lab">
+      <option name="closed" value="true" />
+      <created>1759349529541</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1759349529541</updated>
+    </task>
+    <task id="LOCAL-00075" summary="Upd docker lab">
+      <option name="closed" value="true" />
+      <created>1759391009167</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1759391009167</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Обновил демку для docker">
+      <option name="closed" value="true" />
+      <created>1759778352703</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1759778352704</updated>
+    </task>
+    <task id="LOCAL-00077" summary="Обновил лекцию для docker">
+      <option name="closed" value="true" />
+      <created>1759778383145</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1759778383145</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Add lab4">
+      <option name="closed" value="true" />
+      <created>1760865415842</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1760865415843</updated>
+    </task>
+    <task id="LOCAL-00079" summary="Add docker add lect">
+      <option name="closed" value="true" />
+      <created>1760981893242</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1760981893243</updated>
+    </task>
+    <task id="LOCAL-00080" summary="Add docker additional demos">
+      <option name="closed" value="true" />
+      <created>1761076091802</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1761076091802</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Upd docker-additional lec">
+      <option name="closed" value="true" />
+      <created>1761077023378</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1761077023378</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Fix network demo">
+      <option name="closed" value="true" />
+      <created>1761079056431</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1761079056431</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Small upds">
+      <option name="closed" value="true" />
+      <created>1761079322709</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1761079322709</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Fix ports mapping for production/develop env">
+      <option name="closed" value="true" />
+      <created>1761589702954</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1761589702954</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Prepare for working with different envs">
+      <option name="closed" value="true" />
+      <created>1761591875847</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1761591875848</updated>
+    </task>
+    <task id="LOCAL-00086" summary="Remove explicit stop command">
+      <option name="closed" value="true" />
+      <created>1761592882342</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1761592882343</updated>
+    </task>
+    <task id="LOCAL-00087" summary="Override project name for composes">
+      <option name="closed" value="true" />
+      <created>1761595887527</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1761595887528</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Fix project src for compose">
+      <option name="closed" value="true" />
+      <created>1761597429222</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1761597429222</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Release compose lecture">
+      <option name="closed" value="true" />
+      <created>1761678003858</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1761678003858</updated>
+    </task>
+    <task id="LOCAL-00090" summary="compose lec tiny fix">
+      <option name="closed" value="true" />
+      <created>1761758948992</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1761758948992</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Draft cloud lecture">
+      <option name="closed" value="true" />
+      <created>1761773509804</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1761773509804</updated>
+    </task>
+    <task id="LOCAL-00092" summary="fix ubuntu packer file">
+      <option name="closed" value="true" />
+      <created>1762336752269</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1762336752270</updated>
+    </task>
+    <task id="LOCAL-00093" summary="Final packer lecture">
+      <option name="closed" value="true" />
+      <created>1762336762921</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1762336762921</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Yacloud demo">
+      <option name="closed" value="true" />
+      <created>1762891167679</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1762891167679</updated>
+    </task>
+    <task id="LOCAL-00095" summary="Final cloud lecture">
+      <option name="closed" value="true" />
+      <created>1762951932137</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1762951932138</updated>
+    </task>
+    <task id="LOCAL-00096" summary="Add yacloud demos">
+      <option name="closed" value="true" />
+      <created>1763237924595</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1763237924595</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Final IaC lecture">
+      <option name="closed" value="true" />
+      <created>1763238114184</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1763238114185</updated>
+    </task>
+    <task id="LOCAL-00098" summary="Final devsecops lecture">
+      <option name="closed" value="true" />
+      <created>1763298642877</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1763298642878</updated>
+    </task>
+    <task id="LOCAL-00099" summary="Final devsecops lecture">
+      <option name="closed" value="true" />
+      <created>1763562424516</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1763562424516</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add docker lab" />
+    <MESSAGE value="Upd docker lab" />
+    <MESSAGE value="Обновил демку для docker" />
+    <MESSAGE value="Обновил лекцию для docker" />
+    <MESSAGE value="Add lab4" />
+    <MESSAGE value="Add docker add lect" />
+    <MESSAGE value="Add docker additional demos" />
+    <MESSAGE value="Upd docker-additional lec" />
+    <MESSAGE value="Fix network demo" />
+    <MESSAGE value="Small upds" />
+    <MESSAGE value="Fix ports mapping for production/develop env" />
+    <MESSAGE value="Prepare for working with different envs" />
+    <MESSAGE value="Remove explicit stop command" />
+    <MESSAGE value="Override project name for composes" />
+    <MESSAGE value="Fix project src for compose" />
+    <MESSAGE value="Release compose lecture" />
+    <MESSAGE value="compose lec tiny fix" />
+    <MESSAGE value="Draft cloud lecture" />
+    <MESSAGE value="fix ubuntu packer file" />
+    <MESSAGE value="Final packer lecture" />
+    <MESSAGE value="Yacloud demo" />
+    <MESSAGE value="Final cloud lecture" />
+    <MESSAGE value="Add yacloud demos" />
+    <MESSAGE value="Final IaC lecture" />
+    <MESSAGE value="Final devsecops lecture" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final devsecops lecture" />
+  </component>
+</project>
