@@ -9,13 +9,13 @@ name: latexmk
 jobs:
   latexmk:
     timeout-minutes: 15
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: true
       - run: sudo apt-get update --yes --fix-missing && sudo apt-get install --yes wget
-      - uses: yegor256/latexmk-action@0.16.1
+      - uses: yegor256/latexmk-action@0.18.2
         with:
           cmd: make
           depends: DEPENDS.txt
