@@ -12,3 +12,9 @@ pgfopts
 float
 svg
 titlesec
+fancyvrb
+graphicx
+enumitem
+lastpage
+tikz
+multirow
