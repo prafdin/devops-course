@@ -1,0 +1,252 @@
+\documentclass[12pt,a4paper]{article}
+
+\input{../../lab-common}
+
+\usepackage{float}
+\usepackage{svg}
+%\svgsetup{
+%    inkscapelatex=false,
+%}
+\renewcommand{\labtitle}{Лабораторная работа №4}
+\renewcommand{\labsubtitle}{Docker Compose}
+
+\begin{document}
+
+% Титульная страница
+    \makelabcover
+
+% Общие инструкции
+    \commoninstructions
+
+    \textbf{Внимание:} Данная лабораторная работа является продолжением лабораторной работы №3.
+    Для выполнения данной работы необходимо иметь подготовленный репозиторий из третьей лабораторной работы.
+
+    \section{Цель работы}
+
+    Получить базовые навыки работы с Docker Compose, научиться управлять мультиконтейнерными приложениями.
+
+    \section{Теоретические сведения}
+
+    \subsection{Что такое мультиконтейнерное приложение}
+
+    Мультиконтейнерное приложение — это система, состоящая из нескольких контейнеров, каждый из которых выполняет
+    отдельную функцию.
+
+    %@startuml
+    %!theme plain
+    %
+    %actor "Клиент" as Client
+    %
+    %rectangle "Docker Host" as DockerHost {
+    %    rectangle "Nginx контейнер" as Nginx
+    %    rectangle "Backend контейнер" as Backend
+    %    rectangle "Database контейнер" as DB
+    %}
+    %
+    %Client --> Nginx : HTTP-запрос
+    %Nginx --> Backend : Проксирование запроса
+    %Backend --> DB : SQL-запрос / чтение данных
+    %DB --> Backend : Результат запроса
+    %Backend --> Nginx : Ответ приложения
+    %Nginx --> Client : HTTP-ответ
+    %@enduml
+    \begin{figure}[H]
+        \centering
+        \includesvg[width=0.85\linewidth]{media/multicontainers-app}
+        \caption{Типичное мультиконтейнерное приложение}
+        \label{fig:multicontainers-app}
+    \end{figure}
+
+    В отличие от монолитного подхода, где все компоненты приложения объединены в одном контейнере, мультиконтейнерный подход
+    позволяет разделить систему на несколько изолированных компонент. Такой подход упрощает обновление, масштабирование и
+    сопровождение приложения, а также повышает его отказоустойчивость.
+
+    Важно отметить, что сама архитектура Docker подразумевает принцип «один контейнер — один компонент».
+    Каждый контейнер должен выполнять строго определённую задачу, что обеспечивает изоляцию, предсказуемость поведения
+    и упрощает управление зависимостями между сервисами.
+
+    Мультиконтейнерные приложения реализуют этот принцип на практике,
+    объединяя несколько контейнеров в единую систему через инструменты оркестрации, такие как Docker Compose.
+
+    \subsection{Что такое Docker Compose}
+
+    Docker Compose - это инструмент для определения и запуска мультиконтейнерных приложений Docker. С его помощью все компоненты
+    приложения описываются в одном файле docker-compose.yml, где указываются образы, зависимости между контейнерами, сети
+    и volumes для каждого контейнера.
+
+    Современные версии Docker Сompose поставляются в качестве плагина для CLI утилиты docker.
+    После установки плагина, docker compose может быть вызван командой \lstinline|docker compose|.
+
+    \subsection{Основные понятия Docker Compose}
+
+    \begin{itemize}
+        \item Стек (Stack) — описание мультиконтейнерного приложения: используемые сервисы, сети, volumes и прочее
+        \item Сервис (Service) — компонент мультиконтейнерного приложения. Сервис состоит из описания создаваемого контейнера и метаинформации о связи с другими сервисами (при её наличии)
+        \item Сеть (Network) — сетевое пространство для создаваемых контейнеров
+        \item Volumes — описание используемых volumes для создаваемых контейнеров
+        \item Compose файл — файл docker-compose.yaml, где описывается структура мультиконтейнерного приложения
+    \end{itemize}
+
+    \subsection{Основные команды docker compose}
+
+    Docker compose позволяет управлять мультиконтейнерным приложением следующим образом:
+
+    \begin{itemize}
+        \item \texttt{docker compose up} — запуск всего приложения (всех сервисов)
+        \item \texttt{docker compose stop} — остановка всего приложения (всех сервисов)
+        \item \texttt{docker compose down} — остановка всего приложения с последующим удалением контейнеров, сетей и volumes
+        \item \texttt{docker compose ps} — просмотр запущенных сервисов
+    \end{itemize}
+
+    Для более подробного описания всех команд и их опций можно обратиться к \href{https://docs.docker.com/reference/cli/docker/compose/}{официальной документации Docker}.
+
+    \subsection{Директивы compose файла}
+
+    В файле \texttt{docker-compose.yml} существуют директивы верхнего уровня, которые определяют структуру всего приложения и его общие ресурсы.
+
+    \listtitle{Основные директивы верхнего уровня}
+    \begin{itemize}
+        \item \textbf{name} - название приложения
+        \item \textbf{services} - основной раздел, в котором описываются все сервисы приложения
+        \item \textbf{volumes} - определение volumes, используемых сервисами
+        \item \textbf{networks} - определение сетей для взаимодействия сервисов
+    \end{itemize}
+
+    Весь список директив верхнего уровня можно найти в \href{https://docs.docker.com/reference/compose-file/}{документации docker compose}.
+
+    \vspace{0.2cm}
+
+    \begin{lstlisting}[language=docker-compose-2, caption={Пример определения мультиконтейнерного приложения в \mbox{docker-compose.yaml}}, numbers=none, frame=single, basicstyle=\ttfamily\footnotesize, columns=fullflexible, keepspaces=true, breaklines=false, commentstyle=\color{gray}\itshape, extendedchars=true, texcl=true, showstringspaces=false]
+services:
+  frontend:
+    image: example/webapp
+    networks:
+      - front-tier
+      - back-tier
+  backend:
+    image: example/backend
+    volumes:
+      - db-data:/etc/data
+    networks:
+      - back-tier
+volumes:
+  db-data:
+networks:
+  front-tier:
+  back-tier:
+\end{lstlisting}
+
+    \subsubsection{Service раздел}
+    Раздел service является единственным обязательным разделом docker-compose.yaml файла и не может быть пустым.
+
+    \listtitle{Основные директивы раздела service}
+    \begin{itemize}
+        \item \href{https://docs.docker.com/reference/compose-file/services/#image}{image} - имедж, из которого будет создан контейнер
+        \item \href{https://docs.docker.com/reference/compose-file/services/#ports}{ports} - определение port mappings между хостом и контейнером
+        \item \href{https://docs.docker.com/reference/compose-file/services/#environment}{environment} - определение переменных окружения, которые будут установлены в окружении контейнера
+        \item \href{https://docs.docker.com/reference/compose-file/services/#volumes}{volumes} - список точек монтирования данных в контейнерах. Данные могут быть смонтированы как из Docker volumes, так и из директорий хоста
+    \end{itemize}
+    
+    Весь список директив раздела service можно найти в \href{https://docs.docker.com/reference/compose-file/services/}{в документации docker compose}.
+
+    \subsubsection{Networks раздел}
+    Раздел networks не является обязательным и может отсутствовать в docker-compose.yaml файле. Если раздел network не указан, то
+    Docker Compose автоматически создаст сеть с названием default типа \href{https://docs.docker.com/engine/network/drivers/}{bridge}
+    и все создаваемые контейнеры автоматически будут подключены в эту сеть.
+
+    Весь список директив раздела networks можно найти в \href{https://docs.docker.com/reference/compose-file/networks/#attributes}{в документации docker compose}.
+
+    \subsubsection{Volumes раздел}
+    Раздел volumes не является обязательным и может отсутствовать в docker-compose.yaml файле.
+
+    Весь список директив раздела volumes можно найти в \href{https://docs.docker.com/reference/compose-file/volumes/}{в документации docker compose}.
+
+    \section{Содержание работы}
+
+    В данной работе необходимо перейти к работе с приложением через Docker Compose. Для этого следует описать приложение
+    в файле docker-compose.yaml, а его развертывание в CD пайплайне должно выполняться командой docker compose up.
+
+    \begin{task}{1}
+        Необходимо убедиться, что на виртуальной машине установлен Docker Compose с помощью команды docker compose version.
+        В случае отсутствия Docker Compose - установите его по \href{https://docs.docker.com/compose/install/linux/}{инструкции}.
+    \end{task}
+
+    \begin{task}{2}
+        Опишите используемое приложение в файле docker-compose.yaml и поместите файл в репозиторий.
+    \end{task}
+
+    \begin{task}{3}
+        В CD пайплайне перейдите на развертывание приложения через docker compose.
+    \end{task}
+
+    \textbf{Примечание:}
+    \begin{itemize}
+        \item Приложение, которые вы используете в данной работе, должно являться мультиконтейнерным.
+        \item В используемом приложении должен быть персистентный слой, например, база данных.
+        \item При пересоздании стека (например, в случае обновления имеджа базы данных) вы не должны терять данные приложения. Для решения этой проблемы рекомендуется использовать docker volumes.
+        \item Контейнеры с приложением должны запускаться из заранее собранного образа.
+        Не монтируйте исходный код приложения напрямую с хоста в контейнер (bind mount) для запуска.
+        Это нарушает принцип «один контейнер — один компонент» и усложняет повторяемость окружения.
+        \item Если ваше приложение имеет интеграционные тесты (тесты, которые требуют запущенное приложение — E2E, UI, API), в данной работе допустимо не запускать их. Для желающих можно настроить их запуск через \href{https://docs.github.com/en/actions/tutorials/use-containerized-services/use-docker-service-containers}{service containers} или через запуск тестов после делпоя новой версии на работающем приложении.
+    \end{itemize}
+
+    \textbf{Мультиконтейнерные версии рекомендуемых приложений:\footnote{~\nameref{sec:to-multiocontainers}}}
+    \begin{itemize}
+        \item \textbf{Статический сайт:} \href{https://github.com/prafdin/website-example.git}{prafdin/website-example}
+        \item \textbf{C\# приложение:} \href{https://github.com/danlla/Csharp-example/tree/multicontainers}{danlla/Csharp-example/tree/multicontainers}
+        \item \textbf{Python веб приложение:} \href{https://github.com/prafdin/catty-reminders-app/tree/multicontainers}{prafdin/catty-reminders-app/tree/multicontainers}
+    \end{itemize}
+
+    \section{Контрольные вопросы}
+    \begin{enumerate}
+        \item Как Docker Compose позволяет управлять мультиконтейнерными приложениями?
+        \item Как определить порядок запуска сервисов в Docker Compose? В какой ситуации это может потребоваться?
+        \item Чем отличается Docker Compose сервис и docker контейнер?
+        \item В чем разница между volumes и bind mounts?
+        \item Как масштабировать Docker Compose сервис? Например, увеличить количество контейнеров сервиса frontend до 3.
+        \item Что такое pull\_policy в определении Docker Compose сервиса и для чего это нужно?
+        \item Благодаря чему контейнеры из Docker Compose стека могут обращаться к другим контейнерам по имени?
+    \end{enumerate}
+
+    \section{Инструкция по переходу к мультиконтейнерной версии рекомендуемых приложений}
+    \label{sec:to-multiocontainers}
+    Для перехода к мультиконтейнерной версии приложения рекомендуется настроить дополнительный удалённый репозиторий с помощью механизма
+    \href{https://git-scm.com/book/ms/v2/Git-Basics-Working-with-Remotes}{git remotes} и слить вашу и удаленную версию репозитория с помощью механизма git merge или git rebase.
+
+    \begin{lstlisting}[language=bash, numbers=none, frame=single, basicstyle=\ttfamily\footnotesize, columns=fullflexible, keepspaces=true, breaklines=false, commentstyle=\color{gray}\itshape, extendedchars=true, texcl=true, showstringspaces=false]
+# Подключение удаленного репозитория
+git remote add upstream git@github.com:prafdin/website-example.git
+
+# Получаем обновления из удаленного репозитория
+git fetch upstream
+
+# Переходим в нужную ветку
+git checkout lab4
+
+# Сливаем новую и старую версию, с учетом текущих изменений в вашей ветке.
+# Замените ветку main в upstream/main на необходимую.
+git rebase upstream/main
+
+# При слиянии возможно возникновение конфликтов: после ввода команды git rebase
+# в ответ вы получите "... CONFLICT (content): ...".
+# Вывод команды git status покажет "... interactive rebase in progress ...".
+# Рекомендуется осознано решить конфликты. Например, можно открыть репозиторий в
+# IDE (VS code, Intellij idea другие) и использовать интерактивное решение конфликтов.
+# Также вы можете решить конфликты в пользу удаленного репозитория
+# выполняя следующую группу команд, пока не получите в ответ "... Successfully rebased ..."
+git checkout --ours .
+git add .
+git rebase --continue
+
+# Учтите, что если ветка lab4 уже существовала в вашем удаленному репозитории,
+# то выполнить пуш после git rebase не получится.
+# Для пуша новой версии воспользуйтесь флагом --force. Используйте её с особой
+# осторожностью и только после проверки локальной копии репозитория.
+git push origin lab4 --force-with-lease
+    \end{lstlisting}
+
+
+
+    Также вы можете перейти к новой версии приложения путем удаления вашего репозитория (предварительно сохраните локальную копию!) и создания новой версии форка.
+    Однако, данный метод не является рекомендуемой практикой, а в некоторых случаях невозможен.
+\end{document}

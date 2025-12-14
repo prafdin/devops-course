@@ -1,0 +1,188 @@
+\documentclass[12pt,a4paper]{article}
+
+\input{../../lab-common}
+
+\usepackage{float}
+\usepackage{svg}
+\usepackage{listings}
+\usepackage{multirow}
+
+% Подключение общего шаблона для лабораторных работ
+
+% Настройка переменных для данной лабораторной работы
+\renewcommand{\labtitle}{Лабораторная работа №1}
+\renewcommand{\labsubtitle}{GitHub webhooks}
+
+\begin{document}
+
+% Титульная страница
+\makelabcover
+
+% Общие инструкции
+\commoninstructions
+
+\section{Цель работы}
+
+Научиться использовать GitHub webhooks для решения задач автоматизации сборки приложения и его развертывания.
+
+\section{Содержание работы}
+
+%@startuml
+%actor Разработчик
+%
+%rectangle "GitHub Репозиторий" as GitHub
+%rectangle "Реверс-прокси" as Proxy
+%rectangle "Обработчик\n(виртуальная машина)" as Handler
+%rectangle "Приложение\n(виртуальная машина)" as App
+%
+%Разработчик --> GitHub : Событие
+%
+%GitHub --> Proxy : Вызов webhook
+%Proxy --> Handler : Форвард webhook
+%
+%Handler --> App : Собрать/развернуть
+%Handler ..> GitHub : Статус деплоя
+%@enduml
+\begin{figure}[H]
+\centering
+\includesvg{webhooks-schema}
+\caption{Схема работы GitHub webhooks}
+\label{fig:webhooks-schema}
+\end{figure}
+
+В данной работе мы изучим механизм GitHub webhooks — автоматических HTTP запросов, которые отправляются при определенных событиях в репозитории.
+Как показано на схеме выше, процесс работы состоит из следующих этапов:
+\begin{enumerate}
+    \item \textbf{Событие в репозитории}: разработчик выполняет push, создает pull request или другое действие
+    \item \textbf{Активация webhook}: GitHub автоматически отправляет HTTP POST-запрос на настроенный URL
+    \item \textbf{Обработка через прокси}: реверс-прокси перенаправляет запрос к обработчику
+    \item \textbf{Автоматическое развертывание}: обработчик получает HTTP запрос и запускает процесс сборки/развертывания приложения
+    \item \textbf{Обратная связь}: обработчик может отправить статус выполнения обратно в GitHub
+\end{enumerate}
+
+Этот подход позволяет использовать Git-репозиторий не только как средство совместной работы с кодом, но и как центральный
+элемент автоматизации процессов разработки и развертывания ПО, что является ключевой практикой DevOps.
+
+\begin{task}{1}
+    Настроить виртуальную машину с Ubuntu 24.
+\end{task}
+
+\begin{task}{2}
+    На виртуальной машине настроить доступ до прокси сервера frp.
+
+    \begin{lstlisting}[language=bash, numbers=none, frame=single, basicstyle=\ttfamily\footnotesize, columns=fullflexible, keepspaces=true, breaklines=false, commentstyle=\color{gray}\itshape, extendedchars=true, texcl=true, showstringspaces=false]
+# Настройка переменных. Актуальные значения узнайте у преподавателя!
+PROXY=course.prafdin.ru
+TOKEN=tokentoken
+ID=prafdin
+
+# Скачать и установить frp как systemd сервисы.
+# Команда запросит пароль текущего пользователя
+wget -qO- https://gist.github.com/lawrenceching/\
+41244a182307940cc15b45e3c4997346/raw/\
+0576ea85d898c965c3137f7c38f9815e1233e0d1/\
+install-frp-as-systemd-service.sh | sudo bash
+
+# Настройка доступа до frp server.
+# Команда запросит пароль текущего пользователя
+sudo tee /etc/frp/frpc.toml > /dev/null <<EOF # Начало команды
+serverAddr = "$PROXY"
+serverPort = 7000
+
+auth.method = "token"
+auth.token = "$TOKEN"
+
+[[proxies]]
+name = "hook-$ID"
+type = "http"
+localPort = 8080
+customDomains = ["webhook.$ID.$PROXY"]
+
+[[proxies]]
+name = "app-$ID"
+type = "http"
+localPort = 8181
+customDomains = ["app.$ID.$PROXY"]
+EOF # Конец команды
+
+# Запустите frp client. Команда запросит пароль текущего пользователя
+sudo systemctl start frpc
+
+# Проверьте корректность настройки
+echo "Адрес для проверки: webhook.$ID.$PROXY"
+
+wget -qO- https://gist.githubusercontent.com/\
+prafdin/b9ff40c8bc6dc8c55ca7ac911e278ecc\
+/raw/ea80e83e6a36220e2e9ccdaca8fde49ee888f2ab\
+/main.py | python3
+
+# Перейдите по адресу для проверки в браузере.
+# Если всё настроено правильно, то в браузере получите ok
+\end{lstlisting}
+
+\end{task}
+
+\begin{task}{3}
+    Настроить webhook в GitHub репозитории
+    
+    \begin{enumerate}
+        \item Создайте или \href{https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo}{форкните} репозиторий с выбранным приложением на GitHub
+        \item Перейдите в Settings → Webhooks → Add webhook
+        \item Укажите Payload URL: \texttt{http://webhook.\$ID.\$PROXY} (используйте свои значения из задания 2)
+        \item Укажите Content type: \texttt{application/json}
+        \item Выберите нужное события для активации webhook или укажите \texttt{Send me everything}
+        \item Сохраните webhook
+    \end{enumerate}
+
+    Для отладки можете воспользоваться \href{https://docs.github.com/en/webhooks/testing-and-troubleshooting-webhooks/testing-webhooks#testing-webhook-code-locally}{инструкцией} по настройке проксирования вебхуков без использования FRP.
+\end{task}
+
+\begin{task}{4}
+    Создать обработчик webhook и настроить автоматическое развертывание приложения.
+    
+    \begin{enumerate}
+        \item Создайте веб-сервер — обработчик webhook, который будет получать HTTP запросы от GitHub
+        \item В качестве обработки события реализуйте логику автоматического развертывания приложения при получении события:
+        \begin{itemize}
+            \item Клонирование или обновление кода из репозитория
+            \item Сборка приложения (если требуется)
+            \item Запуск тестов (при наличии)
+            \item Развертывание и перезапуск веб-сервера или приложения
+        \end{itemize}
+        \item Протестируйте работу webhook сервера, создав событие в репозитории
+        \item Убедитесь, что приложение успешно разворачивается и доступно
+        \item Отправьте статус развертывания в GitHub через \href{https://docs.github.com/en/rest/commits/statuses?apiVersion=2022-11-28#create-a-commit-status}{REST API} в случае push события. Опционально
+    \end{enumerate}
+
+    \textbf{Примечание:}
+    \begin{itemize}
+        \item Все необходимые зависимости приложения предварительно могут быть установлены вручную на виртуальной машине.
+        Список зависимостей должен быть зафиксирован в документации или специальном файле, например, в requirements.txt в случае Python приложения.
+        \item Веб-сервер — обработчик должен быть запущен на порту 8080, а развертываемое приложение должно быть доступно по адресу \texttt{http://app.\$ID.\$PROXY} и запущено на порту 8181
+        \item Автоматическое развертывание должно работать для любой ветки в репозитории
+        \item Перед выполнением задания необходимо выбрать приложение, событие для активации webhook (push, pull request, release) и решить о необходимости реализации обратной связи GitHub API.
+        \item Учтите, что основное приложение должно работать, даже если webhook сервер отключен.
+        Для решения этой задачи рекомендуется превратить приложение в systemd сервис (\href{https://webdock.io/en/docs/how-guides/app-installation-and-setup/how-daemonize-application-systemd}{инструкция 1}, \href{https://medium.com/@benmorel/creating-a-linux-service-with-systemd-611b5c8b91d6}{инструкция 2})
+    \end{itemize}
+
+    \textbf{Рекомендуемые приложения:}
+    \begin{itemize}
+        \item \textbf{Статический сайт:} \href{https://github.com/cloudacademy/static-website-example.git}{cloudacademy/static-website-example}
+        \item \textbf{C\# приложение:} \href{https://github.com/danlla/Csharp-example}{danlla/Csharp-example}
+        \item \textbf{Python веб приложение:} \href{https://github.com/prafdin/catty-reminders-app.git}{prafdin/catty-reminders-app}
+    \end{itemize}
+
+    \textbf{Шаблон веб-сервера обработчика webhook:}
+    \href{https://github.com/prafdin/devops-demo-website/blob/webhook-demo/webhook-server.py}{prafdin/devops-demo-website}
+\end{task}
+
+\section{Контрольные вопросы}
+\begin{enumerate}
+    \item Какие проблемы решает автоматизация развертывания через webhook?
+    \item Как обеспечить безопасность веб-сервера — обработчика webhook? Какая уязвимость присутсвует в данной работе?
+    \item Зачем использовать FRP в данной работе? Какие проблемы это решает?
+    \item В чем преимущества и недостатки webhook по сравнению с polling (регулярной проверкой изменений в репозитории)?
+    \item Как организовать работу с разными окружениями (тест, прод) с использованием webhook автоматизации?
+\end{enumerate}
+
+\end{document}

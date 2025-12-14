@@ -4,133 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6044093-33b7-4a67-83a7-af0c453c009b" name="Changes" comment="Final devsecops lecture">
-      <change afterPath="$PROJECT_DIR$/2025/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2025/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2026/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DEPENDS.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/collect-deps.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/makefile.defs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitmodules" beforeDir="false" afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/00-intro/00-intro.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/00-intro/devops_definitions.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/01-intro.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/01-what-is-devops.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/02-cases.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/03-devops-engineer.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/ChatGPT Image Apr 21, 2025, 12_49_09 AM.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/DevOpsLoop.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/What_is_DevOps.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/01-what-is-devops/What_is_DevOps.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/contexts/Juk-25.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/contexts/Jul-24.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/csed.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/example.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/images/2gis-new.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/images/2gis-old.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/images/Lenna.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/images/digital-ai-periodic-table-of-devsecops-2025-March.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/images/figma-new.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/images/old-vs-new.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/images/photoshop-old.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/images/spectrum.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/images/spectrum.xcf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/images/steam-new 1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/images/volumes-old.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/notes.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/script.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/thesis.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/what-is-devops.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/01-what-is-devops/what-is-devops.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/01-what-is-devops/01-what-is-devops.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02-proxy/media/HTTP.svg" beforeDir="false" afterPath="$PROJECT_DIR$/2025/02-proxy/media/HTTP.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02-proxy/media/URI.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/2025/02-proxy/media/URI.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02-proxy/media/frp.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/02-proxy/media/frp.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02-proxy/media/http-request.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/02-proxy/media/http-request.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02-proxy/media/http-response.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/02-proxy/media/http-response.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02-proxy/media/http.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/02-proxy/media/http.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02-proxy/media/proxy.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/2025/02-proxy/media/proxy.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02-proxy/media/ssh-tunneling.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/2025/02-proxy/media/ssh-tunneling.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02-proxy/media/traverse-nat.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/02-proxy/media/traverse-nat.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/02-proxy/proxy-tunneling.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/02-proxy/proxy-tunneling.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/02-proxy/02-proxy.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03-git/git-in-devops.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/03-git/git-in-devops.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/03-git/03-git.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03-git/git-webhooks.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/03-git/git-webhooks.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/03-git/git-webhooks.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03-git/git-webhooks.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/03-git/git-webhooks.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03-git/webhooks-schema.svg" beforeDir="false" afterPath="$PROJECT_DIR$/2025/03-git/webhooks-schema.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/04-cicd/cicd.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/04-cicd/cicd.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/04-cicd/04-cicd.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/04-cicd/github-actions.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/04-cicd/github-actions.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/04-cicd/github-actions.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/04-cicd/github-actions.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/04-cicd/github-actions.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/04-cicd/media/new-schema.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/04-cicd/media/new-schema.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/04-cicd/media/new-schema.svg" beforeDir="false" afterPath="$PROJECT_DIR$/2025/04-cicd/media/new-schema.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/04-cicd/media/old-schema.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/04-cicd/media/old-schema.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/04-cicd/media/old-schema.svg" beforeDir="false" afterPath="$PROJECT_DIR$/2025/04-cicd/media/old-schema.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/04-cicd/media/result.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/04-cicd/media/result.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/05-configuration-management/configuration-management.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/05-configuration-management/configuration-management.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/05-configuration-management/05-configuration-management.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/05-configuration-management/media/ansible.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/05-configuration-management/media/ansible.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/06-docker-additional/docker-additional.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/06-docker-additional/docker-additional.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/06-docker-additional.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/06-docker-additional/media/bind-mount.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/media/bind-mount.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/06-docker-additional/media/bridge.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/media/bridge.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/06-docker-additional/media/cnm-model.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/media/cnm-model.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/06-docker-additional/media/cont-to-internet.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/media/cont-to-internet.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/06-docker-additional/media/container-layers.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/media/container-layers.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/06-docker-additional/media/container-volumes.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/media/container-volumes.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/06-docker-additional/media/docker-storage.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/media/docker-storage.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/06-docker-additional/media/libnetwork.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/media/libnetwork.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/06-docker-additional/media/net-bridge.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/media/net-bridge.PNG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/06-docker-additional/media/switch.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/media/switch.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/06-docker-additional/media/to-cont.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/media/to-cont.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/06-docker/docker-assignment.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/06-docker/docker-assignment.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker/docker-assignment.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/06-docker/docker-assignment.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker/docker-assignment.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/06-docker/docker.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/06-docker/docker.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker/06-docker.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/06-docker/media/container-is.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker/media/container-is.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/06-docker/media/docker-arch.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker/media/docker-arch.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/06-docker/media/image-format.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker/media/image-format.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/06-docker/media/vm-vs-cont.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker/media/vm-vs-cont.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/07-docker-compose/compose-assignment.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/07-docker-compose/compose-assignment.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/07-docker-compose/compose-assignment.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/07-docker-compose/compose-assignment.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/07-docker-compose/docker-compose.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/07-docker-compose/docker-compose.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/07-docker-compose/07-docker-compose.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/07-docker-compose/lb-schema.svg" beforeDir="false" afterPath="$PROJECT_DIR$/2025/07-docker-compose/lb-schema.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/07-docker-compose/media/compose-merge.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/07-docker-compose/media/compose-merge.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/07-docker-compose/media/kuber.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/2025/07-docker-compose/media/kuber.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/07-docker-compose/media/multicontainers-app.svg" beforeDir="false" afterPath="$PROJECT_DIR$/2025/07-docker-compose/media/multicontainers-app.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/07-docker-compose/media/swarm.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/07-docker-compose/media/swarm.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/08-packer/media/app-before-after.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/08-packer/media/app-before-after.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/08-packer/packer.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/08-packer/packer.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/08-packer/08-packer.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/09-cloud/cloud.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/09-cloud/cloud.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/09-cloud/09-cloud.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/09-cloud/media/iaas_paas_saas.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/09-cloud/media/iaas_paas_saas.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/09-cloud/media/infras.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/09-cloud/media/infras.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/09-cloud/media/infras.xcf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/09-cloud/media/infras.xcf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/10-IaC/IaC.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/10-IaC/IaC.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/10-IaC/10-IaC.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/11-DevSecOps/DevSecOps.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/11-DevSecOps/DevSecOps.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/11-DevSecOps/11-DevSecOps.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/11-DevSecOps/media/devops-flow.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/11-DevSecOps/media/devops-flow.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/11-DevSecOps/media/secure-sdlc.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/11-DevSecOps/media/secure-sdlc.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/11-DevSecOps/media/shift-left-2.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/11-DevSecOps/media/shift-left-2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/11-DevSecOps/media/shift-left-2.webp" beforeDir="false" afterPath="$PROJECT_DIR$/2025/11-DevSecOps/media/shift-left-2.webp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/11-DevSecOps/media/shift-left.png" beforeDir="false" afterPath="$PROJECT_DIR$/2025/11-DevSecOps/media/shift-left.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo-website" beforeDir="false" afterPath="$PROJECT_DIR$/2025/demo-website" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/devops-course-demos" beforeDir="false" afterPath="$PROJECT_DIR$/2025/devops-course-demos" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/elektratextpro/COPYRIGHT.txt" beforeDir="false" afterPath="$PROJECT_DIR$/2025/fonts/elektratextpro/COPYRIGHT.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/elektratextpro/elektratextpro.otf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/fonts/elektratextpro/elektratextpro.otf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/elektratextpro/elektratextpro_bold.otf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/fonts/elektratextpro/elektratextpro_bold.otf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/elektratextpro/elektratextpro_bolditalic.otf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/fonts/elektratextpro/elektratextpro_bolditalic.otf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fonts/elektratextpro/elektratextpro_italic.otf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/fonts/elektratextpro/elektratextpro_italic.otf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab-common.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/lab-common.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/slides-common.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/slides-common.tex" afterDir="false" />
+    <list default="true" id="d6044093-33b7-4a67-83a7-af0c453c009b" name="Changes" comment="clean deployment should be">
+      <change afterPath="$PROJECT_DIR$/2025/assignments/01-git-webhooks/.latexmkrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2025/assignments/01-git-webhooks/01-git-webhooks.tex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2025/assignments/01-git-webhooks/webhooks-schema.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2025/assignments/02-github-actions/02-github-actions.tex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2025/assignments/03-docker/03-docker.tex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2025/assignments/04-docker-compose/.latexmkrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2025/assignments/04-docker-compose/04-docker-compose.tex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2025/assignments/04-docker-compose/media/multicontainers-app.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2025/01-what-is-devops/01-what-is-devops.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/01-what-is-devops/01-what-is-devops.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2025/02-proxy/02-proxy.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/02-proxy/02-proxy.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2025/03-git/03-git.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/03-git/03-git.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2025/03-git/git-webhooks.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/03-git/git-webhooks.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2025/04-cicd/04-cicd.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/04-cicd/04-cicd.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2025/04-cicd/github-actions.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/04-cicd/github-actions.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2025/05-configuration-management/05-configuration-management.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/05-configuration-management/05-configuration-management.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2025/06-docker-additional/06-docker-additional.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/06-docker-additional.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2025/06-docker/06-docker.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker/06-docker.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2025/06-docker/docker-assignment.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker/docker-assignment.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2025/07-docker-compose/07-docker-compose.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/07-docker-compose/07-docker-compose.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2025/07-docker-compose/compose-assignment.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/07-docker-compose/compose-assignment.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2025/08-packer/08-packer.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/08-packer/08-packer.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2025/09-cloud/09-cloud.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/09-cloud/09-cloud.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2025/10-IaC/10-IaC.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/10-IaC/10-IaC.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2025/11-DevSecOps/11-DevSecOps.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/11-DevSecOps/11-DevSecOps.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2025/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/2025/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2025/lab-common.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/lab-common.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/makefile.defs" beforeDir="false" afterPath="$PROJECT_DIR$/makefile.defs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +108,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "SHELLCHECK.PATH": "I do mind",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/prafdin/repos/devops-course/2026",
+    "last_opened_file_path": "/home/prafdin/repos/devops-course/2025/assignments/04-docker-compose",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.4239905",
@@ -220,18 +122,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/2026" />
-      <recent name="$PROJECT_DIR$/2024" />
-      <recent name="$PROJECT_DIR$/2025" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/09-cloud" />
+      <recent name="$PROJECT_DIR$/2025/assignments/04-docker-compose" />
+      <recent name="$PROJECT_DIR$/2025/assignments/04-docker-compose/media" />
+      <recent name="$PROJECT_DIR$/2025/assignments/01-git-webhooks" />
+      <recent name="$PROJECT_DIR$/2025/assignments/03-docker" />
+      <recent name="$PROJECT_DIR$/2025/assignments/02-github-actions" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/.github/workflows" />
       <recent name="$PROJECT_DIR$/2025" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/common" />
       <recent name="$PROJECT_DIR$/devops-course-demos/yacloud-site" />
-      <recent name="$PROJECT_DIR$/06-docker-additional/media" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -380,54 +282,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1749485683178</updated>
-    </task>
-    <task id="LOCAL-00051" summary="Небольшое замечание">
-      <option name="closed" value="true" />
-      <created>1756672346181</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1756672346181</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Вернул uml диаграмму">
-      <option name="closed" value="true" />
-      <created>1756748116709</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1756748116709</updated>
-    </task>
-    <task id="LOCAL-00053" summary="Драфт 7 лекции">
-      <option name="closed" value="true" />
-      <created>1756757844152</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1756757844152</updated>
-    </task>
-    <task id="LOCAL-00054" summary="Up 7 лекция">
-      <option name="closed" value="true" />
-      <created>1756799433316</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1756799433316</updated>
-    </task>
-    <task id="LOCAL-00055" summary="Фикс 1 лекции">
-      <option name="closed" value="true" />
-      <created>1756837738794</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1756837738794</updated>
-    </task>
-    <task id="LOCAL-00056" summary="Upd lab1">
-      <option name="closed" value="true" />
-      <created>1757021905574</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1757021905574</updated>
     </task>
     <task id="LOCAL-00057" summary="Upd lab1">
       <option name="closed" value="true" />
@@ -773,7 +627,55 @@
       <option name="project" value="LOCAL" />
       <updated>1763562424516</updated>
     </task>
-    <option name="localTasksCounter" value="100" />
+    <task id="LOCAL-00100" summary="Refactor structure&#10;Add CI">
+      <option name="closed" value="true" />
+      <created>1765665229207</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1765665229208</updated>
+    </task>
+    <task id="LOCAL-00101" summary="Switch to last available version">
+      <option name="closed" value="true" />
+      <created>1765666762130</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1765666762130</updated>
+    </task>
+    <task id="LOCAL-00102" summary="Add missing deps">
+      <option name="closed" value="true" />
+      <created>1765667072389</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1765667072389</updated>
+    </task>
+    <task id="LOCAL-00103" summary="Fix readme">
+      <option name="closed" value="true" />
+      <created>1765667178107</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1765667178108</updated>
+    </task>
+    <task id="LOCAL-00104" summary="wrong pkgs?">
+      <option name="closed" value="true" />
+      <created>1765667277506</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1765667277506</updated>
+    </task>
+    <task id="LOCAL-00105" summary="clean deployment should be">
+      <option name="closed" value="true" />
+      <created>1765668049231</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1765668049231</updated>
+    </task>
+    <option name="localTasksCounter" value="106" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -788,12 +690,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add docker lab" />
-    <MESSAGE value="Upd docker lab" />
-    <MESSAGE value="Обновил демку для docker" />
-    <MESSAGE value="Обновил лекцию для docker" />
-    <MESSAGE value="Add lab4" />
-    <MESSAGE value="Add docker add lect" />
     <MESSAGE value="Add docker additional demos" />
     <MESSAGE value="Upd docker-additional lec" />
     <MESSAGE value="Fix network demo" />
@@ -813,6 +709,12 @@
     <MESSAGE value="Add yacloud demos" />
     <MESSAGE value="Final IaC lecture" />
     <MESSAGE value="Final devsecops lecture" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final devsecops lecture" />
+    <MESSAGE value="Refactor structure&#10;Add CI" />
+    <MESSAGE value="Switch to last available version" />
+    <MESSAGE value="Add missing deps" />
+    <MESSAGE value="Fix readme" />
+    <MESSAGE value="wrong pkgs?" />
+    <MESSAGE value="clean deployment should be" />
+    <option name="LAST_COMMIT_MESSAGE" value="clean deployment should be" />
   </component>
 </project>

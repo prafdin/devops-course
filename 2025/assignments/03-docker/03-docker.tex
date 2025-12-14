@@ -1,0 +1,153 @@
+\documentclass[12pt,a4paper]{article}
+
+\input{../../lab-common}
+
+\usepackage{float}
+
+\renewcommand{\labtitle}{Лабораторная работа №3}
+\renewcommand{\labsubtitle}{Docker}
+
+\begin{document}
+
+% Титульная страница
+\makelabcover
+
+% Общие инструкции
+\commoninstructions
+
+\textbf{Внимание:} Данная лабораторная работа является продолжением лабораторной работы №2.
+Для выполнения данной работы необходимо иметь подготовленный репозиторий из второй лабораторной работы.
+
+\section{Цель работы}
+
+Получить базовые навыки работы с Docker, научиться упаковывать приложение в контейнер и интегрировать его сборку в процесс CI/CD.
+
+\section{Теоретические сведения}
+
+\subsection{Что такое Docker}
+
+Docker — это платформа для разработки, доставки и запуска приложений в изолированных средах, называемых контейнерами.
+В отличие от виртуальных машин, контейнеры не эмулируют целую операционную систему, а используют ядро хостовой ОС, что делает их лёгкими и быстрыми в запуске.
+
+\subsection{Основные понятия}
+
+\begin{itemize}
+    \item \textbf{Образ (Image)} — шаблон для запуска контейнера. Содержит файловую систему и инструкции для запуска приложения.
+    \item \textbf{Контейнер (Container)} — экземпляр запущенного образа. Является изолированной средой с приложением внутри.
+    \item \textbf{Dockerfile} — текстовый файл с инструкциями для сборки образа.
+    \item \textbf{Registry} — хранилище образов (например, DockerHub, GitHub Container Registry, GitLab Container Registry).
+\end{itemize}
+
+\subsection{Жизненный цикл контейнера}
+
+Основные шаги при работе с Docker:
+\begin{enumerate}
+    \item Создание Dockerfile с описанием зависимостей и шагов сборки.
+    \item Сборка образа с помощью команды \texttt{docker build}. Как правило, это происходит на CI сервере.
+    \item Публикация образа в registry.
+    Registry в данном случае играет роль посредника между сборкой и развертыванием: в одном окружении образ создаётся и отправляется в хранилище, а в другом окружении он загружается для запуска.\footnote{В ряде случаев сборка и развертывание могут выполняться на одной и той же машине, однако это не является рекомендуемой практикой по ряду причин.}
+    \item Запуск контейнера из образа с помощью команды \texttt{docker run} на целевой машине (например, в тестовой или продуктивной среде).
+\end{enumerate}
+
+\subsection{Основные инструкции Dockerfile}
+
+Ниже приведены основные инструкции, используемые при создании Dockerfile. Эти команды достаточно знать для выполнения лабораторной работы:
+
+\begin{itemize}
+    \item \texttt{FROM} — задаёт базовый образ.
+    \item \texttt{RUN} — выполняет команды при сборке образа.
+    \item \texttt{WORKDIR} — устанавливает рабочую директорию внутри контейнера.
+    \item \texttt{COPY}, \texttt{ADD} — копируют файлы в образ.
+    \item \texttt{EXPOSE} — указывает порты, которые контейнер открывает для связи снаружи.
+    \item \texttt{CMD}, \texttt{ENTRYPOINT} — определяют команду, выполняемую при запуске контейнера.
+\end{itemize}
+
+Для более подробного описания всех инструкций и их опций можно обратиться к \href{https://docs.docker.com/engine/reference/builder/}{официальной документации Docker}.
+
+\section{Содержание работы}
+
+В данной работе необходимо контейнеризировать приложение из предыдущей лабораторной работы с помощью Docker.
+Также необходимо встроить сборку контейнера в CI пайплайн, а в CD пайплайне перейти к развертыванию приложения через Docker контейнер.
+Опционально, в CI пайплайн необходимо встроить линтер для Dockerfile — \href{https://github.com/hadolint/hadolint}{hadolint}.
+
+\begin{task}{1}
+    Необходимо установить Docker на виртуальную машину. \href{https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository}{Официальный туториал от docker.}
+\end{task}
+
+\begin{task}{2}
+    Создать Dockerfile для приложения из предыдущей лабораторной работы. Поместите полученный Dockerfile в репозиторий с исходным кодом.
+
+    \begin{enumerate}
+        \item Определите базовый образ с помощью инструкции \texttt{FROM}. Используйте произвольный \href{https://docs.docker.com/build/building/base-images/}{базовый образ}.
+        \item Установите необходимые зависимости с помощью \texttt{RUN}.
+        \item Установите рабочую директорию (\texttt{WORKDIR}) и скопируйте файлы приложения (\texttt{COPY}).
+        \item Настройте команду запуска приложения с помощью \texttt{CMD} или \texttt{ENTRYPOINT}.
+        \item Определите порты, которые будут использоваться приложением (\texttt{EXPOSE}).
+    \end{enumerate}
+\end{task}
+
+\begin{task}{3}
+    Собрать и проверить локально Docker образ.
+
+    \begin{enumerate}
+        \item Соберите образ и запустите контейнер с \href{https://docs.docker.com/get-started/docker-concepts/running-containers/publishing-ports/}{пробросом порта на хост машину}.
+        \item Попробуйте отправить полученный контейнер в \href{https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry}{GitHub Docker Registry} с вашей виртуальной машины
+        \item Убедитесь, что приложение работает и доступно на localhost на указанном порту.
+    \end{enumerate}
+\end{task}
+
+\begin{task}{4}
+    Встроить сборку Docker образа в CI пайплайн.
+
+    \begin{enumerate}
+        \item Добавьте шаг сборки Docker образа в существующий CI workflow.
+        \item Настройте тегирование образа и его загрузку в GitHub Docker Registry
+        \item Убедитесь, что при push в репозиторий CI workflow собирает образ и загружает его
+        \item Опционально: интегрируйте линтер Hadolint для проверки Dockerfile. Не завершать пайплайн в случае найденных ошибок с помощью \href{https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepscontinue-on-error}{continue-on-error}.
+    \end{enumerate}
+
+    \textbf{Полезная информация:}
+    \begin{itemize}
+        \item \href{https://docs.github.com/en/actions/tutorials/use-containerized-services/create-a-docker-container-action}{Туториал по сборке контейнера в GitHub Actions от GitHub}
+        \item \href{https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-in-a-github-actions-workflow}{Работа с GitHub Docker Registry из GitHub Actions}
+        \item \href{https://docs.github.com/en/actions/tutorials/publish-packages/publish-docker-images?versionId=free-pro-team%40latest&productId=actions&restPage=tutorials%2Cstore-and-share-data}{Ещё один гайд по работе с Docker Registry из GitHub Actions}
+        \item Полезные GitHub Actions:
+        \begin{itemize}
+            \item \href{https://github.com/docker/login-action}{docker/login-action}
+            \item \href{https://github.com/docker/build-push-action}{docker/build-push-action}
+            \item \href{https://github.com/docker/metadata-action}{docker/metadata-action}
+        \end{itemize}
+    \end{itemize}
+\end{task}
+
+\begin{task}{5}
+    Настроить CD пайплайн для развертывания приложения через Docker контейнер.
+
+    \begin{enumerate}
+        \item Добавьте шаг развертывания контейнера в CD workflow.
+        \item Обеспечьте автоматический деплой, используя Docker контейнер собранный в CI пайплайне.
+        \item Настройте перезапуск контейнера при обновлении образа и протестируйте развертывание.
+        \item Убедитесь, что приложение обновляется и доступно по тому же адресу: \texttt{http://app.\$ID.\$PROXY}
+    \end{enumerate}
+\end{task}
+
+\textbf{Примечание:}
+\begin{itemize}
+    \item Учтите, что все необходимые зависимости приложения должны добавлены в image. На виртуальной машине допускается только установка Docker.
+    \item Если ваше приложение имеет персистентный слой (базу данных), то при пересоздании контейнера вы потеряете все данные. В текущей работе это допустимое упрощение, в следующей работе мы исправим этот минус.
+    \item В данной работе в контейнер допустимо складывать все зависимости тестов. В промышленной разработке это не является рекомендуемой практикой.
+    \item Если ваше приложение имеет интеграционные тесты (тесты, которые требуют запущенное приложение — E2E, UI, API), в данной работе допустимо не запускать их. Для желающих можно настроить их запуск через \href{https://docs.github.com/en/actions/tutorials/use-containerized-services/use-docker-service-containers}{service containers} или через запуск тестов после делпоя новой версии на работающем приложении.
+\end{itemize}
+
+\section{Контрольные вопросы}
+\begin{enumerate}
+    \item Что такое Docker и в чём отличие контейнера от виртуальной машины?
+    \item Что такое Dockerfile? Какие основные инструкции вы знаете?
+    \item Объясните жизненный цикл контейнера: от написания Dockerfile до запуска контейнера.
+    \item Зачем использовать registry при работе с Docker и CI/CD?
+    \item Как можно получить доступ к приложению внутри контейнера снаружи контейнера?
+    \item В каких случаях сборка и развертывание на одном окружении может быть допустима, и почему это не является рекомендуемой практикой?
+\end{enumerate}
+
+
+\end{document}
