@@ -17,3 +17,4 @@ enumitem
 lastpage
 multirow
 transparent
+catchfile
