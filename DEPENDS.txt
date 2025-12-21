@@ -16,3 +16,4 @@ fancyvrb
 enumitem
 lastpage
 multirow
+transparent
