@@ -2,10 +2,11 @@ SHELL := /bin/bash
 
 .SHELLFLAGS = -e -o pipefail -c
 .ONESHELL:
-.PHONY: all
+.PHONY: all clean
 
 GITHUB = prafdin/devops-course
 DIRS = $(shell find . -mindepth 1 -maxdepth 1 -type d -name '20[0-9][0-9]' -exec basename {} \; | sort)
+SUB_PACKAGE_INDICES = $(foreach d,$(DIRS),$(d)/package/index.html)
 
 all: years-all package/index.html
 
@@ -16,7 +17,7 @@ years-all:
 		cd ..
 	done
 
-package/index.html:
+package/index.html: $(SUB_PACKAGE_INDICES)
 	dir="$$(dirname "$@")"
 	title="Курс DevOps"
 	mkdir -p "$${dir}"
@@ -41,7 +42,7 @@ package/index.html:
 		echo "<p>Год прочтения:</p>"
 		echo "<ul>"
 		for year in $(DIRS); do
-			cp -r "$${year}/package" "$${dir}/$${year}"
+			rm -rf "$${dir}/$${year}" && cp -r "$${year}/package" "$${dir}/$${year}"
 			echo "<li><a href='$${year}'>$${year}</a></li>"
 		done
 		echo "</ul>"
@@ -50,3 +51,11 @@ package/index.html:
 			</body></html>
 		"
 	)> "$${dir}/index.html"
+
+clean:
+	for d in $(DIRS); do
+		cd $${d}
+		make clean
+		cd ..
+	done
+	rm -rf package

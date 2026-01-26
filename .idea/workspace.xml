@@ -4,35 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6044093-33b7-4a67-83a7-af0c453c009b" name="Changes" comment="clean deployment should be">
-      <change afterPath="$PROJECT_DIR$/2025/assignments/01-git-webhooks/.latexmkrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2025/assignments/01-git-webhooks/01-git-webhooks.tex" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2025/assignments/01-git-webhooks/webhooks-schema.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2025/assignments/02-github-actions/02-github-actions.tex" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2025/assignments/03-docker/03-docker.tex" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2025/assignments/04-docker-compose/.latexmkrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2025/assignments/04-docker-compose/04-docker-compose.tex" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2025/assignments/04-docker-compose/media/multicontainers-app.svg" afterDir="false" />
+    <list default="true" id="d6044093-33b7-4a67-83a7-af0c453c009b" name="Changes" comment="Rm pdfs">
+      <change afterPath="$PROJECT_DIR$/2026/assignments/00-howto/00-howto.tex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2026/fonts/elektratextpro/COPYRIGHT.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2026/fonts/elektratextpro/elektratextpro.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2026/fonts/elektratextpro/elektratextpro_bold.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2026/fonts/elektratextpro/elektratextpro_bolditalic.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2026/fonts/elektratextpro/elektratextpro_italic.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2026/lab-common.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2025/01-what-is-devops/01-what-is-devops.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/01-what-is-devops/01-what-is-devops.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2025/02-proxy/02-proxy.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/02-proxy/02-proxy.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2025/03-git/03-git.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/03-git/03-git.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2025/03-git/git-webhooks.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/03-git/git-webhooks.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2025/04-cicd/04-cicd.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/04-cicd/04-cicd.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2025/04-cicd/github-actions.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/04-cicd/github-actions.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2025/05-configuration-management/05-configuration-management.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/05-configuration-management/05-configuration-management.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2025/06-docker-additional/06-docker-additional.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker-additional/06-docker-additional.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2025/06-docker/06-docker.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker/06-docker.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2025/06-docker/docker-assignment.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/06-docker/docker-assignment.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2025/07-docker-compose/07-docker-compose.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/07-docker-compose/07-docker-compose.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2025/07-docker-compose/compose-assignment.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/07-docker-compose/compose-assignment.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2025/08-packer/08-packer.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/08-packer/08-packer.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2025/09-cloud/09-cloud.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/09-cloud/09-cloud.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2025/10-IaC/10-IaC.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/10-IaC/10-IaC.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2025/11-DevSecOps/11-DevSecOps.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/2025/11-DevSecOps/11-DevSecOps.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2025/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/2025/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2025/lab-common.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2025/lab-common.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/makefile.defs" beforeDir="false" afterPath="$PROJECT_DIR$/makefile.defs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2026/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/2026/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,12 +45,12 @@
     &quot;assignee&quot;: &quot;prafdin&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:prafdin/devops-course.git",
-    "accountId": "101e6eb3-17b1-40fc-95b4-6408f70d94a9"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:prafdin/devops-course.git&quot;,
+    &quot;accountId&quot;: &quot;101e6eb3-17b1-40fc-95b4-6408f70d94a9&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
@@ -108,7 +91,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "SHELLCHECK.PATH": "I do mind",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/prafdin/repos/devops-course/2025/assignments/04-docker-compose",
+    "last_opened_file_path": "/home/prafdin/repos/devops-course/2026",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.4239905",
@@ -122,11 +105,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/2026" />
+      <recent name="$PROJECT_DIR$/2026/assignments/00-howto" />
       <recent name="$PROJECT_DIR$/2025/assignments/04-docker-compose" />
       <recent name="$PROJECT_DIR$/2025/assignments/04-docker-compose/media" />
       <recent name="$PROJECT_DIR$/2025/assignments/01-git-webhooks" />
-      <recent name="$PROJECT_DIR$/2025/assignments/03-docker" />
-      <recent name="$PROJECT_DIR$/2025/assignments/02-github-actions" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/.github/workflows" />
@@ -199,7 +182,7 @@
         <envs />
         <expand-macros-in-environment-variables>false</expand-macros-in-environment-variables>
         <before-run-command />
-        <main-file>$PROJECT_DIR$/2025/07-docker-compose/compose-assignment.tex</main-file>
+        <main-file />
         <output-path>$PROJECT_DIR$/07-docker-compose</output-path>
         <auxil-path>{projectDir}/auxil</auxil-path>
         <compile-twice>false</compile-twice>
@@ -282,54 +265,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1749485683178</updated>
-    </task>
-    <task id="LOCAL-00057" summary="Upd lab1">
-      <option name="closed" value="true" />
-      <created>1757067404844</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1757067404844</updated>
-    </task>
-    <task id="LOCAL-00058" summary="Добавил картинок для л2">
-      <option name="closed" value="true" />
-      <created>1757177354770</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1757177354770</updated>
-    </task>
-    <task id="LOCAL-00059" summary="Link to doc">
-      <option name="closed" value="true" />
-      <created>1757182981672</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1757182981672</updated>
-    </task>
-    <task id="LOCAL-00060" summary="Upd l2">
-      <option name="closed" value="true" />
-      <created>1757501279935</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1757501279935</updated>
-    </task>
-    <task id="LOCAL-00061" summary="Final 02-proxy">
-      <option name="closed" value="true" />
-      <created>1758564941716</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1758564941716</updated>
-    </task>
-    <task id="LOCAL-00062" summary="Final 03-git">
-      <option name="closed" value="true" />
-      <created>1758565040150</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1758565040150</updated>
     </task>
     <task id="LOCAL-00063" summary="Корректировки по лекции и лабе">
       <option name="closed" value="true" />
@@ -675,7 +610,55 @@
       <option name="project" value="LOCAL" />
       <updated>1765668049231</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="move assignments to specific dir">
+      <option name="closed" value="true" />
+      <created>1765723421241</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1765723421241</updated>
+    </task>
+    <task id="LOCAL-00107" summary="Upd readme">
+      <option name="closed" value="true" />
+      <created>1765723707459</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1765723707459</updated>
+    </task>
+    <task id="LOCAL-00108" summary="Fix build">
+      <option name="closed" value="true" />
+      <created>1766311136411</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1766311136412</updated>
+    </task>
+    <task id="LOCAL-00109" summary="Add transparent dep">
+      <option name="closed" value="true" />
+      <created>1766311601751</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1766311601751</updated>
+    </task>
+    <task id="LOCAL-00110" summary="Add catchfile dep">
+      <option name="closed" value="true" />
+      <created>1766311868231</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1766311868231</updated>
+    </task>
+    <task id="LOCAL-00111" summary="Rm pdfs">
+      <option name="closed" value="true" />
+      <created>1766313702491</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1766313702491</updated>
+    </task>
+    <option name="localTasksCounter" value="112" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -690,12 +673,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add docker additional demos" />
-    <MESSAGE value="Upd docker-additional lec" />
-    <MESSAGE value="Fix network demo" />
-    <MESSAGE value="Small upds" />
-    <MESSAGE value="Fix ports mapping for production/develop env" />
-    <MESSAGE value="Prepare for working with different envs" />
     <MESSAGE value="Remove explicit stop command" />
     <MESSAGE value="Override project name for composes" />
     <MESSAGE value="Fix project src for compose" />
@@ -715,6 +692,12 @@
     <MESSAGE value="Fix readme" />
     <MESSAGE value="wrong pkgs?" />
     <MESSAGE value="clean deployment should be" />
-    <option name="LAST_COMMIT_MESSAGE" value="clean deployment should be" />
+    <MESSAGE value="move assignments to specific dir" />
+    <MESSAGE value="Upd readme" />
+    <MESSAGE value="Fix build" />
+    <MESSAGE value="Add transparent dep" />
+    <MESSAGE value="Add catchfile dep" />
+    <MESSAGE value="Rm pdfs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rm pdfs" />
   </component>
 </project>

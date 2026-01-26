@@ -2,6 +2,9 @@ include ../makefile.defs
 
 .PHONY: all
 
+LECTURE_PDFS := $(filter-out assignments/%,$(PDFS))
+ASSIGNMENT_PDFS := $(filter assignments/%,$(PDFS))
+
 all: pdfs package/index.html
 
 package/index.html: $(PDFS)
@@ -28,10 +31,19 @@ package/index.html: $(PDFS)
 		echo "<h1>$${title}</h1>"
 		echo "<p>Слайды лекций:</p>"
 		echo "<ul>"
-		for pdf in $(PDFS); do
+		for pdf in $(LECTURE_PDFS); do
 			name=$$(basename "$${pdf}")
 			cp "$${pdf}" "$${dir}"
 			echo "<li><a href='$${name}'>$${name}</a></li>"
+		done
+		echo "</ul>"
+		mkdir -p "$${dir}/assignments"
+		echo "<p>Методички к лабораторным работам:</p>"
+		echo "<ul>"
+		for pdf in $(ASSIGNMENT_PDFS); do
+			name=$$(basename "$${pdf}")
+			cp "$${pdf}" "$${dir}/assignments"
+			echo "<li><a href='assignments/$${name}'>$${name}</a></li>"
 		done
 		echo "</ul>"
 		echo "
