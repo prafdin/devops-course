@@ -6,7 +6,7 @@ SHELL := /bin/bash
 
 .SHELLFLAGS = -e -o pipefail -c
 .ONESHELL:
-.PHONY: pdfs clean copy
+.PHONY: pdfs clean copy1
 
 DIRS = $(shell find . -mindepth 1 -maxdepth 2 -type d -name '[0-9][0-9]-*' | sed 's|^\./||'  | sort)
 PDFS = $(foreach d,$(DIRS),$(d)/$(notdir $(d)).pdf)
