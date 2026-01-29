@@ -4,18 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6044093-33b7-4a67-83a7-af0c453c009b" name="Changes" comment="Rm pdfs">
-      <change afterPath="$PROJECT_DIR$/2026/assignments/00-howto/00-howto.tex" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2026/fonts/elektratextpro/COPYRIGHT.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2026/fonts/elektratextpro/elektratextpro.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2026/fonts/elektratextpro/elektratextpro_bold.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2026/fonts/elektratextpro/elektratextpro_bolditalic.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2026/fonts/elektratextpro/elektratextpro_italic.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2026/lab-common.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="d6044093-33b7-4a67-83a7-af0c453c009b" name="Changes" comment="fix make scripts&#10;add dummy lab">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2026/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/2026/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2026/assignments/00-howto/00-howto.tex" beforeDir="false" afterPath="$PROJECT_DIR$/2026/assignments/00-howto/00-howto.tex" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,46 +54,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "LaTeX.1.executor": "Run",
-    "LaTeX.DevSecOps.executor": "Run",
-    "LaTeX.IaC.executor": "Run",
-    "LaTeX.cicd.executor": "Run",
-    "LaTeX.cloud.executor": "Run",
-    "LaTeX.compose-assignment.executor": "Run",
-    "LaTeX.configuration-management.executor": "Run",
-    "LaTeX.docker-additional.executor": "Run",
-    "LaTeX.docker-assignment.executor": "Run",
-    "LaTeX.docker-compose.executor": "Run",
-    "LaTeX.docker.executor": "Run",
-    "LaTeX.git-in-devops.executor": "Run",
-    "LaTeX.git-webhooks.executor": "Run",
-    "LaTeX.github-actions.executor": "Run",
-    "LaTeX.iac.executor": "Run",
-    "LaTeX.lab-common.executor": "Run",
-    "LaTeX.packer.executor": "Run",
-    "LaTeX.poor-mans-gitops.executor": "Run",
-    "LaTeX.proxy-tunneling.executor": "Run",
-    "LaTeX.what-is-devops.executor": "Run",
-    "LaTeX.yandex-cloud-packer.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHELLCHECK.PATH": "I do mind",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/prafdin/repos/devops-course/2026",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.4239905",
-    "settings.editor.selected.configurable": "terminal"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;LaTeX.1.executor&quot;: &quot;Run&quot;,
+    &quot;LaTeX.DevSecOps.executor&quot;: &quot;Run&quot;,
+    &quot;LaTeX.IaC.executor&quot;: &quot;Run&quot;,
+    &quot;LaTeX.cicd.executor&quot;: &quot;Run&quot;,
+    &quot;LaTeX.cloud.executor&quot;: &quot;Run&quot;,
+    &quot;LaTeX.compose-assignment.executor&quot;: &quot;Run&quot;,
+    &quot;LaTeX.configuration-management.executor&quot;: &quot;Run&quot;,
+    &quot;LaTeX.docker-additional.executor&quot;: &quot;Run&quot;,
+    &quot;LaTeX.docker-assignment.executor&quot;: &quot;Run&quot;,
+    &quot;LaTeX.docker-compose.executor&quot;: &quot;Run&quot;,
+    &quot;LaTeX.docker.executor&quot;: &quot;Run&quot;,
+    &quot;LaTeX.git-in-devops.executor&quot;: &quot;Run&quot;,
+    &quot;LaTeX.git-webhooks.executor&quot;: &quot;Run&quot;,
+    &quot;LaTeX.github-actions.executor&quot;: &quot;Run&quot;,
+    &quot;LaTeX.iac.executor&quot;: &quot;Run&quot;,
+    &quot;LaTeX.lab-common.executor&quot;: &quot;Run&quot;,
+    &quot;LaTeX.packer.executor&quot;: &quot;Run&quot;,
+    &quot;LaTeX.poor-mans-gitops.executor&quot;: &quot;Run&quot;,
+    &quot;LaTeX.proxy-tunneling.executor&quot;: &quot;Run&quot;,
+    &quot;LaTeX.what-is-devops.executor&quot;: &quot;Run&quot;,
+    &quot;LaTeX.yandex-cloud-packer.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;I do mind&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/prafdin/repos/devops-course/2026&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.4239905&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;terminal&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "TEXT"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;TEXT&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/2026" />
@@ -265,14 +256,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1749485683178</updated>
-    </task>
-    <task id="LOCAL-00063" summary="Корректировки по лекции и лабе">
-      <option name="closed" value="true" />
-      <created>1758571658374</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1758571658374</updated>
     </task>
     <task id="LOCAL-00064" summary="Корректировки по лекции и лабе">
       <option name="closed" value="true" />
@@ -658,7 +641,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766313702491</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <task id="LOCAL-00112" summary="fix make scripts&#10;add dummy lab">
+      <option name="closed" value="true" />
+      <created>1769457304300</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1769457304302</updated>
+    </task>
+    <option name="localTasksCounter" value="113" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -673,7 +664,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Remove explicit stop command" />
     <MESSAGE value="Override project name for composes" />
     <MESSAGE value="Fix project src for compose" />
     <MESSAGE value="Release compose lecture" />
@@ -698,6 +688,7 @@
     <MESSAGE value="Add transparent dep" />
     <MESSAGE value="Add catchfile dep" />
     <MESSAGE value="Rm pdfs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rm pdfs" />
+    <MESSAGE value="fix make scripts&#10;add dummy lab" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix make scripts&#10;add dummy lab" />
   </component>
 </project>
