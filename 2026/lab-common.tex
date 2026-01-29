@@ -61,10 +61,10 @@
 \definecolor{ssaublue}{RGB}{77,144,205}
 
 % Форматирование заголовков
-\usepackage{titlesec}
-\titleformat{\section}{\Large\bfseries\color{ssaublue}}{\thesection}{1em}{}
-\titleformat{\subsection}{\large\bfseries\color{ssaublue}}{\thesubsection}{1em}{}
-\titleformat{\subsubsection}{\large\bfseries\color{ssaublue}}{\thesubsubsection}{1em}{}
+\usepackage[explicit]{titlesec}
+\titleformat{\section}{\Large\bfseries\color{ssaublue}}{\thesection}{1em}{\parbox[t]{\dimexpr\linewidth-5em}{\raggedright #1}}
+\titleformat{\subsection}{\large\bfseries\color{ssaublue}}{\thesubsection}{1em}{\parbox[t]{\dimexpr\linewidth-5em}{\raggedright #1}}
+\titleformat{\subsubsection}{\large\bfseries\color{ssaublue}}{\thesubsubsection}{1em}{\parbox[t]{\dimexpr\linewidth-5em}{\raggedright #1}}
 
 % Полезные пакеты
 \usepackage{graphicx}
