@@ -70,7 +70,6 @@ hard stmaryrd
 hard svg
 hard tcolorbox
 hard textpos
-hard tikz
 hard tikzpagenodes
 hard titlesec
 hard titling
