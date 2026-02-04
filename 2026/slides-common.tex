@@ -1,0 +1,95 @@
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage{color}
+\usepackage{listings}
+\setdefaultlanguage{russian}
+\usepackage{csquotes}
+\usetheme{metropolis}
+\metroset{background=light}
+\metroset{sectionpage=none}
+\metroset{numbering=fraction}
+
+\definecolor{ssaublue}{RGB}{77,144,205}
+\setbeamercolor{frametitle}{fg=white, bg=ssaublue}
+\setbeamercolor{title separator}{fg=ssaublue}
+
+\setmainfont[
+    Path = ../fonts/elektratextpro/,
+    Extension = .otf,
+    UprightFont = elektratextpro,
+    BoldFont = elektratextpro_bold,
+    ItalicFont = elektratextpro_italic,
+    BoldItalicFont = elektratextpro_bolditalic
+]{elektratextpro}
+
+\setsansfont[
+    Path = ../fonts/elektratextpro/,
+    Extension = .otf,
+    UprightFont = elektratextpro,
+    BoldFont = elektratextpro_bold,
+    ItalicFont = elektratextpro_italic,
+    BoldItalicFont = elektratextpro_bolditalic
+]{elektratextpro}
+
+\setmonofont[
+    Path = ../fonts/elektratextpro/,
+    Extension = .otf,
+    UprightFont = elektratextpro,
+    BoldFont = elektratextpro_bold,
+    ItalicFont = elektratextpro_italic,
+    BoldItalicFont = elektratextpro_bolditalic
+]{elektratextpro}
+
+\newfontfamily\cyrillicfont[
+    Path = ../fonts/elektratextpro/,
+    Extension = .otf,
+    UprightFont = elektratextpro,
+    BoldFont = elektratextpro_bold,
+    ItalicFont = elektratextpro_italic,
+    BoldItalicFont = elektratextpro_bolditalic
+]{elektratextpro}
+
+\newfontfamily\cyrillicfontsf[
+    Path = ../fonts/elektratextpro/,
+    Extension = .otf,
+    UprightFont = elektratextpro,
+    BoldFont = elektratextpro_bold,
+    ItalicFont = elektratextpro_italic,
+    BoldItalicFont = elektratextpro_bolditalic
+]{elektratextpro}
+
+\newfontfamily\cyrillicfonttt[
+    Path = ../fonts/elektratextpro/,
+    Extension = .otf,
+    UprightFont = elektratextpro,
+    BoldFont = elektratextpro_bold,
+    ItalicFont = elektratextpro_italic,
+    BoldItalicFont = elektratextpro_bolditalic
+]{elektratextpro}
+
+% Настройка листингов для Beamer
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    commentstyle=\color{gray},
+    columns=fullflexible,
+    keepspaces=true,
+    breaklines=false,
+    extendedchars=true,
+    texcl=true,
+    showstringspaces=false
+}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=ssaublue,
+    urlcolor=ssaublue,
+    citecolor=ssaublue
+}
+
+\newenvironment{tightitemize}{
+    \begin{itemize}
+        \setlength{\itemsep}{0pt}
+        \setlength{\parskip}{0pt}
+        \setlength{\parsep}{0pt}
+        }{
+    \end{itemize}
+}
