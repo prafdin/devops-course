@@ -1,0 +1,149 @@
+\documentclass[aspectratio=169]{beamer}
+
+\input{../slides-common}
+
+\title{Веб-сервер, прокси-сервер}
+\date{14 февраля 2026 г.}
+
+\begin{document}
+    \maketitle
+
+    \begin{frame}{Что такое веб-сервер?}
+        \textbf{HTTP веб-сервер} - программное обеспечение, которое принимает HTTP-запросы от \textbf{клиентов}, обрабатывает и возвращает HTTP-ответы
+        
+        \vspace{0.5cm}
+        
+        \textbf{Принцип работы:}
+        \begin{enumerate}
+            \item Клиент отправляет HTTP-запрос к \textbf{ресурсу}, указывая его \textbf{идентификатор}
+            \item Веб-сервер \textbf{обрабатывает} запрос и возвращает HTTP ответ
+        \end{enumerate}
+        
+        \vspace{0.5cm}
+        
+        \textbf{Примеры веб-серверов:}
+        \begin{itemize}
+            \item Apache
+            \item Nginx
+            \item Python http.server
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Клиенты веб-серверов}
+        \textbf{Примеры клиентов веб-серверов:}
+        \begin{itemize}
+            \item Браузер
+            \item Утилиты командной строки (curl, wget)
+            \item Другой веб-сервер (reverse proxy)
+            \item Серверное приложение (backend приложение)
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Ресурсы предоставляемые веб-сервером}
+        Ресурс - абстрактная сущность, идентифицируемая URL, доступ к которой предоставляется через веб-сервер.
+
+        \textbf{Примеры ресурсов:}
+        \begin{itemize}
+            \item Файл (HTML файл готовый или обработанный, бинарные файлы)
+            \item Динамически сгенерированные данные
+            \item Записи в БД
+            \item Состояние сервиса
+            \item Проксируемые ресурсы другого сервиса
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Uniform Resource Locator (URL)}
+        \begin{center}
+            \includegraphics[width=1\textwidth]{media/URL}
+        \end{center}
+
+        \vfill
+
+        \footnotesize{
+            \textcolor{gray}{\href{https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL}{https://developer.mozilla.org/en-US/docs/Learn\_web\_development...}}
+            \textcolor{gray}{\url{https://habr.com/ru/articles/190154}}
+        }
+    \end{frame}
+
+    \begin{frame}{HTTP}
+        \begin{center}
+            \includegraphics[width=1\textwidth]{media/http}
+        \end{center}
+
+        \vfill
+
+        \footnotesize{\textcolor{gray}{\url{https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Messages}}}
+    \end{frame}
+
+    \begin{frame}{Демонстрация: запустим простой веб-сервер}
+        \textbf{Что посмотрим:}
+        \begin{itemize}
+            \item Запуск статического и динамического веб-сервера
+            \item Обращение к веб-серверу из браузера, developers tools
+            \item Обращение к веб-серверу с помощью curl
+        \end{itemize}
+
+        \vspace{0.2cm}
+        \textbf{Демо-репозиторий:} \\
+        \href{https://github.com/prafdin/devops-course-demos/tree/webserver-proxy-tunneling}{\texttt{https://github.com/prafdin/devops-course-demos/tree/webserver-proxy-tunneling}}
+
+    \end{frame}
+
+    \begin{frame}{Прокси}
+        \textbf{Прокси сервер} — сервер-посредник между клиентом (кто запрашивает ресурс) и сервером (кто предоставляет ресурс)
+        
+        \vspace{0.5cm}
+        
+        \begin{columns}[t]
+            \begin{column}[t]{0.465\textwidth}
+                \textbf{Forward proxy:}
+                \begin{itemize}
+                    \item Клиент → Прокси → Интернет
+                    \item Скрывает клиента от сервера
+                    \item Пример: корпоративный прокси
+                \end{itemize}
+            \end{column}
+            
+            \begin{column}[t]{0.465\textwidth}
+                \textbf{Reverse proxy:}
+                \begin{itemize}
+                    \item Интернет → Прокси → Сервер
+                    \item Скрывает сервер от клиента
+                    \item Пример: nginx перед приложением
+                \end{itemize}
+            \end{column}
+        \end{columns}
+    \end{frame}
+
+    \begin{frame}
+        \vfill
+        \begin{center}
+            \includegraphics[width=0.95\textwidth]{media/proxy}
+        \end{center}
+        \vfill
+        
+        \footnotesize{\url{https://youtu.be/4NB0NDtOwIQ?si=PTjH0R9xBrfBxlBr}}
+    \end{frame}
+
+    \begin{frame}{Демонстрация: nginx в качестве reverse proxy}
+        \textbf{Что посмотрим:}
+        \begin{itemize}
+            \item Маршрутизация по портам
+            \item Маршрутизация по path
+            \item Маршрутизация по заголовку Host
+        \end{itemize}
+
+        \vspace{0.2cm}
+        \textbf{Демо-репозиторий:} \\
+        \href{https://github.com/prafdin/devops-course-demos/tree/webserver-proxy-tunneling}{\texttt{https://github.com/prafdin/devops-course-demos/tree/webserver-proxy-tunneling}}
+
+    \end{frame}
+
+    \begin{frame}{Что запомнить}
+        \begin{itemize}
+            \item \textbf{HTTP} — основа веб-коммуникации (заголовки, статус коды)
+            \item \textbf{Forward Proxy} — клиент → прокси → интернет
+            \item \textbf{Reverse Proxy} — интернет → прокси → сервер
+        \end{itemize}
+    \end{frame}
+\end{document}
