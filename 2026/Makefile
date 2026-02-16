@@ -46,6 +46,7 @@ package/index.html: $(PDFS)
 			echo "<li><a href='assignments/$${name}'>$${name}</a></li>"
 		done
 		echo "</ul>"
+		echo "<p>Ведомость и варианты: <a href=\"https://docs.google.com/spreadsheets/d/1Yn1ndqJN1kfMd_l4s7Owe69pmjhxSurJq5D-Abu8_c4/edit?usp=sharing\">ОИС. DevOps 2026</a></p>"
 		echo "
 			</section>
 			</body></html>
