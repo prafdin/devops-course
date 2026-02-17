@@ -1,0 +1,170 @@
+\documentclass[aspectratio=169]{beamer}
+
+\input{../slides-common}
+
+\title{SSH, Туннелирование, Fast Reverse Proxy}
+\date{18 февраля 2026 г.}
+
+\begin{document}
+    \maketitle
+
+    \begin{frame}{Терминал}
+        Терминал — устройство, используемое для взаимодействия пользователя с компьютером через командную оболочку ОС.
+
+        Эмулятор терминала — графическое приложение для работы с командной оболочкой ОС.
+        \begin{center}
+            \includegraphics[width=0.49\textwidth]{media/terminal}
+            \includegraphics[width=0.49\textwidth]{media/gnome-terminal}
+        \end{center}
+    \end{frame}
+
+    \begin{frame}{Командная оболочка}
+        Командная оболочка (shell) — программа, предоставляющая текстовый интерфейс для взаимодействия пользователя с операционной системой.
+
+        \textbf{Виды взаимодействий:}
+        \begin{itemize}
+            \item Запуск и управление программами
+            \item Управление файловой системой
+            \item Администрирование системы
+            \item Автоматизация и скриптинг
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Удаленный доступ к shell}
+        Telnet — сетевой протокол для взаимодействия с командной оболочкой ОС удаленного сервера.
+        \begin{center}
+            \includegraphics[width=0.55\textwidth]{media/telnet}
+        \end{center}
+    \end{frame}
+
+    \begin{frame}{}
+        \begin{center}
+            \includegraphics[width=0.65\textwidth]{media/telnet-guy-fawkes}
+        \end{center}
+    \end{frame}
+
+    \begin{frame}{Secure Shell}
+        Secure Shell (SSH) — криптографический сетевой протокол для безопасного взаимодействия с командной оболочкой ОС удаленного сервера.
+        \begin{center}
+            \includegraphics[width=0.45\textwidth]{media/ssh}
+        \end{center}
+    \end{frame}
+
+    \begin{frame}{SSH key authorization}
+        \begin{center}
+            \includegraphics[width=1\textwidth]{media/ssh-key-flow}
+        \end{center}
+    \end{frame}
+
+    \begin{frame}{Туннелирование}
+        Туннелирование — технология инкапсуляции одного сетевого протокола в другой для создания канала передачи данных
+
+        \vspace{0.3cm}
+
+        \textbf{Назначение:}
+        \begin{itemize}
+            \item Обход сетевых ограничений (NAT, firewall)
+            \item Обеспечение безопасности передачи данных
+        \end{itemize}
+
+        \vspace{0.3cm}
+
+        \textbf{Принцип работы:}
+        \begin{enumerate}
+            \item Исходный трафик упаковывается в другой протокол
+            \item Передается через промежуточный сервер
+            \item Распаковывается на стороне получателя
+        \end{enumerate}
+    \end{frame}
+
+    \begin{frame}
+        \vfill
+        \begin{center}
+            \includegraphics[width=0.95\textwidth]{media/ssh-tunneling}
+        \end{center}
+        \vfill
+    \end{frame}
+
+    \begin{frame}
+        \vfill
+        \begin{center}
+            \includegraphics[width=0.75\textwidth]{media/traverse-nat}
+        \end{center}
+        \vfill
+    \end{frame}
+
+    \begin{frame}{Демонстрация: Туннелирование через SSH}
+        \textbf{Что покажем:}
+        \begin{itemize}
+            \item Запуск веб-сервера на удаленной машине
+            \item Создание SSH туннеля: локальный порт → удаленный сервис
+            \item Доступ к удаленному серверу через локальный порт
+            \item Перенаправление запросов с удаленного сервера на локальный порт
+        \end{itemize}
+
+        \vspace{0.2cm}
+        \textbf{Демо-репозиторий:} \\
+        \href{https://github.com/prafdin/devops-course-demos/tree/webserver-proxy-tunneling}{\texttt{https://github.com/prafdin/devops-course-demos/tree/webserver-proxy-tunneling}}
+    \end{frame}
+
+    \begin{frame}{FRP: reverse proxy + тунель}
+        \textbf{Fast Reverse Proxy (FRP)} — обратный прокси сервер с поддержкой туннелирования до клиентов
+
+        \vspace{0.5cm}
+
+        \textbf{Возможности FRP:}
+        \begin{itemize}
+            \item HTTP туннели
+            \item TCP туннели
+            \item UDP туннели
+            \item Работа через NAT и firewall
+        \end{itemize}
+
+        \vspace{0.5cm}
+
+        \textbf{Архитектура:}
+        \begin{center}
+            Клиент → FRP Server ← FRP Client ← Сервер
+        \end{center}
+
+    \end{frame}
+
+    \begin{frame}
+        \vfill
+        \begin{center}
+            \includegraphics[width=0.70\textwidth]{media/frp}
+        \end{center}
+        \vfill
+    \end{frame}
+
+    \begin{frame}{Демонстрация: FRP в действии}
+        \textbf{Что покажем:}
+        \begin{itemize}
+            \item Установка и настройка FRP клиента
+            \item Создание HTTP туннеля для веб-сервера
+            \item Создание TCP туннеля для SSH доступа
+            \item Доступ к внутренним сервисам через внешний домен
+        \end{itemize}
+
+        \vspace{0.2cm}
+        \textbf{Демо-репозиторий:} \\
+        \href{https://github.com/prafdin/devops-course-demos/tree/webserver-proxy-tunneling}{\texttt{https://github.com/prafdin/devops-course-demos/tree/webserver-proxy-tunneling}}
+
+    \end{frame}
+
+    \begin{frame}{Что запомнить}
+        \begin{itemize}
+            \item \textbf{HTTP} — основа веб-коммуникации (заголовки, статус коды)
+            \item \textbf{Forward Proxy} — клиент → прокси → интернет
+            \item \textbf{Reverse Proxy} — интернет → прокси → сервер
+            \item \textbf{Туннелирование} — создание канала передачи данных через сеть
+        \end{itemize}
+
+        \vspace{1cm}
+
+        \begin{center}
+            \textbf{Вопросы?}
+        \end{center}
+    \end{frame}
+
+\end{document}
