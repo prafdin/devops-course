@@ -1,0 +1,173 @@
+\documentclass[aspectratio=169]{beamer}
+
+\input{../slides-common}
+
+\title{Git в DevOps}
+\date{4 марта 2026 г.}
+
+\begin{document}
+    \maketitle
+
+    \begin{frame}{Зачем VCS?}
+        \vfill
+        \begin{center}
+            \includegraphics[width=0.40\textwidth]{media/git-meme}
+        \end{center}
+        \vfill
+    \end{frame}
+
+    \begin{frame}{Git}
+        \textbf{Git} — система хранения и управления версиями файлов (модель данных, способ хранения, протокол синхронизации при совместной разработке).
+
+        \textbf{Git репозиторий} — проект, управляемый Git, с сохранённой историей изменений.
+
+        \textbf{Git CLI} — утилита командной строки для работы с Git репозиторием.
+    \end{frame}
+
+    \begin{frame}{Git как система}
+        \begin{center}
+            \includegraphics[width=0.45\textwidth]{media/git-as-system}
+        \end{center}
+        \footnotesize{
+            \textcolor{gray}{\href{https://www.alibabacloud.com/blog/a-detailed-explanation-of-the-underlying-data-structures-and-principles-of-git_597391}{https://www.alibabacloud.com/blog/a-detailed-exp...}}
+        }
+    \end{frame}
+
+    \begin{frame}{Git репозиторий}
+        \begin{center}
+            \includegraphics[width=0.65\textwidth]{media/git-repo}
+        \end{center}
+    \end{frame}
+
+    \begin{frame}{Git CLI}
+        \begin{center}
+            Демонстрация
+        \end{center}
+    \end{frame}
+
+    \begin{frame}{Хранение}
+        \vfill
+        TBD
+        \vfill
+    \end{frame}
+
+    \begin{frame}{Версионирование}
+        \vfill
+        TBD
+        \vfill
+    \end{frame}
+
+    \begin{frame}{Параллельная работа в Git}
+        \vfill
+        \vfill
+    \end{frame}
+
+    \begin{frame}{GitHub}
+        \textbf{GitHub} — сервис для хранения и управления Git-репозиториями с дополнительными возможностями для совместной работы над проектом.
+        Возможности:
+        \begin{enumerate}
+            \item Общее пространство для совместной работы над слиянием кода (pull requests).
+            \item Управление списком задач и проблем проекта (issues).
+            \item Обсуждение и коммуникация (discussions).
+            \item Платформа автоматизации (GitHub Actions).
+            \item Аналитика проекта.
+        \end{enumerate}
+    \end{frame}
+
+    \begin{frame}{Эволюция роли Git}
+        \begin{columns}
+            \begin{column}{0.48\textwidth}
+                \textbf{Git ранее}
+                \begin{itemize}
+                    \item Хранилище исходного кода
+                    \item Версионирование файлов
+                    \item Работа с ветками
+                    \item Совместная разработка
+                \end{itemize}
+            \end{column}
+
+            \begin{column}{0.48\textwidth}
+                \textbf{Git в DevOps}
+                \begin{itemize}
+                    \item Центр управления системой
+                    \item Source of Truth для системы
+                    \item Триггер автоматизации
+                    \item Аудит изменений
+                \end{itemize}
+            \end{column}
+        \end{columns}
+
+        \vspace{0.5cm}
+
+        \textbf{Git репозиторий} становится местом хранения состояния \textbf{всей системы}
+    \end{frame}
+
+    \begin{frame}{Что хранится в DevOps репозитории?}
+        \begin{center}
+            \large
+            \texttt{my-project/}
+        \end{center}
+
+        \begin{itemize}
+            \item \texttt{src/} \textcolor{gray}{— исходный код приложения}
+            \item \texttt{config/} \textcolor{gray}{— файлы конфигурации}
+            \item \texttt{scripts/} \textcolor{gray}{— скрипты развертывания}
+            \item \texttt{docs/} \textcolor{gray}{— документация и инструкции}
+            \item \texttt{tests/} \textcolor{gray}{— тесты и проверки}
+        \end{itemize}
+
+        \vspace{0.2cm}
+
+        \textbf{Принцип:} если это влияет на систему — это должно быть в Git
+
+        \footnotesize{\textcolor{gray}{\url{https://octopus.com/blog/what-is-everything-as-code}}}
+    \end{frame}
+
+    \begin{frame}{Git как триггер автоматизации}
+        \begin{center}
+            \large
+            \textbf{События в Git запускают процессы}
+        \end{center}
+
+        \vspace{0.5cm}
+
+        \begin{columns}
+            \begin{column}{0.48\textwidth}
+                \textbf{Традиционный подход:}
+                \begin{itemize}
+                    \item Ручное развертывание
+                    \item Разделенные процессы
+                    \item Человеческий фактор
+                    \item Нет связи код <-> система
+                \end{itemize}
+            \end{column}
+
+            \begin{column}{0.48\textwidth}
+                \textbf{DevOps подход:}
+                \begin{itemize}
+                    \item git push → автодеплой
+                    \item git tag → релиз
+                    \item Pull Request → тестирование
+                    \item Коммит = событие системы
+                \end{itemize}
+            \end{column}
+        \end{columns}
+
+        \vspace{0.5cm}
+
+        \textbf{Принцип:} каждое изменение в Git влияет на всю систему
+    \end{frame}
+
+    \begin{frame}{Демонстрация: GitHub Webhook}
+        \textbf{Что покажем:}
+        \begin{itemize}
+            \item Настройка GitHub webhook
+            \item Настройка доступа к ВМ через реверс прокси
+            \item Автоматический запуск деплоя по событию в репозитории
+        \end{itemize}
+
+        \vspace{0.2cm}
+        \textbf{Демо-репозиторий:} \\
+        \href{https://github.com/prafdin/devops-demo-website/tree/webhook-demo}{\texttt{https://github.com/prafdin/devops-demo-website/tree/webhook-demo}}
+    \end{frame}
+\end{document}
