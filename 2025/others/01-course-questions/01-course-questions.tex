@@ -1,0 +1,91 @@
+\documentclass[12pt,a4paper]{article}
+
+\input{../../lab-common}
+
+\title{Вопросы к зачету «Открытые информационные системы. DevOps»}
+
+\begin{document}
+\maketitle
+
+\section{Что такое DevOps?}
+\begin{enumerate}
+    \item Что такое DevOps и какие проблемы он решает в современной разработке ПО?
+    \item Каковы ключевые цели и принципы DevOps?
+    \item В чем заключается роль DevOps-инженера и как она соотносится с культурой DevOps в команде?
+    \item Приведите примеры кейсов, демонстрирующих необходимость внедрения DevOps практик.
+\end{enumerate}
+
+\section{Веб-сервер, прокси и туннелирование}
+\begin{enumerate}
+    \item Что такое веб-сервер и каков его основной принцип работы?
+    \item Объясните разницу между forward proxy и reverse proxy. Приведите примеры использования каждого.
+    \item Что такое туннелирование и какие задачи оно позволяет решать?
+    \item Как работает SSH-туннелирование? Опишите сценарий его применения.
+    \item Что такое FRP (Fast Reverse Proxy) и какие задачи решает этот инструмент?
+\end{enumerate}
+
+\section{Git в DevOps}
+\begin{enumerate}
+    \item Какую роль занимает Git в DevOps?
+    \item Почему в DevOps-репозитории хранится не только исходный код, но и другие артефакты? Приведите примеры.
+    \item Как Git используется в качестве триггера для автоматизации?
+\end{enumerate}
+
+\section{CI/CD пайплайн}
+\begin{enumerate}
+    \item Что такое CI/CD пайплайн и из каких типичных шагов он состоит?
+    \item Сравните CI и CD. Каковы цели и задачи каждого из этих процессов?
+    \item Назовите основные компоненты GitHub Actions (Workflow, Job, Step, Action, Runner).
+    \item Какие преимущества дают готовые CI/CD платформы (Jenkins, GitHub Actions, GitLab CI) по сравнению с собственными решениями?
+\end{enumerate}
+
+\section{Управление конфигурацией}
+\begin{enumerate}
+    \item Какие проблемы решает автоматизация управления конфигурацией?
+    \item Сравните два подхода к управлению конфигурацией: "Baked" (образы) и "Fry" (скрипты). Назовите их плюсы и минусы.
+    \item Что такое Ansible и каковы его ключевые особенности (agentless, SSH, YAML, идемпотентность)?
+    \item Что такое "дрейф конфигурации" и как инструменты управления конфигурацией помогают его избежать?
+\end{enumerate}
+
+\section{Контейнеризация}
+\begin{enumerate}
+    \item Что такое контейнеризация и какие проблемы она решает?
+    \item Сравните контейнеры и виртуальные машины. В чем их ключевые различия?
+    \item Назовите основные понятия Docker: Image, Container, Dockerfile. Опишите их взаимосвязь.
+    \item Что такое Docker Registry и зачем он нужен?
+\end{enumerate}
+
+\section{Docker Compose}
+\begin{enumerate}
+    \item Что такое Docker Compose и какую проблему он решает?
+    \item Каковы преимущества использования Docker Compose для управления многоконтейнерными приложениями?
+    \item Назовите основные команды Docker Compose для управления жизненным циклом приложения.
+    \item Как с помощью Docker Compose можно масштабировать отдельный сервис?
+    \item Какие существуют альтернативы Docker Compose для оркестрации контейнеров?
+\end{enumerate}
+
+\section{Packer}
+\begin{enumerate}
+    \item Что такое Packer и для чего он используется?
+    \item Объясните, как работает Packer. Опишите его основные компоненты (Builder, Provisioner, Template).
+    \item Что такое Virtual Appliance?
+    \item Как Packer интегрируется в CI/CD пайплайн для автоматизации создания образов?
+\end{enumerate}
+
+\section{Cloud computing}
+\begin{enumerate}
+    \item Что такое облачные вычисления (Cloud computing)?
+    \item Сравните модели облачных вычислений: On-Premise, IaaS, PaaS, SaaS.
+    \item В чем разница между публичным и приватным облаком? Приведите примеры провайдеров.
+    \item Назовите основные преимущества использования облачных технологий.
+\end{enumerate}
+
+\section{Infrastructure as Code}
+\begin{enumerate}
+    \item Что такое Infrastructure as Code (IaC)?
+    \item Какие преимущества дает IaC по сравнению с ручным управлением инфраструктурой?
+    \item Что такое Terraform и для чего он используется?
+    \item Опишите основной рабочий процесс в Terraform (init, plan, apply).
+\end{enumerate}
+
+\end{document}
