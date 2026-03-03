@@ -15,7 +15,7 @@ jobs:
         with:
           submodules: true
       - run: sudo apt-get update --yes --fix-missing && sudo apt-get install --yes wget
-      - uses: prafdin/latexmk-action@master
+      - uses: prafdin/latexmk-action@master # TODO: revert to yegor256 after resolve https://github.com/yegor256/latexmk-action/issues/102
         with:
           cmd: make
           depends: DEPENDS.txt
