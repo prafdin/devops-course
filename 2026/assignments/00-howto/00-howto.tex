@@ -169,10 +169,35 @@ pull request чтобы проверка запустилась заново.
     \includegraphics[width=0.9\textwidth]{media/logs}
 \end{center}
 
-Для дополнительного анализа ошибок можно обратиться к исходному коду проверок в репозитории
+Для анализа ошибок обратитесь к разделу ~\nameref{sec:autochecks}, а также к исходному коду проверок в репозитории
 \href{https://github.com/prafdin/check-assignment/tree/main/scripts}{prafdin/check-assignment}.
 
 Если после изучения логов и исходного кода анализ ошибки затруднен, обратитесь к преподавателю.
+
+\section{Требования автоматической проверки}
+\label{sec:autochecks}
+
+\subsection{Требования к работе GitHub Webhooks}
+Код автоматической проверки: \href{https://github.com/search?q=repo%3Aprafdin%2Fcheck-assignment%20scripts%2Fcheck_webhooks_devops_assignment.py&type=code}
+{scripts/check\_webhooks\_devops\_assignment.py}
+
+\subsubsection{Приложение запущено и доступно через FRP}
+Условие проверки: приложение должно быть запущено и доступно по адресу:\footnote{Здесь и далее по тексту вместо ID необходимо использовать ID, которое было указано при регистрации на курс}
+\textit{app.ID.course.prafdin.ru}.
+
+Исходный код проверки: \href{https://github.com/search?q=repo%3Aprafdin%2Fcheck-assignment+check_app_is_alive+path%3A%2F%5Echecker%5C%2F%2F&type=code}{check\_app\_is\_alive}.
+
+\subsubsection{Приложение обновляется при наступлении события в репозитории}
+Условие проверки: значение \textit{deployref}, извлечённое с главной страницы до наступления события, не должно
+совпадать со значением, полученным после наступления события.
+
+Исходный код проверки: \href{https://github.com/search?q=repo%3Aprafdin%2Fcheck-assignment+check_event_update_site+path%3A%2F%5Echecker%5C%2F%2F&type=code}{check\_event\_update\_site}.
+
+\subsubsection{Значение deployref соответствует ожидаемому}
+Условие проверки: значение \textit{deployref}, извлечённое с главной страницы после наступления события, соответствует
+хешу коммита, вызвавшего данное событие.
+
+Исходный код проверки: \href{https://github.com/search?q=repo%3Aprafdin%2Fcheck-assignment+check_deploy_ref_matches_commit+path%3A%2F%5Echecker%5C%2F%2F&type=code}{check\_deploy\_ref\_matches\_commit}.
 
 \section{Bug Bounty}
 В рамках курса действует программа \textit{Bug Bounty}, направленная на выявление недочётов и ошибок в автоматических проверках лабораторных работ.
