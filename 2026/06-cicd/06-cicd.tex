@@ -1,0 +1,250 @@
+\documentclass[aspectratio=169]{beamer}
+
+\input{../slides-common}
+
+\title{CI/CD пайплайн}
+\date{11 марта 2026 г.}
+
+\begin{document}
+    \maketitle
+
+    \begin{frame}{Что мы имеем после прошлой лекции}
+        \textbf{Автоматизация через webhook работает:}
+        
+        \begin{itemize}
+            \item \href{https://github.com/prafdin/devops-demo-website/tree/webhook-demo}{Git push → запуск тестов, автоматический деплой}
+        \end{itemize}
+
+        \textbf{Но:}
+
+        \begin{itemize}
+            \item Изменения вебхук сервера требуют ручного вмешательства
+            \item Нет простого доступа к логам скриптов, нет статуса деплоя
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Индустриальные решения}
+        \textbf{В реальных проектах используют готовые платформы:}
+        
+        \begin{itemize}
+            \item \textbf{Jenkins} — самый популярный, self hosted
+            \item \textbf{GitHub Actions} — встроен в GitHub, есть бесплатный режим
+            \item \textbf{GitLab CI} — встроен в GitLab, есть self hosted режим
+            \item Azure DevOps, TeamCity, CircleCI...
+        \end{itemize}
+        
+        \vspace{0.5cm}
+        
+        \textbf{Общая идея:} вместо своего webhook сервера используем платформу (отдельное приложение), которая позволяет выполнять
+        скрипты по событиям в Git репозитории.
+    \end{frame}
+
+    \begin{frame}{Преимущества и недостатки платформ}
+        \begin{columns}[t]
+            \begin{column}[t]{0.48\textwidth}
+                \textbf{Плюсы:}
+                \begin{itemize}
+                    \item Надежность
+                    \item Масштабируемость
+                    \item Удобство
+                    \item Интеграции
+                    \item Переиспользуемые скрипты
+                \end{itemize}
+            \end{column}
+            
+            \begin{column}[t]{0.48\textwidth}
+                \textbf{Минусы:}
+                \begin{itemize}
+                    \item Дополнительная сложность
+                    \item Свой язык автоматизации
+                    \item Ограниченные возможности
+                \end{itemize}
+            \end{column}
+        \end{columns}
+    \end{frame}
+
+    \begin{frame}{Концепция Pipeline}
+        У всех этих платформ есть общая концепция — \textbf{Pipeline}
+        
+        \vspace{0.2cm}
+        
+        \textbf{Pipeline} — последовательность шагов автоматизации, задаваемая в конфигурации системы.
+
+        \vspace{0.2cm}
+        
+        \textbf{Типичные шаги:}
+        \begin{enumerate}
+            \item получить код из git репозитория;
+            \item собрать приложение, при необходимости;
+            \item запустить тесты;
+            \item задеплоить на сервер.
+        \end{enumerate}
+    \end{frame}
+
+    \begin{frame}{GitHub Actions}
+        GitHub Actions реализует концепцию pipeline через описание процессов автоматизации в \href{yaml.org}{YAML} файлах.
+
+        \vspace{0.5cm}
+        
+        \textbf{Базовые понятия:}
+        \begin{itemize}
+            \item \textbf{Workflow} — описание pipeline в YAML файле;
+            \item \textbf{Job} — группа связанных шагов (например, "тестирование");
+            \item \textbf{Step} — shell скрипт или вызов action;
+            \item \textbf{Action} — готовый набор шагов автоматизации (например, "протестируй dotnet приложение");
+            \item \textbf{Runner} — сервер, выполняющий workflow.
+        \end{itemize}
+
+        \vspace{0.2cm}
+
+        \href{https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax}{\textbf{\underline{Структура:}}} Workflow содержит Jobs, Job содержит Steps
+
+        \vspace{0.2cm}
+
+        \href{https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows}{\textbf{\underline{Триггеры:}}} push, pull request, расписание, ручной запуск
+    \end{frame}
+
+    \begin{frame}{}
+        \begin{center}
+            \includegraphics[width=0.8\textwidth]{media/githubactions-components}
+        \end{center}
+    \end{frame}
+
+    \begin{frame}{Демонстрация: Переносим webhook на GitHub Actions}
+        \textbf{Задача:} воспроизвести логику нашего webhook сервера в GitHub
+
+        \vspace{0.3cm}
+        
+        \textbf{Что покажем:}
+        \begin{itemize}
+            \item Как добавить workflow в GitHub репозиторий
+            \item Описание workflow
+            \item Работа с секретами в GitHub Actions
+        \end{itemize}
+
+        \vspace{0.2cm}
+        \textbf{Демо-репозиторий:}
+        \href{https://github.com/prafdin/devops-demo-website/tree/cicd-demo}{\texttt{https://github.com/prafdin/devops-demo-website/tree/cicd-demo}}
+    \end{frame}
+
+    \begin{frame}{Webhook vs GitHub Actions pipeline}
+        \begin{center}
+            \includegraphics[width=1\textwidth]{media/result}
+        \end{center}
+    \end{frame}
+
+    \begin{frame}{}
+        \begin{center}
+            \Large
+            Что произойдет, если в основную ветку попадет некорректный код?
+        \end{center}
+    \end{frame}
+
+    \begin{frame}{Последствия некорректного кода в основной ветке}
+        \begin{itemize}
+            \item Сломается деплой;
+            \item На прод попадет некорректный код;
+            \item Другие разработчики получают нестабильное состояние проекта;
+        \end{itemize}
+
+        \vspace{0.4cm}
+
+        \textbf{Основная ветка без защиты перестает быть надежным источником о состоянии проекта.}
+    \end{frame}
+
+    \begin{frame}{Quality gate для интеграции кода в основную ветку}
+        \textbf{Цель:} основная ветка должна отображать последнее исправное состояние проекта.
+
+        \vspace{0.3cm}
+
+        \textbf{Quality gate} — механизм проверки изменений перед их интеграцией.
+
+        \vspace{0.3cm}
+
+        \textbf{Задача quality gate для кода:}
+        \begin{itemize}
+            \item проверять соответствие требованиям проекта: стайлчекер, линтер, тесты;
+            \item не допускать интеграцию некорректных изменений в основную ветку.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Вариант QG: git hooks}
+        \begin{center}
+            \includegraphics[width=1\textwidth]{media/git-hook}
+        \end{center}
+        \footnotesize{\href{https://blog.gitguardian.com/git-hooks-automated-secrets-detection/}{https://blog.gitguardian.com/git-hooks...}}
+    \end{frame}
+
+    \begin{frame}{Вариант QG: pull request checks}
+        \begin{center}
+            \includegraphics[width=0.7\textwidth]{media/ci-in-pr-flow}
+        \end{center}
+        \footnotesize{\href{https://innerjoin.bit.io/making-a-simple-data-pipeline-part-4-ci-cd-with-github-actions-733251f211a6}{https://innerjoin.bit.io/making-a-simple...}}
+    \end{frame}
+
+    \begin{frame}{Демонстрация: настраиваем проверки для интеграции кода}
+        \textbf{Задача:} добавить проверки при интеграции кода в основную ветку репозитория
+
+        \vspace{0.3cm}
+
+        \textbf{Что покажем:}
+        \begin{itemize}
+            \item Новый workflow для проверки при интеграции
+            \item Запрет работать с веткой напрямую
+        \end{itemize}
+
+        \vspace{0.2cm}
+        \textbf{Демо-репозиторий:}
+        \href{https://github.com/prafdin/devops-demo-website/tree/cicd-pullrequest-demo}{\texttt{https://github.com/prafdin/devops-demo-website/tree/cicd-pullrequest-demo}}
+    \end{frame}
+
+    \begin{frame}{Наш pipeline — это CI/CD pipeline}
+        \textbf{Поздравляем! Мы только что создали CI/CD pipeline}
+        
+        \vspace{0.5cm}
+        
+        \textbf{CI/CD} — собирательный термин для задач по автоматизации разработки:
+        \begin{itemize}
+            \item \textbf{CI} — Continuous Integration (непрерывная интеграция)
+            \item \textbf{CD} — Continuous Deployment (непрерывное развертывание)
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Что такое CI и CD}
+        \begin{columns}[t]
+            \begin{column}[t]{0.48\textwidth}
+                \textbf{CI задачи это шлюзы:}
+                \begin{itemize}
+                    \item Линтинг
+                    \item Тесты
+                    \item Сканеры безопасности
+                \end{itemize}
+                
+                \vspace{0.3cm}
+                \textbf{Цель:} убедиться что код соответствует требованиям
+            \end{column}
+            
+            \begin{column}[t]{0.48\textwidth}
+                \textbf{CD задачи это преобразования:}
+                \begin{itemize}
+                    \item Сборка приложения
+                    \item Публикация и обновление приложения
+                \end{itemize}
+                
+                \vspace{0.3cm}
+                \textbf{Цель:} изменить состояние артефакта
+            \end{column}
+        \end{columns}
+    \end{frame}
+
+
+    \begin{frame}{Материалы по теме}
+        \begin{itemize}
+            \item \url{https://martinfowler.com/articles/continuousIntegration.html}
+            \item «Грокаем Continuous Delivery» Кристи Уилсон
+            \item «Continuous Deployment» Valentina Servile
+            \item «GitHub Actions in Action» Michael Kaufmann
+        \end{itemize}
+    \end{frame}
+
+\end{document}
