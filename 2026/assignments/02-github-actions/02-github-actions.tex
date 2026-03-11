@@ -1,0 +1,204 @@
+\documentclass[12pt,a4paper]{article}
+
+\input{../../lab-common}
+
+\usepackage{float}
+
+\renewcommand{\labtitle}{Лабораторная работа №2}
+\renewcommand{\labsubtitle}{GitHub Actions}
+
+\begin{document}
+
+\makelabcover
+
+\commoninstructions
+
+\textbf{Внимание:} Данная лабораторная работа является продолжением лабораторной работы №1.
+Для выполнения данной работы необходимо иметь подготовленный репозиторий из первой лабораторной работы.
+
+\section{Цель работы}
+
+Заменить самописный webhook обработчик из предыдущей лабораторной работы на CI/CD pipeline на платформе GitHub Actions.
+Сравнить подходы и изучить преимущества CI/CD платформ.
+
+\section{Содержание работы}
+
+В предыдущей работе был создан webhook обработчик, который автоматически разворачивал приложение при событии в репозитории.
+GitHub Actions позволяет решить ту же задачу без написания собственного обработчика и с дополнительными возможностями.
+
+\vspace{0.5cm}
+\textbf{Основные компоненты GitHub Actions:}
+\begin{itemize}
+    \item \textbf{Workflow} — набор из одной или нескольких задач (Job) автоматизации
+    \item \textbf{Job} — логическое объединение шагов (Step) автоматизации
+    \item \textbf{Step} — непосредственно исполняемое действие автоматизации.
+    Например, запуск shell скриптов или вызов готовых наборов задач — Action
+    \item \textbf{Action} — заранее определенный набор задач (Job), предоставляемый GitHub или сообществом
+    \item \textbf{Runner} — сервер, который выполняет workflows
+\end{itemize}
+
+\vspace{0.5cm}
+\textbf{Преимущества GitHub Actions перед webhook веб-сервером:}
+\begin{itemize}
+    \item Встроенная интеграция с GitHub
+    \item Широкий выбор готовых actions
+    \item Визуальный интерфейс и логи
+    \item Безопасное хранение секретов
+    \item Не требует собственной инфраструктуры для \href{https://docs.github.com/en/billing/concepts/product-billing/github-actions?versionId=free-pro-team%40latest&productId=actions&restPage=get-started%2Cunderstand-github-actions#free-use-of-github-actions}{небольших проектов}
+\end{itemize}
+
+\begin{task}{1}
+    Подготовить репозиторий из предыдущей лабораторной работы.
+    
+    \begin{enumerate}
+        \item создайте отдельную ветку \texttt{lab2} для работы с GitHub Actions;
+        \item временно отключите webhook: в настройках репозитория (Settings → Webhooks) снимите галочку \texttt{Active} у конкретного webhook;
+        \item создайте SSH ключи для доступа GitHub Actions к вашей виртуальной машине:
+        
+        \begin{lstlisting}[language=bash, numbers=none, frame=single, basicstyle=\ttfamily\footnotesize, columns=fullflexible, keepspaces=true, breaklines=false, commentstyle=\color{gray}\itshape, extendedchars=true, texcl=true, showstringspaces=false]
+# Генерируем SSH ключи (на вашей виртуальной машине)
+ssh-keygen -t rsa -C "github-actions" -f ~/.ssh/github_actions -N ""
+
+# Добавляем публичный ключ в authorized\_keys
+cat ~/.ssh/github_actions.pub >> ~/.ssh/authorized_keys
+
+# Выводим приватный ключ для добавления в GitHub Secrets
+cat ~/.ssh/github_actions
+        \end{lstlisting}
+        
+        \item скопируйте содержимое приватного ключа и добавьте его в GitHub Secrets:
+        \begin{itemize}
+            \item Перейдите в Settings → Secrets and variables → Actions
+            \item Нажмите New repository secret
+            \item Name: \texttt{SSH\_PRIVATE\_KEY}
+            \item Value: вставьте содержимое приватного ключа целиком (включая \texttt{-----BEGIN} и \texttt{-----END} строки)
+            \item Сохраните секрет
+        \end{itemize}
+    \end{enumerate}
+\end{task}
+
+\begin{task}{2}
+    Настроить SSH доступ до вашей виртуальной машины через FRP для работы CD workflow.
+    
+    \begin{enumerate}
+        \textbf{Внимание! Будьте осторожны, открывая SSH доступ всему миру! Позаботьтесь о том, что у вас стоит надежный пароль,
+            а лучше всего чтобы на виртуальной машине была \href{https://stackoverflow.com/questions/20898384/disable-password-authentication-for-ssh}{отключена аутентификация по паролю}}.
+        \item Обновите конфигурацию FRP для работы с GitHub Actions:
+        
+        \begin{lstlisting}[language=bash, numbers=none, frame=single, basicstyle=\ttfamily\footnotesize, columns=fullflexible, keepspaces=true, breaklines=false, commentstyle=\color{gray}\itshape, extendedchars=true, texcl=true, showstringspaces=false]
+# Настройка переменных.  Актуальные значения уточняйте в ведомости!
+PROXY=course.prafdin.ru
+TOKEN=tokentoken
+ID=prafdin
+SSH_PORT=2200
+
+# Обновляем конфигурацию FRP - убираем webhook, добавляем SSH
+# Команда запросит пароль текущего пользователя
+sudo tee /etc/frp/frpc.toml > /dev/null <<EOF
+serverAddr = "$PROXY"
+serverPort = 7000
+
+auth.method = "token"
+auth.token = "$TOKEN"
+
+# Проброс для приложения (остается как было)
+[[proxies]]
+name = "app-$ID"
+type = "http"
+localPort = 8181
+customDomains = ["app.$ID.$PROXY"]
+
+# Новый проброс для SSH доступа GitHub Actions
+[[proxies]]
+name = "ssh-$ID"
+type = "tcp"
+localPort = 22
+remotePort = $SSH_PORT
+EOF
+
+# Перезапустите frpc
+sudo systemctl restart frpc
+
+# Проверьте SSH подключение к серверу через новый порт
+ssh -p $SSH_PORT $USER@$PROXY
+        \end{lstlisting}
+
+    \end{enumerate}
+\end{task}
+
+\begin{task}{3}
+    Создать CI workflow для проверки кода.
+    
+    \begin{enumerate}
+        \item Создайте файл \texttt{.github/workflows/ci.yml};
+        \item Настройте workflow для запуска тестов при push нового коммита и создании pull request;
+        \item В workflow добавьте загрузку файл с отчетом запущенных тестов с названием \texttt{test\_result} с помощью
+            \href{https://github.com/actions/upload-artifact}{actions/upload-artifact};
+        \item Убедитесь, что workflow запускается, успешно проходит и загружается файл с результатами тестов.
+    \end{enumerate}
+
+    В этом workflow вся работа (сборка, тестирование) должна происходить на GitHub Runner.
+    В рамках CI workflow подключения до виртуальной машины не требуется.
+
+    \textbf{Полезная информация:}
+    \begin{itemize}
+        \item \href{https://github.com/actions/runner-images?tab=readme-ov-file#available-images}{Список предустановленного ПО на GitHub Runners}
+        \item Полезные GitHub Actions: 
+        \begin{itemize}
+            \item \href{https://github.com/actions/checkout}{actions/checkout};
+            \item \href{https://github.com/actions/setup-dotnet}{actions/setup-dotnet};
+            \item \href{https://github.com/actions/setup-python}{actions/setup-python}.
+        \end{itemize}
+    \end{itemize}
+\end{task}
+
+\begin{task}{4}
+    Создать CD workflow развертывания приложения.
+
+    \begin{enumerate}
+        \item создайте файл \texttt{.github/workflows/deploy.yml};
+        \item настройте запуск workflow по наступлению события \href{https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#release}{release};
+        \item реализуйте ту же логику развертывания, что была в webhook веб-сервере;
+        \item протестируйте развертывание;
+        \item убедитесь, что приложение обновляется и доступно по тому же адресу: \texttt{http://app.\$ID.\$PROXY}
+    \end{enumerate}
+
+    Этот workflow должен включать в себя сборку и развертывание приложения.
+    Сборку необходимо производить на GitHub Runner.
+    Для доступа к виртуальной машине воспользуйтесь предварительно добавленным приватным ключом через \href{https://docs.github.com/ru/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets}{GitHub Secrets}
+
+    \textbf{Полезная информация:}
+    \begin{itemize}
+        \item Полезные GitHub Actions:
+        \begin{itemize}
+            \item \href{https://github.com/appleboy/ssh-action}{appleboy/ssh-action@v1};
+            \item \href{https://github.com/webfactory/ssh-agent}{webfactory/ssh-agent@v0.7.0};
+            \item \href{https://github.com/appleboy/scp-action}{appleboy/scp-action@v1}.
+        \end{itemize}
+    \end{itemize}
+    
+    \textbf{Примечание:}
+    \begin{itemize}
+        \item Все необходимые зависимости приложения предварительно могут быть установлены вручную на виртуальной машине.
+        Список зависимостей должен быть зафиксирован в документации или специальном файле, например, в requirements.txt в случае Python приложения;
+        \item Разворачиваемое приложение должно быть доступно по адресу \texttt{http://app.\$ID.\$PROXY} и запущено на порту 8181.
+    \end{itemize}
+\end{task}
+
+
+\section{Контрольные вопросы}
+\begin{enumerate}
+    \item Сравните GitHub Actions и webhook обработчик из предыдущей лабораторной работы. Какие преимущества и недостатки у каждого подхода?
+    \item Что такое Workflow в GitHub Actions и из каких основных компонентов он состоит?
+    \item Какие события могут запускать workflow в GitHub Actions? Приведите несколько примеров.
+    \item В чем разница между GitHub Secrets и GitHub Environment Variables? Когда использовать каждый?
+    \item В чем разница между GitHub-hosted runners и self-hosted runners? Какие плюсы у каждого типа?
+    \item Зачем использовать FRP в данной работе? Какие проблемы это решает?
+    \item В чем заключается различие между CI и CD задачами? Как эти практики реализованы в данной лабораторной работе?
+    \item Почему важно разделять этапы сборки, тестирования и развертывания в CI/CD pipeline? Какие преимущества это даёт?
+    \item Чем отличается trigger по событию \texttt{push} от триггера \texttt{pull request}?
+    В каких сценариях используется каждый из них?
+    \item Как можно откатить приложение при настроенном CI/CD pipeline?
+\end{enumerate}
+
+\end{document}
