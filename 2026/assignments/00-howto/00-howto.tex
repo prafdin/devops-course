@@ -182,6 +182,7 @@ pull request чтобы проверка запустилась заново.
 {scripts/check\_webhooks\_devops\_assignment.py}
 
 \subsubsection{Приложение запущено и доступно через FRP}
+\label{sec:app-is-alive}
 Условие проверки: приложение должно быть запущено и доступно по адресу:\footnote{Здесь и далее по тексту вместо ID необходимо использовать ID, которое было указано при регистрации на курс}
 \textit{app.ID.course.prafdin.ru}.
 
@@ -194,10 +195,45 @@ pull request чтобы проверка запустилась заново.
 Исходный код проверки: \href{https://github.com/search?q=repo%3Aprafdin%2Fcheck-assignment+check_event_update_site+path%3A%2F%5Echecker%5C%2F%2F&type=code}{check\_event\_update\_site}.
 
 \subsubsection{Значение deployref соответствует ожидаемому}
+\label{sec:deployref-match}
 Условие проверки: значение \textit{deployref}, извлечённое с главной страницы после наступления события, соответствует
 хешу коммита, вызвавшего данное событие.
 
 Исходный код проверки: \href{https://github.com/search?q=repo%3Aprafdin%2Fcheck-assignment+check_deploy_ref_matches_commit+path%3A%2F%5Echecker%5C%2F%2F&type=code}{check\_deploy\_ref\_matches\_commit}.
+
+\subsection{Требования к работе GitHub Actions}
+Код автоматической проверки: \href{https://github.com/search?q=repo%3Aprafdin%2Fcheck-assignment%20check_github_actions_assignment.py&type=code}
+{scripts/check\_github\_actions\_assignment.py}.
+
+
+Список проверок, повторно используемых из прошлого задания:
+\begin{itemize}
+    \item ~\nameref{sec:app-is-alive}
+    \item ~\nameref{sec:deployref-match}
+\end{itemize}
+
+\subsubsection{Событие push запускает workflow}
+Условие проверки: для коммита, созданного автоматической проверкой, должен запуститься workflow и он должен завершиться успехом.
+
+Исходный код проверки: \href{https://github.com/search?q=repo%3Aprafdin%2Fcheck-assignment+push_and_check_workflow+path%3A%2F%5Echecker%5C%2F%2F&type=code}{push\_and\_check\_workflow}.
+
+\subsubsection{В workflow запускаются тесты}
+Условие проверки: для коммита, созданного автоматической проверкой, должны запускаться юнит-тесты, результаты которых прикладываются в workflow артефакт с названием \textit{test\_result}.
+Тесты должны завершиться без ошибок.
+
+Исходный код проверки: \href{https://github.com/search?q=repo%3Aprafdin%2Fcheck-assignment+check_tests_passed+path%3A%2F%5Echecker%5C%2F%2F&type=code}{check\_tests\_passed}.
+
+\subsubsection{В репозитории есть требуемые workflow файлы}
+Условие проверки: в репозитории должны находиться оба файла:\newline
+\textit{/.github/workflows/ci.yaml} и \textit{/.github/workflows/deploy.yaml}.
+
+Исходный код проверки: \href{https://github.com/search?q=repo%3Aprafdin%2Fcheck-assignment+check_required_workflow_files+NOT+path%3A%2F%5Etests%5C%2F%2F+path%3A%2F%5Echecker%5C%2F%2F&type=code}{check\_required\_workflow\_files}.
+
+\subsubsection{Release запускает CD workflow}
+Условие проверки: релиз, созданный автоматической проверкой, должен запустить CD workflow и обновить сайт: значение \textit{deployref},
+извлечённое с главной страницы до наступления события, не должно совпадать со значением, полученным после наступления события.
+
+Исходный код проверки: \href{https://github.com/search?q=repo%3Aprafdin%2Fcheck-assignment+check_release_updates_site+path%3A%2F%5Echecker%5C%2F%2F&type=code}{check\_release\_updates\_site}.
 
 \section{Bug Bounty}
 В рамках курса действует программа \textit{Bug Bounty}, направленная на выявление недочётов и ошибок в автоматических проверках лабораторных работ.
