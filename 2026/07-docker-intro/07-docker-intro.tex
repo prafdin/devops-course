@@ -1,0 +1,198 @@
+\documentclass[aspectratio=169]{beamer}
+
+\input{../slides-common}
+
+\title{Docker}
+\date{18 марта 2026 г.}
+
+\begin{document}
+    \maketitle
+
+    \begin{frame}{Что мы имеем после прошлой лекции}
+        \textbf{В GitHub Actions настроен CI/CD пайплайн :}
+
+        \begin{itemize}
+            \item \href{https://github.com/prafdin/devops-demo-website/tree/cicd-pullrequest-demo}{Pull request → запуск тестов; Git push → запуск тестов, автоматический деплой}
+        \end{itemize}
+
+        \textbf{Но:}
+
+        \begin{itemize}
+            \item Локальная разработка — боль
+            \item Нет разграничения dev/prod
+            \item Проблема «серверов-снежинок»
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Локальная разработка}
+        \begin{enumerate}
+            \item Runtime зависимости: базы данных, внешние сервисы, библиотеки
+            \item Разные Linux дистрибутивы: Ubuntu, CentOS, Arch и др.
+            \item Разные операционные системы: Windows, macOS, Linux
+        \end{enumerate}
+    \end{frame}
+
+    \begin{frame}{Работа с окружениями dev/prod}
+        \begin{enumerate}
+            \item Один сервер с nginx и для каждого окружения свой конфиг
+            \item Каждому окружению свой сервер
+        \end{enumerate}
+    \end{frame}
+
+    \begin{frame}{Демонстрация: деплой в dev и prod}
+        \textbf{Задача:} настроить деплой пайплайн для разных окружений
+
+        \vspace{0.3cm}
+
+        \textbf{Что посмотрим:}
+        \begin{itemize}
+            \item deploy-dev.yml и deploy-prod.yml
+            \item GitHub Environments
+            \item \textit{ps -C nginx -o rss= | awk '\{sum+=\$1\} END \{print sum/1024\}'}
+        \end{itemize}
+
+        \vspace{0.2cm}
+        \textbf{Демо-репозиторий:}
+        \href{https://github.com/prafdin/devops-demo-website/tree/envs-demo}{\texttt{https://github.com/prafdin/devops-demo-website/tree/envs-demo}}
+    \end{frame}
+
+    \begin{frame}{Сервера-снежинки}
+        \begin{itemize}
+            \item Каждый сервер — особенный
+            \begin{itemize}
+                \item \textit{nginx -v}
+                \item \textit{curl -I}
+            \end{itemize}
+            \item Configuration drift
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Решение — контейнеризация}
+        \begin{itemize}
+            \item Удобная работа с окружением и зависимостями
+            \item Изоляция процессов
+            \begin{itemize}
+                \item Удобная работа с несколькими экземплярами одного приложения
+                \item Безопасность
+                \item Контроль использования ресурсов
+            \end{itemize}
+            \item Стандартизация процесса развертывания
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Что такое контейнеризация?}
+        \textbf{Контейнеризация} — технология изоляции приложений с их зависимостями в отдельные исполняемые единицы.
+
+        \textbf{Контейнер} — процесс или группа процессов, запущенные в изолированном окружении.
+
+        \vspace{0.2cm}
+
+        \textbf{Изоляция на уровне:}
+        \begin{itemize}
+            \item \textbf{Процессов} — у каждого контейнера своё дерево процессов
+            \item \textbf{Сети} — у каждого контейнера свои сетевые интерфейсы, настройки маршрутизации
+            \item \textbf{Ресурсов } — cpu, ram, IO
+            \item \textbf{Файловой системы } — у каждого контейнера своя файловая система
+            \item \textbf{...} — а также много других механизмов ядра
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Виртуальные машины vs Контейнеры}
+        \begin{columns}[t]
+            \begin{column}[t]{0.5\textwidth}
+                \textbf{Виртуальные машины}
+                \begin{itemize}
+                    \item Полная ОС для каждого приложения
+                    \item Большой overhead
+                    \item Медленный старт
+                    \item Изоляция на уровне железа/гипервизора
+                \end{itemize}
+            \end{column}
+
+            \begin{column}[t]{0.5\textwidth}
+                \textbf{Контейнеры}
+                \begin{itemize}
+                    \item Общее ядро ОС
+                    \item Минимальный overhead
+                    \item Быстрый старт (секунды)
+                    \item Изоляция на уровне процессов
+                \end{itemize}
+            \end{column}
+        \end{columns}
+    \end{frame}
+
+    \begin{frame}{Виртуальные машины vs Контейнеры}
+        \begin{center}
+            \includegraphics[width=0.8\textwidth]{media/vm-vs-cont}
+        \end{center}
+
+        \vfill
+
+        \footnotesize{\textcolor{gray}{\url{https://dzone.com/articles/evolution-of-linux-containers-future}}}
+    \end{frame}
+
+    \begin{frame}{Способы работы с контейнерами}
+        \textbf{Существует несколько технологий контейнеризации:}
+
+        \begin{itemize}
+            \item \textbf{Docker} — самая популярная платформа контейнеризации
+            \item \textbf{Podman} — альтернатива Docker без демона
+            \item \textbf{LXC/LXD} — системные контейнеры
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Устройство docker}
+        \begin{center}
+            \includegraphics[width=0.8\textwidth]{media/docker-architecture}
+        \end{center}
+
+        \vfill
+
+        \footnotesize{\textcolor{gray}{\url{https://docs.docker.com/get-started/docker-overview}}}
+    \end{frame}
+
+    \begin{frame}{Основные понятия Docker}
+        \textbf{Ключевые абстракции Docker:}
+
+        \begin{itemize}
+            \item \textbf{Container} — процесс или группа процессов, запущенные в изолированном окружении
+            \item \textbf{Image} — шаблон контейнера, содержащий снимок файловой системы и метаданные контейнера
+            \item \textbf{Dockerfile} — инструкции для сборки образа (image)
+            \item \textbf{Registry} — серверное приложение для хранения и передачи образов
+        \end{itemize}
+
+        \vspace{0.3cm}
+
+        \textbf{Принцип работы:}
+        \begin{enumerate}
+            \item Описываем как собрать образ в Dockerfile
+            \item Собираем образ из Dockerfile
+            \item Запускаем контейнер из образа
+        \end{enumerate}
+    \end{frame}
+
+    \begin{frame}{Демонстрация: переход на docker в CI/CD пайплайне}
+        \textbf{Задача:} собирать и распространять приложение как образ docker контейнера
+
+        \vspace{0.3cm}
+
+        \textbf{Что посмотрим:}
+        \begin{itemize}
+            \item Сборка и деплой через Docker контейнеры
+            \item Запуск проекта в Windows
+        \end{itemize}
+
+        \vspace{0.2cm}
+        \textbf{Демо-репозиторий:}
+        \href{https://github.com/prafdin/devops-demo-website/tree/container-demo}{\texttt{https://github.com/prafdin/devops-demo-website/tree/container-demo}}
+    \end{frame}
+
+    \begin{frame}{Материалы по теме}
+        \begin{itemize}
+            \item \url{https://martinfowler.com/bliki/SnowflakeServer.html}
+            \item \url{https://habr.com/ru/articles/556868/}
+            \item \url{https://iximiuz.com/en/categories/?category=Containers}
+        \end{itemize}
+    \end{frame}
+
+\end{document}
