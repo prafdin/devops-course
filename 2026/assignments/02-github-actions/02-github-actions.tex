@@ -130,7 +130,7 @@ ssh -p $SSH_PORT $USER@$PROXY
     Создать CI workflow для проверки кода.
     
     \begin{enumerate}
-        \item Создайте файл \texttt{.github/workflows/ci.yml};
+        \item Создайте файл \texttt{.github/workflows/ci.yaml};
         \item Настройте workflow для запуска тестов при push нового коммита и создании pull request;
         \item В workflow добавьте загрузку файл с отчетом запущенных тестов с названием \texttt{test\_result} с помощью
             \href{https://github.com/actions/upload-artifact}{actions/upload-artifact};
@@ -156,7 +156,7 @@ ssh -p $SSH_PORT $USER@$PROXY
     Создать CD workflow развертывания приложения.
 
     \begin{enumerate}
-        \item создайте файл \texttt{.github/workflows/deploy.yml};
+        \item создайте файл \texttt{.github/workflows/deploy.yaml};
         \item настройте запуск workflow по наступлению события \href{https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#release}{release};
         \item реализуйте ту же логику развертывания, что была в webhook веб-сервере;
         \item протестируйте развертывание;
