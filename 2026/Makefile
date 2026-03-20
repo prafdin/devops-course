@@ -43,6 +43,7 @@ package/index.html: $(PDFS)
 		echo "<li><a href='https://disk.yandex.ru/i/x3U2zlcnubIfxA'>Лекция 4: Network Address Translation</a></li>"
 		echo "<li><a href='https://disk.yandex.ru/i/wVwnqWD8rkZDPQ'>Лекция 5: Git в DevOps</a></li>"
 		echo "<li><a href='https://disk.yandex.ru/i/_VeOJiuX4Rtplw'>Лекция 6: CI/CD пайплайн</a></li>"
+		echo "<li><a href='https://disk.yandex.ru/i/eOyzlNKjqpFEaw'>Лекция 7: Docker часть 1</a></li>"
 		echo "</ul>"
 		mkdir -p "$${dir}/assignments"
 		echo "<p>Методички к лабораторным работам:</p>"
