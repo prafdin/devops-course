@@ -37,6 +37,8 @@ package/index.html: $(PDFS)
 			echo "<li><a href='$${name}'>$${name}</a></li>"
 		done
 		echo "</ul>"
+		mkdir -p "$${dir}/extra"
+		cp extra/* "$${dir}/extra"
 		echo "<p>Записи лекций:</p>"
 		echo "<ul>"
 		echo "<li><a href='https://disk.yandex.ru/i/Rra5ItteQ2hzdA'>Лекция 3: SSH, Туннелирование, Fast Reverse Proxy</a></li>"
