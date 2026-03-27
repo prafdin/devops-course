@@ -1,1 +1,0 @@
-$xelatex    = 'xelatex -shell-escape -interaction=nonstopmode -synctex=1 %O %S';
