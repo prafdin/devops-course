@@ -213,27 +213,52 @@ pull request чтобы проверка запустилась заново.
 \end{itemize}
 
 \subsubsection{Событие push запускает workflow}
+\label{sec:workflows-triggered}
 Условие проверки: для коммита, созданного автоматической проверкой, должен запуститься workflow и он должен завершиться успехом.
 
 Исходный код проверки: \href{https://github.com/search?q=repo%3Aprafdin%2Fcheck-assignment+push_and_check_workflow+path%3A%2F%5Echecker%5C%2F%2F&type=code}{push\_and\_check\_workflow}.
 
 \subsubsection{В workflow запускаются тесты}
+\label{sec:tests-passed}
 Условие проверки: для коммита, созданного автоматической проверкой, должны запускаться юнит-тесты, результаты которых прикладываются в workflow артефакт с названием \textit{test\_result}.
 Тесты должны завершиться без ошибок.
 
 Исходный код проверки: \href{https://github.com/search?q=repo%3Aprafdin%2Fcheck-assignment+check_tests_passed+path%3A%2F%5Echecker%5C%2F%2F&type=code}{check\_tests\_passed}.
 
 \subsubsection{В репозитории есть требуемые workflow файлы}
+\label{sec:workflows-exists}
 Условие проверки: в репозитории должны находиться оба файла:\newline
 \textit{/.github/workflows/ci.yaml} и \textit{/.github/workflows/deploy.yaml}.
 
 Исходный код проверки: \href{https://github.com/search?q=repo%3Aprafdin%2Fcheck-assignment+check_required_workflow_files+NOT+path%3A%2F%5Etests%5C%2F%2F+path%3A%2F%5Echecker%5C%2F%2F&type=code}{check\_required\_workflow\_files}.
 
 \subsubsection{Release запускает CD workflow}
+\label{sec:release-trigger-cd}
 Условие проверки: релиз, созданный автоматической проверкой, должен запустить CD workflow и обновить сайт: значение \textit{deployref},
 извлечённое с главной страницы до наступления события, не должно совпадать со значением, полученным после наступления события.
 
 Исходный код проверки: \href{https://github.com/search?q=repo%3Aprafdin%2Fcheck-assignment+check_release_updates_site+path%3A%2F%5Echecker%5C%2F%2F&type=code}{check\_release\_updates\_site}.
+
+\subsection{Требования к работе Docker}
+Код автоматической проверки: \href{https://github.com/search?q=repo%3Aprafdin%2Fcheck-assignment%20check_docker_assignment.py&type=code}
+{scripts/check\_docker\_assignment.py}.
+
+Список проверок, повторно используемых из прошлого задания:
+\begin{itemize}
+    \item ~\nameref{sec:app-is-alive}
+    \item ~\nameref{sec:deployref-match}
+    \item ~\nameref{sec:workflows-triggered}
+    \item ~\nameref{sec:tests-passed}
+    \item ~\nameref{sec:workflows-exists}
+    \item ~\nameref{sec:release-trigger-cd}
+\end{itemize}
+
+\subsubsection{CI workflow собирает Image}
+\label{sec:image-created}
+Условие проверки: после завершения CI workflow в репозитории создается \href{https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry}{Package}
+с тегом имеджа \textit{"ghcr.io/{image\_name}:{tag}"}, где \textit{image\_name} строится по правилу \textit{логин\_пользователя/название\_приложения}, а \textit{tag} - это hash коммита, созданного автоматической проверкой.
+
+Исходный код проверки: \href{https://github.com/search?q=repo%3Aprafdin%2Fcheck-assignment+check_docker_image_exists+path%3A%2F%5Echecker%5C%2F%2F&type=code}{check\_docker\_image\_exists}.
 
 \section{Bug Bounty}
 В рамках курса действует программа \textit{Bug Bounty}, направленная на выявление недочётов и ошибок в автоматических проверках лабораторных работ.
