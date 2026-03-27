@@ -260,6 +260,20 @@ pull request чтобы проверка запустилась заново.
 
 Исходный код проверки: \href{https://github.com/search?q=repo%3Aprafdin%2Fcheck-assignment+check_docker_image_exists+path%3A%2F%5Echecker%5C%2F%2F&type=code}{check\_docker\_image\_exists}.
 
+\subsection{Требования к работе Docker Compose}
+Код автоматической проверки: \href{https://github.com/search?q=repo%3Aprafdin%2Fcheck-assignment%20check_compose_assignment.py&type=code}
+{scripts/check\_compose\_assignment.py}.
+
+Список проверок, повторно используемых из прошлого задания:
+\begin{itemize}
+    \item ~\nameref{sec:app-is-alive}
+    \item ~\nameref{sec:deployref-match}
+    \item ~\nameref{sec:workflows-triggered}
+    \item ~\nameref{sec:tests-passed}
+    \item ~\nameref{sec:workflows-exists}
+    \item ~\nameref{sec:release-trigger-cd}
+\end{itemize}
+
 \section{Bug Bounty}
 В рамках курса действует программа \textit{Bug Bounty}, направленная на выявление недочётов и ошибок в автоматических проверках лабораторных работ.
 
