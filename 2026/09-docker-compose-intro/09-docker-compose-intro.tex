@@ -1,0 +1,118 @@
+\documentclass[aspectratio=169]{beamer}
+
+\input{../slides-common}
+
+\title{Docker Compose}
+\date{1 апреля 2026 г.}
+
+\begin{document}
+    \maketitle
+
+    \begin{frame}{Docker network}
+        \begin{enumerate}
+            \item Bridge
+            \item Host
+            \item None
+            \item \href{https://docs.docker.com/engine/network/drivers/}{Другие}
+        \end{enumerate}
+    \end{frame}
+
+    \begin{frame}{Bridge network}
+        \begin{center}
+            \includegraphics[width=0.8\textwidth]{media/docker-bridge}
+        \end{center}
+    \end{frame}
+
+    \begin{frame}{Source NAT}
+        \begin{center}
+            \includegraphics[width=0.8\textwidth]{media/cont-to-internet}
+        \end{center}
+    \end{frame}
+
+    \begin{frame}{Port publishing (forwarding)}
+        \begin{center}
+            \includegraphics[width=0.8\textwidth]{media/port-forwarding}
+        \end{center}
+    \end{frame}
+
+    \begin{frame}{Docker storage}
+        \begin{center}
+            \includegraphics[width=0.6\textwidth]{media/bind-mount}
+        \end{center}
+    \end{frame}
+
+    \begin{frame}{Мультиконтейнерное приложение}
+        \textbf{Мультиконтейнерное приложение} — это система, состоящая из нескольких контейнеров, каждый из которых выполняет
+        отдельную функцию.
+
+        \textbf{Примеры}: бекенд приложение и база данных; фронтенд, бекенд и база данных; бекенд и несколько баз данных.
+
+        \textbf{Проблемы запуска мультиконтейнерных приложений руками:}
+        \begin{enumerate}
+            \item Порядок выполнения команд (создание сетей, volumes, контейнеров)
+            \item Много ручных операций
+            \item Просмотр логов
+            \item Масштабирование
+        \end{enumerate}
+    \end{frame}
+
+    \begin{frame}{Docker Compose}
+        \textbf{Docker Compose} — инструмент для определения и запуска многоконтейнерных приложений
+
+        \vspace{0.2cm}
+
+        \textbf{Ключевые возможности:}
+        \begin{itemize}
+            \item \textbf{Декларативное описание} — вся архитектура в одном YAML файле
+            \item \textbf{Простое управление} — одна команда для запуска всего стека
+            \item \textbf{Автоматическое масштабирование} — легко увеличить количество экземпляров
+            \item \textbf{Управление зависимостями} — контейнеры запускаются в правильном порядке
+        \end{itemize}
+
+        \vspace{0.2cm}
+
+        \textbf{Результат:} вместо N команд docker — одна команда docker compose
+    \end{frame}
+
+    \begin{frame}{Команды жизненного цикла}
+        \textbf{Основные команды Docker Compose:}
+
+        \begin{itemize}
+            \item \textbf{docker compose up} — запустить все сервисы
+            \item \textbf{docker compose up -d} — запустить в фоновом режиме
+            \item \textbf{docker compose down} — остановить и удалить контейнеры
+            \item \textbf{docker compose build} — пересобрать образы
+            \item \textbf{docker compose pull} — загрузить новые версии образов
+        \end{itemize}
+
+        \vspace{0.2cm}
+
+        \textbf{Команды мониторинга:}
+        \begin{itemize}
+            \item \textbf{docker compose ps} — статус всех сервисов
+            \item \textbf{docker compose logs} — логи всех сервисов
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Много других возможностей}
+        \begin{itemize}
+            \item \href{https://docs.docker.com/compose/compose-file/06-networks/}{Сети} — изоляция и связь между сервисами
+            \item \href{https://docs.docker.com/compose/use-secrets/}{Секреты} — безопасное управление паролями и ключами
+            \item \href{https://docs.docker.com/compose/compose-file/07-volumes/}{Volumes} — постоянное хранение данных
+            \item \href{https://docs.docker.com/compose/compose-file/05-services/\#healthcheck}{Health checks} — мониторинг состояния сервисов
+            \item \href{https://docs.docker.com/compose/compose-file/05-services/\#depends_on}{Зависимости} — контроль порядка запуска сервисов
+        \end{itemize}
+        \vspace{0.3cm}
+
+        \textbf{Полная документация:} \href{https://docs.docker.com/compose/}{docs.docker.com/compose/}
+    \end{frame}
+
+    \begin{frame}{Альтернативы Docker Compose}
+        \begin{itemize}
+            \item \textbf{Docker Swarm} — расширение функционала docker compose
+            \item \textbf{Nomad} — от HashiCorp, поддерживает не только контейнеры
+            \item \textbf{Kubernetes} — индустриальный стандарт оркестрации
+            \item \textbf{OpenShift} — enterprise платформа на базе Kubernetes
+        \end{itemize}
+    \end{frame}
+\end{document}
