@@ -1,0 +1,94 @@
+\documentclass[aspectratio=169]{beamer}
+
+\input{../slides-common}
+\usepackage{svg}
+
+\title{Docker Compose на практике}
+\date{08 апреля 2026 г.}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Развитие приложения: новое требование}
+\textbf{Текущее состояние нашего приложения:}
+
+\begin{itemize}
+\item nginx работает в контейнере и раздает html
+\item Настроен автоматический деплой через CI/CD pipeline
+\item Приложение деплоится как докер контейнер
+\end{itemize}
+
+\vspace{0.3cm}
+
+\textbf{Новое требование:}
+\begin{itemize}
+  \item Добавить вызов backend API для работы с динамическими данными.
+  \item Request per seconds (RPS) > 10
+\end{itemize}
+\end{frame}
+
+\begin{frame}{RPS}
+Requests per second — количество запросов, обрабатываемых сервером за одну секунду.
+
+\[
+  RPS_{\max} \approx
+  \frac{\overbrace{N_\text{backends} \cdot T }^{\text{число backend-реплик} \times \text{потоки на backend}}}
+  {\underbrace{t_\text{delay}}_{\text{задержка на один запрос (сек)}}}, \quad \text{только для IO bound задач}
+\]
+
+\end{frame}
+
+\begin{frame}{IO \& CPU bound задачи}
+  \begin{center}
+    \includegraphics[width=0.50\textwidth]{media/io-cpu-bound}
+  \end{center}
+  \footnotesize{\textcolor{gray}{\url{https://alexandra-zaharia.github.io/posts/concurrency-crash-course-part-1/}}}
+\end{frame}
+
+
+\begin{frame}{Целевая архитектура}
+%@startuml
+%actor "Пользователь" as User
+%
+%rectangle "Nginx" as Nginx
+%rectangle "Backend 1" as Backend1
+%rectangle "Backend 2" as Backend2
+%rectangle "Backend 3" as Backend3
+%
+%User -right-> Nginx : HTTP запросы
+%Nginx -left-> User : Статические файлы\n(HTML, CSS, JS)
+%Nginx -down-> Backend1 : /api/* запросы
+%Nginx -down-> Backend2
+%Nginx -down-> Backend3
+%@enduml
+\begin{figure}
+\centering
+\includesvg{media/lb-schema}
+\label{fig:lb-schema}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Демонстрация: Docker Compose}
+  \textbf{Что посмотрим:}
+  \begin{enumerate}
+    \item Переиспользуемый GitHub Action, \href{https://github.com/prafdin/devops-demo-website/commit/86806e7a8b98ba57f675a03affc6c98ec4843655}{ссылка на коммит}
+    \item Сборка и деплой backend приложения
+    \item Env файлы и docker compose (\href{https://docs.docker.com/compose/how-tos/environment-variables/variable-interpolation/\#env-file}{документация})
+    \item Горизонтальное масштабирование (\href{https://docs.docker.com/reference/compose-file/services/\#scale}{документация})
+    \item \href{https://github.com/wg/wrk}{wrk} для нагрузочного тестирования
+  \end{enumerate}
+
+  \vspace{0.2cm}
+
+  \textbf{Демо-репозиторий:}
+  \href{https://github.com/prafdin/devops-demo-website/tree/docker-compose-demo}{\texttt{https://github.com/prafdin/devops-demo-website/tree/docker-compose-demo}}
+
+\end{frame}
+
+\begin{frame}{Ссылки по теме}
+  \begin{itemize}
+    \item \url{https://github.com/docker/awesome-compose/tree/master}
+  \end{itemize}
+\end{frame}
+\end{document}
