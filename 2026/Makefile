@@ -50,6 +50,7 @@ package/index.html: $(PDFS)
 		echo "<li><a href='https://disk.yandex.ru/i/kZkayYfyVAbCjQ'>Лекция 9: Docker Compose часть 1</a></li>"
 		echo "<li><a href='https://disk.yandex.ru/i/IgCZzthz7H-rUQ'>Лекция 10: Docker Compose часть 2</a></li>"
 		echo "<li><a href='https://disk.yandex.ru/i/Qbc0igxh_Ku9GQ'>Лекция 11: Ansible</a></li>"
+		echo "<li><a href='https://disk.yandex.ru/i/MfJx6x-OalDtSw'>Лекция 12: Packer</a></li>"
 		echo "</ul>"
 		mkdir -p "$${dir}/assignments"
 		echo "<p>Методички к лабораторным работам:</p>"
