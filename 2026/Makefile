@@ -70,7 +70,7 @@ package/index.html: $(PDFS)
 			echo "<li><a href='assignments/$${name}'>$${name}</a></li>"
 		done
 		echo "</ul>"
-		echo "<p><a href=\"https://prafdin.github.io/devops-course/2026/extra/exam.pdf\"/>Вопросы к экзамену</p>"
+		echo "<p><a href=\"https://prafdin.github.io/devops-course/2026/extra/exam.pdf\"/>Вопросы к экзамену</a></p>"
 		echo "<p>Ведомость и варианты: <a href=\"https://docs.google.com/spreadsheets/d/1Yn1ndqJN1kfMd_l4s7Owe69pmjhxSurJq5D-Abu8_c4/edit?usp=sharing\">ОИС. DevOps 2026</a></p>"
 		echo "<p>Запись на лабораторные занятия:</p>"
 		echo "<ul>"
