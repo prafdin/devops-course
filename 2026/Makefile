@@ -5,7 +5,12 @@ include ../makefile.defs
 LECTURE_PDFS := $(filter-out assignments/%,$(PDFS))
 ASSIGNMENT_PDFS := $(filter assignments/%,$(PDFS))
 
-all: pdfs package/index.html
+EXTRA_DIRS = $(shell find ./extra -mindepth 1 -maxdepth 1 -type d | sed 's|^\./||' | sort)
+EXTRA_PDFS = $(foreach d,$(EXTRA_DIRS),$(d)/$(notdir $(d)).pdf)
+
+all: pdfs extras package/index.html
+
+extras: $(EXTRA_PDFS)
 
 package/index.html: $(PDFS)
 	dir="$$(dirname "$@")"
@@ -38,7 +43,11 @@ package/index.html: $(PDFS)
 		done
 		echo "</ul>"
 		mkdir -p "$${dir}/extra"
-		cp extra/* "$${dir}/extra"
+		cp extra/docker-commands.svg "$${dir}/extra"
+		for pdf in $(EXTRA_PDFS); do
+			name=$$(basename "$${pdf}")
+			cp "$${pdf}" "$${dir}/extra"
+		done
 		echo "<p>Записи лекций:</p>"
 		echo "<ul>"
 		echo "<li><a href='https://disk.yandex.ru/i/Rra5ItteQ2hzdA'>Лекция 3: SSH, Туннелирование, Fast Reverse Proxy</a></li>"
@@ -61,6 +70,7 @@ package/index.html: $(PDFS)
 			echo "<li><a href='assignments/$${name}'>$${name}</a></li>"
 		done
 		echo "</ul>"
+		echo "<p><a href=\"https://prafdin.github.io/devops-course/2026/extra/exam.pdf\"/>Вопросы к экзамену</p>"
 		echo "<p>Ведомость и варианты: <a href=\"https://docs.google.com/spreadsheets/d/1Yn1ndqJN1kfMd_l4s7Owe69pmjhxSurJq5D-Abu8_c4/edit?usp=sharing\">ОИС. DevOps 2026</a></p>"
 		echo "<p>Запись на лабораторные занятия:</p>"
 		echo "<ul>"
