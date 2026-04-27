@@ -1,0 +1,132 @@
+\documentclass[aspectratio=169]{beamer}
+
+\input{../slides-common}
+
+\title{Cloud computing}
+\date{29 апреля 2026 г.}
+
+\begin{document}
+    \maketitle
+
+    \begin{frame}{IT инфраструктура}
+        IT инфраструктура - совокупность аппаратных и программных средств для разработки, развертывания и эксплуатации
+        информационных систем организации.
+        \vspace{0.3cm}
+
+        Компоненты инфраструктуры:
+        \begin{enumerate}
+            \item IT оборудование: серверы, маршрутизаторы, железные фаерволы и т.д.
+            \item Сетевые ресурсы: локальные сети, интернет соединения, DNS серверы и т.д.
+            \item Программное обеспечение: операционные системы, гипервизоры, БД, системы ведения проектов и т.д.
+        \end{enumerate}
+    \end{frame}
+
+    \begin{frame}{Модели размещения IT инфраструктуры}
+        \begin{center}
+            \includegraphics[width=1\textwidth]{media/infras}
+        \end{center}
+    \end{frame}
+
+    \begin{frame}{On premise}
+        On premise - модель размещения IT инфраструктуры на собственных серверах компании.
+
+        Компания обеспечивает:
+        \begin{enumerate}
+            \item Физическую инфраструктуру: дата центр, каналы связи и т.д.
+            \item Закупка, настройка и обслуживание серверов и сетевой инфраструктуры
+            \item Установка, настройка и обслуживание ПО
+        \end{enumerate}
+    \end{frame}
+
+    \begin{frame}{Colocation}
+        Colocation - модель размещения аппаратных средств IT инфраструктуры во внешнем дата центре, сохраняя полный
+        доступ к размещенным ресурсам.
+
+        Компания обеспечивает:
+        \begin{enumerate}
+            \item Закупка серверов
+            \item Установка, настройка и обслуживание ПО
+        \end{enumerate}
+    \end{frame}
+
+    \begin{frame}{Hosting (VPS, VDS)}
+        Hosting - модель IT инфраструктуры, при которой компания арендует вычислительные мощности у сторонней компании.
+
+        Компания обеспечивает:
+        \begin{enumerate}
+            \item Установка, настройка и обслуживание ПО
+        \end{enumerate}
+    \end{frame}
+
+    \begin{frame}{Public cloud}
+        Public cloud - модель IT инфраструктуры, при которой вычислительные ресурсы принадлежат стороннему провайдеру и
+        предоставляются множеству клиентов по запросу через интернет.
+
+        Преимущества перед Hosting:
+        \begin{enumerate}
+            \item Гибкость и масштабируемость, экономичность
+            \item Надёжность и отказоустойчивость
+            \item Управление ресурсами через API
+            \item Широкий набор облачных ресурсов - разные модели облачных услуг
+        \end{enumerate}
+
+        Популярные облака: AWS, Azure, Google Cloud, Yandex Cloud, Cloud.ru и т.д.
+    \end{frame}
+
+    \begin{frame}{Основные модели облачных услуг}
+        \begin{center}
+            \includegraphics[width=0.85\textwidth]{media/iaas_paas_saas}
+        \end{center}
+
+        \footnotesize{\textcolor{gray}{\href{https://www.geeksforgeeks.org/software-engineering/difference-between-iaas-paas-and-saas/}{https://www.geeksforgeeks.org/software-engineering/...}}}
+    \end{frame}
+
+    \begin{frame}{*aaS}
+        \begin{itemize}
+            \item \href{https://selectel.ru/blog/what-is-dbaas/}{DBaaS}
+            \item \href{https://glossary.cncf.io/ru/function-as-a-service/}{FaaS}
+            \item \href{https://habr.com/ru/companies/vk/articles/519366/}{KaaS}
+            \item \href{https://www.atlassian.com/ru/microservices/cloud-computing/containers-as-a-service}{CaaS}
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Yandex Cloud}
+        \begin{itemize}
+            \item \href{https://yandex.cloud/ru/docs/overview/concepts/services}{Список сервисов}
+            \item \href{https://yandex.cloud/ru/docs/getting-started/usage-grant}{Стартовый грант}
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Демонстрация: сервисы в Yandex Cloud}
+        \begin{itemize}
+            \item \href{https://yandex.cloud/ru/docs/compute/}{Yandex Compute Cloud}
+            \item \href{https://yandex.cloud/ru/docs/storage/}{Yandex Object Storage}
+            \item \href{https://yandex.cloud/ru/docs/functions/}{Yandex Cloud Functions}
+            \item \href{https://yandex.cloud/ru/docs/cloud-apps/}{Cloud Apps}
+        \end{itemize}
+        \vspace{0.2cm}
+        \textbf{Демо-репозиторий:}
+        \href{https://github.com/prafdin/devops-course-demos/tree/yandex-cloud}{\texttt{https://github.com/prafdin/devops-course-demos/tree/yandex-cloud}}
+    \end{frame}
+
+    \begin{frame}{Private cloud}
+        Private cloud - разновидность on premise IT инфраструктуры, при которой вычислительные ресурсы предоставляются по запросу
+        внутренним потребителям внутри компании.
+
+        Преимущества перед on premise:
+        \begin{enumerate}
+            \item Удобство для конечных потребителей
+            \item Управление ресурсами через API
+            \item Разные модели облачных услуг$^{*}$
+        \end{enumerate}
+
+        Решения для создания private cloud: VMware vSphere, OpenStack, Proxmox и т.д.
+    \end{frame}
+
+    \begin{frame}{Ссылки по теме}
+        \begin{itemize}
+            \item \url{https://www.theguardian.com/technology/2009/sep/02/cory-doctorow-cloud-computing}
+            \item \url{https://zegetech.com/blog/2018/11/12/cloud-cloud-computing.html}
+        \end{itemize}
+    \end{frame}
+\end{document}
