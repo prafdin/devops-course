@@ -61,6 +61,7 @@ package/index.html: $(PDFS)
 		echo "<li><a href='https://disk.yandex.ru/i/Qbc0igxh_Ku9GQ'>Лекция 11: Ansible</a></li>"
 		echo "<li><a href='https://disk.yandex.ru/i/MfJx6x-OalDtSw'>Лекция 12: Packer</a></li>"
 		echo "<li><a href='https://disk.yandex.ru/i/bmvYQxwHwkCs0A'>Лекция 13: Cloud computing</a></li>"
+		echo "<li><a href='https://disk.yandex.ru/i/VjlFaubjFEDdOw'>Лекция 14: Infrastructure as Code</a></li>"
 		echo "</ul>"
 		mkdir -p "$${dir}/assignments"
 		echo "<p>Методички к лабораторным работам:</p>"
