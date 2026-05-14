@@ -201,4 +201,41 @@ ssh -p $SSH_PORT $USER@$PROXY
     \item Как можно откатить приложение при настроенном CI/CD pipeline?
 \end{enumerate}
 
+\section{Практические задачи}
+При выполнении практических заданий следует применять минимально необходимое решение, достаточное для достижения поставленной цели.
+Также при выполнении требуется создать форк исходного репозитория или создать новый репозиторий, а задание выполнять в отдельной ветке.
+\begin{enumerate}
+    \item Напишите workflow файл для ветки python-app репозитория \href{https://github.com/prafdin/devops-course-demos}{devops-course-demos},
+    который запускается при наступлении события
+    \href{https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#pull\_request}{pull\_request}
+    и выполняет проверку форматирования кода с использованием линтера. Workflow должен завершаться с ошибкой при наличии нарушений.
+    \item Напишите workflow файл для ветки python-app репозитория \href{https://github.com/prafdin/devops-course-demos}{devops-course-demos}, который запускается только при изменении файлов с расширением .py.
+    При решении требуется использовать
+    \href{https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#onpushpull\_requestpull\_request\_targetpathspaths-ignore}{фильтрацию по путям}.
+    \item Напишите workflow файл для ветки python-app репозитория \href{https://github.com/prafdin/devops-course-demos}{devops-course-demos},
+    который запускается при наступлении события
+    \href{https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#push}{push} и
+    последовательно проверяет прохождение юнит тестов и интеграционных тестов. Интеграционные тесты должны запускаться только
+    при успешном прохождении юнит тестов. При решении требуется использовать директиву
+    \href{https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idneeds}{needs}.
+    \item Напишите workflow файл для ветки python-app репозитория \href{https://github.com/prafdin/devops-course-demos}{devops-course-demos},
+    который запускается при наступлении события
+    \href{https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#push}{push} и
+    проверяет запуск тестов для трёх версий Python: 3.10, 3.11 и 3.12. При решении требуется использовать стратегию
+    \href{https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstrategymatrix}{matrix}.
+    \item Напишите workflow файл для ветки python-app репозитория \href{https://github.com/prafdin/devops-course-demos}{devops-course-demos},
+    который автоматически комментирует pull request при падении тестов.
+    Комментарий должен содержать уведомление о неуспешном прохождении CI.
+    \item Напишите workflow файл для ветки python-app репозитория \href{https://github.com/prafdin/devops-course-demos}{devops-course-demos},
+    который проверяет сообщение коммита на
+    соответствие заданному шаблону (например, содержит префикс \texttt{feat:}, \texttt{fix:}, \texttt{chore:}).
+    \item Напишите workflow файл для ветки python-app репозитория \href{https://github.com/prafdin/devops-course-demos}{devops-course-demos},
+    который запускается при наступлении события
+    \href{https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#push}{push} и
+    прерывает предыдущий запущенный workflow при новом push в ту же ветку. При решении требуется использовать конструкцию
+    \href{https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#concurrency}{concurrency}.
+    \item Напишите workflow файл для ветки python-app репозитория \href{https://github.com/prafdin/devops-course-demos}{devops-course-demos}, который сохраняет артефакты сборки после успешного
+    выполнения тестов. При решении требуется использовать механизм artifacts.
+\end{enumerate}
+
 \end{document}
