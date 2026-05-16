@@ -155,5 +155,30 @@ Docker — это платформа для разработки, доставк
     \item Как ограничить контейнер в потреблении оперативной памяти и процессорно времени? Что произойдет с контейнером, при достижении указанных лимитов?
 \end{enumerate}
 
+\section{Практические задачи}
+При выполнении практических заданий следует применять минимально необходимое решение, достаточное для достижения поставленной цели.
+Также при выполнении требуется создать форк исходного репозитория или создать новый репозиторий, а задание выполнять в отдельной ветке.
+\begin{enumerate}
+    \item Напишите Dockerfile файл для ветки python-app репозитория \href{https://github.com/prafdin/devops-course-demos}{devops-course-demos},
+    для создания имеджа и запуска из него контейнера с приложением. При написании Dockerfile используйте
+    \href{https://docs.docker.com/build/building/best-practices}{лучшие практики}.
+    \item Напишите Dockerfile файл для ветки cpp-app репозитория \href{https://github.com/prafdin/devops-course-demos}{devops-course-demos},
+    для создания имеджа и запуска из него контейнера с приложением. При написании Dockerfile используйте
+    \href{https://docs.docker.com/build/building/best-practices}{лучшие практики} и
+    \href{https://docs.docker.com/get-started/docker-concepts/building-images/multi-stage-builds/}{multi-stage build}.
+    \item Напишите Dockerfile файл для создания имеджа и запуска из него контейнера, который наглядно демонстрирует работу
+    опции \href{https://docs.docker.com/reference/cli/docker/container/run/#restart}{restart} со значением always.
+    \item Создайте контейнер из произвольного образа, в котором не установлен nginx, и в запущенном контейнере установите nginx.
+    Создайте новый имедж из запущенного контейнера с помощью команды \href{https://docs.docker.com/reference/cli/docker/container/commit/}{commit}.
+    \item Скачайте произвольный имедж из GitHub Container Registry (например, \href{https://github.com/fatedier/frp/pkgs/container/frps}{frps})
+    и загрузите его в личный репозиторий DockerHub.
+    \item Продемонстрируйте работу кеша при сборке docker имеджа: cache hit и cache miss.
+    \item Продемонстрируйте работу файла .dockerignore.
+    \item Продемонстрируйте работу механизма docker bind mounts.
+    \item Продемонстрируйте работу механизма docker volumes.
+    \item Продемонстрируйте работу инструкции \href{https://docs.docker.com/reference/dockerfile/#healthcheck}{HEALTHCHECK}.
+    \item Настройте проброс порта между контейнером и хост-системой и продемонстрируйте доступ к сервису,
+    запущенному внутри контейнера, извне.
+\end{enumerate}
 
 \end{document}
