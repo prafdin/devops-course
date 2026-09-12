@@ -4,7 +4,7 @@
 
 **Goal:** Replace the bash-heredoc-generated GitHub Pages site with a Hugo site that keeps PDFs (built by the existing LaTeX pipeline) as the content source but adds a `topics` taxonomy so the same topic's 2025 and 2026 versions appear together.
 
-**Architecture:** A new `site/` Hugo project. Two shell scripts turn the existing repo layout into Hugo input: `scaffold-content.sh` writes one headless content bundle (`index.md`) per lecture/assignment/extra directory with a curated `topics`/`material`/`video` front-matter mapping, and `collect-pdfs.sh` copies the already-built PDFs into `site/static/` at matching paths. A validation script (`check.sh`) catches broken PDF references and unknown topic slugs before deploy. Three Hugo templates render the result: a home page listing all topics, a term page per topic showing every year's material grouped together (the actual deliverable), and a year page for material that isn't topic-specific (exam questions, lab how-to).
+**Architecture:** A new `site/` Hugo project. Two shell scripts turn the existing repo layout into Hugo input: `scaffold-content.sh` writes one content page (`index.md`) per lecture/assignment/extra directory with a curated `topics`/`material`/`video` front-matter mapping (no `_build.render: false` — Hugo v0.140.2 excludes such pages from taxonomies even with `list: always`; instead, no `layouts/_default/single.html` exists, so these pages naturally produce no individual output while still being listed everywhere they belong), and `collect-pdfs.sh` copies the already-built PDFs into `site/static/` at matching paths. A validation script (`check.sh`) catches broken PDF references and unknown topic slugs before deploy. Three Hugo templates render the result: a home page listing all topics, a term page per topic showing every year's material grouped together (the actual deliverable), and a year page for material that isn't topic-specific (exam questions, lab how-to).
 
 **Tech Stack:** Hugo (Go, static binary, pinned to v0.140.2), Bash, existing LaTeX/latexmk pipeline (untouched), GitHub Actions, GitHub Pages.
 
@@ -282,9 +282,6 @@ for record in "${records[@]}"; do
       echo "video: \"$video\""
     fi
     echo "weight: $weight"
-    echo "_build:"
-    echo "  render: false"
-    echo "  list: always"
     echo "---"
   } > "$outdir/index.md"
   count=$((count + 1))
@@ -591,7 +588,7 @@ Claude-Session: https://claude.ai/code/session_01VQNBzTSuyfSt8AB7JhbQSn"
 {{ define "main" }}
 {{ $label := index site.Data.topics .Data.Term }}
 <h1>{{ if $label }}{{ $label }}{{ else }}{{ .Data.Term }}{{ end }}</h1>
-{{ $byYear := .Pages.GroupBy "Params.year" }}
+{{ $byYear := .Pages.GroupByParam "year" }}
 {{ range $byYear.Reverse }}
   <h2>{{ .Key }}</h2>
   {{ $lectures := where .Pages "Params.material" "lecture" }}
