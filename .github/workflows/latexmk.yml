@@ -22,10 +22,7 @@ jobs:
       - uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: '0.140.2'
-      - run: ./site/scaffold-content.sh
-      - run: ./site/collect-pdfs.sh
-      - run: ./site/check.sh site
-      - run: cd site && hugo --minify
+      - run: make site-build
       - uses: JamesIves/github-pages-deploy-action@v4.7.3
         with:
           branch: gh-pages
