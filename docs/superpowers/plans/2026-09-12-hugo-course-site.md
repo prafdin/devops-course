@@ -4,7 +4,7 @@
 
 **Goal:** Replace the bash-heredoc-generated GitHub Pages site with a Hugo site that keeps PDFs (built by the existing LaTeX pipeline) as the content source but adds a `topics` taxonomy so the same topic's 2025 and 2026 versions appear together.
 
-**Architecture:** A new `site/` Hugo project. Two shell scripts turn the existing repo layout into Hugo input: `scaffold-content.sh` writes one headless content bundle (`index.md`) per lecture/assignment/extra directory with a curated `topics`/`kind`/`video` front-matter mapping, and `collect-pdfs.sh` copies the already-built PDFs into `site/static/` at matching paths. A validation script (`check.sh`) catches broken PDF references and unknown topic slugs before deploy. Three Hugo templates render the result: a home page listing all topics, a term page per topic showing every year's material grouped together (the actual deliverable), and a year page for material that isn't topic-specific (exam questions, lab how-to).
+**Architecture:** A new `site/` Hugo project. Two shell scripts turn the existing repo layout into Hugo input: `scaffold-content.sh` writes one headless content bundle (`index.md`) per lecture/assignment/extra directory with a curated `topics`/`material`/`video` front-matter mapping, and `collect-pdfs.sh` copies the already-built PDFs into `site/static/` at matching paths. A validation script (`check.sh`) catches broken PDF references and unknown topic slugs before deploy. Three Hugo templates render the result: a home page listing all topics, a term page per topic showing every year's material grouped together (the actual deliverable), and a year page for material that isn't topic-specific (exam questions, lab how-to).
 
 **Tech Stack:** Hugo (Go, static binary, pinned to v0.140.2), Bash, existing LaTeX/latexmk pipeline (untouched), GitHub Actions, GitHub Pages.
 
@@ -17,6 +17,7 @@
 - `site/content/2025/`, `site/content/2026/`, `site/static/2025/`, `site/static/2026/`, `site/public/` are generated, not committed (matches existing convention of not committing `*.pdf`, `*.aux`, `package/`). `site/content/_index.md` (the site root) is hand-authored, committed source — Hugo needs at least one content file to emit a home page even with a custom `layouts/index.html`, and the scaffold script never touches this path.
 - Hugo version pinned to `0.140.2` everywhere it's installed (local dev steps and CI) — no `latest`.
 - Every task that shells out to Hugo directly (not via `make`/CI, which assume `hugo` on `PATH`) uses the explicit path `"$HOME/.local/bin/hugo"` installed in Task 1, since each task may run in a fresh shell that hasn't re-sourced a profile.
+- The lecture/assignment/extra front-matter field is named `material`, never `kind` — Hugo reserves `kind` for its own internal page-kind enum ("home", "page", "section", "taxonomy", "term") and a custom string value there breaks the build (`unknown kind "..." in front matter`).
 
 ---
 
@@ -183,10 +184,10 @@ Claude-Session: https://claude.ai/code/session_01VQNBzTSuyfSt8AB7JhbQSn"
 
 **Files:**
 - Create: `site/scaffold-content.sh`
-- Modify: `.gitignore` (add `site/content/`)
+- Modify: `.gitignore` (add `site/content/2025/`, `site/content/2026/`)
 
 **Interfaces:**
-- Produces: `site/content/<year>/<relpath>/index.md` for every lecture/assignment/extra, and `site/content/<year>/_index.md` for each year. Front matter fields used by later tasks: `title` (string), `year` (int), `kind` (`"lecture"`/`"assignment"`/`"extra"`), `topics` (list, omitted for `kind: extra`), `pdf` (site-root-relative path string), `video` (optional string), `weight` (int). Year pages carry `type: "year"`.
+- Produces: `site/content/<year>/<relpath>/index.md` for every lecture/assignment/extra, and `site/content/<year>/_index.md` for each year. Front matter fields used by later tasks: `title` (string), `year` (int), `material` (`"lecture"`/`"assignment"`/`"extra"` — NOT named `kind`: Hugo reserves that field name internally for its own page-kind enum, e.g. "home"/"page"/"section", and setting it to a custom string breaks the build with `unknown kind "lecture" in front matter`), `topics` (list, omitted for `material: extra`), `pdf` (site-root-relative path string), `video` (optional string), `weight` (int). Year pages carry `type: "year"`.
 - Consumes: nothing from earlier tasks — reads directly from `2025/`, `2026/` LaTeX sources on disk (already-built `.tex` files for lecture titles).
 
 - [ ] **Step 1: Write `site/scaffold-content.sh`**
@@ -272,7 +273,7 @@ for record in "${records[@]}"; do
     echo "---"
     echo "title: \"$title\""
     echo "year: $year"
-    echo "kind: \"$kind\""
+    echo "material: \"$kind\""
     if [[ -n "$topic" ]]; then
       echo "topics: [\"$topic\"]"
     fi
@@ -328,7 +329,7 @@ grep -q 'title: "Docker: сеть, volumes, bind mounts"' site/content/2025/06-d
 grep -q 'title: "Git Webhooks"' site/content/2026/assignments/01-git-webhooks/index.md
 grep -q 'topics: \["git"\]' site/content/2026/assignments/01-git-webhooks/index.md
 
-grep -q 'kind: "extra"' site/content/2026/extra/exam/index.md
+grep -q 'material: "extra"' site/content/2026/extra/exam/index.md
 grep -q '^topics:' site/content/2026/extra/exam/index.md && echo "FAIL: extra must not have topics" || echo "OK: extra has no topics"
 
 grep -q 'type: "year"' site/content/2025/_index.md
@@ -579,7 +580,7 @@ Claude-Session: https://claude.ai/code/session_01VQNBzTSuyfSt8AB7JhbQSn"
 - Create: `site/layouts/year/list.html`
 
 **Interfaces:**
-- Consumes: `site/content/**/index.md` front matter fields defined in Task 2 (`kind`, `year`, `pdf`, `video`, `weight`, `title`), `site/data/topics.yaml` from Task 4, `site/static/` from Task 3.
+- Consumes: `site/content/**/index.md` front matter fields defined in Task 2 (`material`, `year`, `pdf`, `video`, `weight`, `title`), `site/data/topics.yaml` from Task 4, `site/static/` from Task 3.
 - Produces: `site/public/topics/<slug>/index.html` (one per topic) and `site/public/<year>/index.html` (one per year) when built.
 
 - [ ] **Step 1: Write the term page template**
@@ -593,8 +594,8 @@ Claude-Session: https://claude.ai/code/session_01VQNBzTSuyfSt8AB7JhbQSn"
 {{ $byYear := .Pages.GroupBy "Params.year" }}
 {{ range $byYear.Reverse }}
   <h2>{{ .Key }}</h2>
-  {{ $lectures := where .Pages "Params.kind" "lecture" }}
-  {{ $assignments := where .Pages "Params.kind" "assignment" }}
+  {{ $lectures := where .Pages "Params.material" "lecture" }}
+  {{ $assignments := where .Pages "Params.material" "assignment" }}
   {{ if $lectures }}
   <h3>Лекции</h3>
   <ul>
@@ -626,7 +627,7 @@ Claude-Session: https://claude.ai/code/session_01VQNBzTSuyfSt8AB7JhbQSn"
 {{ define "main" }}
 <h1>{{ .Title }}</h1>
 <p><a href="{{ "/" | relURL }}">На главную (по темам)</a></p>
-{{ $extra := where .Site.RegularPages "Params.kind" "extra" }}
+{{ $extra := where .Site.RegularPages "Params.material" "extra" }}
 {{ $extra = where $extra "Params.year" .Params.year }}
 {{ if $extra }}
 <h2>Дополнительные материалы</h2>
