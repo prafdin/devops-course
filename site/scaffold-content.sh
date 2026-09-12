@@ -42,7 +42,6 @@ records=(
 "2026|assignments/03-docker|assignment|"
 "2026|assignments/04-docker-compose|assignment|"
 "2026|extra/exam|extra|"
-"2026|extra/exam-questions|extra|"
 )
 
 title_from_dirname() {
@@ -65,7 +64,6 @@ for record in "${records[@]}"; do
       "2025|others/01-course-questions") title="Вопросы по курсу" ;;
       "2026|assignments/00-howto") title="Инструкция по сдаче лабораторных работ" ;;
       "2026|extra/exam") title="Вопросы к экзамену" ;;
-      "2026|extra/exam-questions") title="Билеты к экзамену" ;;
       *) title="$(title_from_dirname "$base")" ;;
     esac
   fi
