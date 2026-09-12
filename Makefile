@@ -16,13 +16,8 @@ years-all:
 		cd ..
 	done
 
-# Full local build: compile PDFs, then build the site.
 site: years-all site-build
 
-# Just the site half of the pipeline, assuming PDFs are already built.
-# CI calls this directly (after latexmk-action, which is the only place
-# with the xelatex/latexmk toolchain) so it never re-triggers years-all
-# on a runner that doesn't have those binaries.
 site-build:
 	./site/scaffold-content.sh
 	./site/collect-pdfs.sh
