@@ -2,13 +2,12 @@ SHELL := /bin/bash
 
 .SHELLFLAGS = -e -o pipefail -c
 .ONESHELL:
-.PHONY: all clean
+.PHONY: all clean site
 
 GITHUB = prafdin/devops-course
 DIRS = $(shell find . -mindepth 1 -maxdepth 1 -type d -name '20[0-9][0-9]' -exec basename {} \; | sort)
-SUB_PACKAGE_INDICES = $(foreach d,$(DIRS),$(d)/package/index.html)
 
-all: years-all package/index.html
+all: years-all
 
 years-all:
 	for d in $(DIRS); do
@@ -17,40 +16,11 @@ years-all:
 		cd ..
 	done
 
-package/index.html: $(SUB_PACKAGE_INDICES)
-	dir="$$(dirname "$@")"
-	title="Курс DevOps"
-	mkdir -p "$${dir}"
-	(
-		echo "<html lang='ru'><head>"
-		echo "<meta charset='UTF-8'>"
-		echo "<title>$${title}</title>"
-		echo "<style>
-			section {
-				width: 40em;
-				margin: 2em auto;
-				font-family: monospace;
-				font-size: 12pt;
-			}
-			li {
-				margin-top: .5em;
-				margin-bottom: .5em;
-			}
-		</style>"
-		echo "</head><body><section>"
-		echo "<h1>$${title}</h1>"
-		echo "<p>Год прочтения:</p>"
-		echo "<ul>"
-		for year in $(DIRS); do
-			rm -rf "$${dir}/$${year}" && cp -r "$${year}/package" "$${dir}/$${year}"
-			echo "<li><a href='$${year}'>$${year}</a></li>"
-		done
-		echo "</ul>"
-		echo "
-			</section>
-			</body></html>
-		"
-	)> "$${dir}/index.html"
+site: years-all
+	./site/scaffold-content.sh
+	./site/collect-pdfs.sh
+	./site/check.sh site
+	cd site && hugo --minify
 
 clean:
 	for d in $(DIRS); do
@@ -58,4 +28,4 @@ clean:
 		make clean
 		cd ..
 	done
-	rm -rf package
+	rm -rf site/content site/static/2025 site/static/2026 site/public
