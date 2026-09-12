@@ -1,17 +1,12 @@
 {{ define "main" }}
 <h1>{{ site.Title }}</h1>
-<p>Темы курса:</p>
-<ul class="topic-list">
-{{ range $term, $weightedPages := .Site.Taxonomies.topics }}
-  {{ $label := index $.Site.Data.topics $term }}
-  {{ $termPage := $.Site.GetPage (printf "/topics/%s" $term) }}
-  <li>
-    <a href="{{ $termPage.RelPermalink }}">{{ if $label }}{{ $label }}{{ else }}{{ $term }}{{ end }}</a>
-    <span class="count">({{ len $weightedPages }})</span>
-  </li>
+<p class="subtitle">Слайды лекций и методички лабораторных работ</p>
+<div class="year-grid">
+{{ range (sort .Site.Sections "Title" "desc") }}
+  <a class="year-card" href="{{ .RelPermalink }}">
+    <span class="year-card-number">{{ .Title }}</span>
+    <span class="year-card-label">год прочтения</span>
+  </a>
 {{ end }}
-</ul>
-<p>Материалы по годам целиком:
-{{ range (sort .Site.Sections "Title") }}<a href="{{ .RelPermalink }}">{{ .Title }}</a> {{ end }}
-</p>
+</div>
 {{ end }}

@@ -1,15 +1,112 @@
-:root { color-scheme: light dark; }
-body {
-  font-family: system-ui, sans-serif;
-  max-width: 42rem;
-  margin: 0 auto;
-  padding: 1rem;
-  line-height: 1.5;
+:root {
+  color-scheme: light dark;
+  --bg: #f7f8fa;
+  --fg: #1a1d21;
+  --muted: #5b6470;
+  --card-bg: #ffffff;
+  --border: #e1e4e8;
+  --accent: #2f6fed;
+  --accent-fg: #ffffff;
 }
-h1, h2, h3 { line-height: 1.2; }
-ul { padding-left: 1.2rem; }
-li { margin: 0.4rem 0; }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14161a;
+    --fg: #eceef0;
+    --muted: #9aa4b2;
+    --card-bg: #1e2126;
+    --border: #2c3036;
+    --accent: #5b8cff;
+    --accent-fg: #0c1116;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+  line-height: 1.55;
+}
+
+h1, h2, h3 { line-height: 1.25; }
+h1 { font-size: 1.7rem; margin: 0.3rem 0 0.4rem; }
+h2 { font-size: 1.2rem; margin-top: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.subtitle { color: var(--muted); margin-top: 0; }
+
 .site-header { margin-bottom: 1.5rem; }
-.site-title { font-weight: bold; text-decoration: none; font-size: 1.2rem; }
-.count { color: gray; font-size: 0.9em; }
-.site-footer { margin-top: 2rem; font-size: 0.9em; }
+.site-title { font-weight: 700; font-size: 1.2rem; }
+.site-footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.9em; color: var(--muted); }
+
+.back-link { margin-bottom: 0.5rem; }
+.back-link a { color: var(--muted); font-size: 0.95em; }
+
+/* Year picker cards on the home page */
+.year-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.year-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 1.6rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+  background: var(--card-bg);
+  text-decoration: none;
+  transition: border-color 0.15s, transform 0.15s;
+}
+.year-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.year-card-number { font-size: 1.8rem; font-weight: 700; color: var(--fg); }
+.year-card-label { font-size: 0.85rem; color: var(--muted); }
+
+/* Sequential lecture/assignment/material lists */
+.material-list {
+  list-style: none;
+  margin: 0.8rem 0;
+  padding: 0;
+  counter-reset: item;
+}
+ol.material-list { counter-reset: item; }
+ol.material-list > li { counter-increment: item; }
+ol.material-list > li::before {
+  content: counter(item, decimal-leading-zero) ".";
+  display: inline-block;
+  min-width: 1.9rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.material-list > li {
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+.material-list > li:last-child { border-bottom: none; }
+
+.video-link {
+  font-size: 0.85rem;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 0.1rem 0.6rem;
+}
+.video-link:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; }

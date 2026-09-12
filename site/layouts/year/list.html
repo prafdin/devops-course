@@ -1,19 +1,45 @@
 {{ define "main" }}
-<h1>{{ .Title }}</h1>
-<p><a href="{{ site.Home.RelPermalink }}">На главную (по темам)</a></p>
-{{ $extra := where .Site.RegularPages "Params.material" "extra" }}
-{{ $extra = where $extra "Params.year" .Params.year }}
+<p class="back-link"><a href="{{ site.Home.RelPermalink }}">← Все года</a></p>
+<h1>{{ .Title }} год</h1>
+
+{{ $yearPages := where .Site.RegularPages "Params.year" .Params.year }}
+{{ $lectures := where $yearPages "Params.material" "lecture" }}
+{{ $assignments := where $yearPages "Params.material" "assignment" }}
+{{ $extra := where $yearPages "Params.material" "extra" }}
+
+{{ if $lectures }}
+<h2>Лекции</h2>
+<ol class="material-list">
+{{ range $lectures.ByWeight }}
+  <li>
+    <a href="{{ strings.TrimPrefix "/" .Params.pdf | relURL }}">{{ .Title }}</a>
+    {{ with .Params.video }}<a class="video-link" href="{{ . }}">видео</a>{{ end }}
+  </li>
+{{ end }}
+</ol>
+{{ end }}
+
+{{ if $assignments }}
+<h2>Задания</h2>
+<ol class="material-list">
+{{ range $assignments.ByWeight }}
+  <li><a href="{{ strings.TrimPrefix "/" .Params.pdf | relURL }}">{{ .Title }}</a></li>
+{{ end }}
+</ol>
+{{ end }}
+
 {{ if $extra }}
 <h2>Дополнительные материалы</h2>
-<ul>
+<ul class="material-list">
 {{ range $extra.ByWeight }}
   <li><a href="{{ strings.TrimPrefix "/" .Params.pdf | relURL }}">{{ .Title }}</a></li>
 {{ end }}
 </ul>
 {{ end }}
+
 {{ with .Params.links }}
 <h2>Ссылки</h2>
-<ul>
+<ul class="material-list">
 {{ range . }}
   <li><a href="{{ .url }}">{{ .title }}</a></li>
 {{ end }}

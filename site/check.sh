@@ -4,9 +4,6 @@ set -euo pipefail
 site_root="${1:-$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)}"
 content_root="$site_root/content"
 static_root="$site_root/static"
-topics_file="$site_root/data/topics.yaml"
-
-known_topics="$(grep -oE '^[a-z0-9-]+:' "$topics_file" | sed 's/:$//')"
 
 errors=0
 
@@ -15,18 +12,6 @@ while IFS= read -r -d '' file; do
   if [[ -n "$pdf" && ! -f "$static_root$pdf" ]]; then
     echo "ERROR: $file references missing pdf $pdf" >&2
     errors=$((errors + 1))
-  fi
-
-  topics_line="$(grep -oP '(?<=^topics: \[)[^]]*' "$file" || true)"
-  if [[ -n "$topics_line" ]]; then
-    IFS=',' read -ra terms <<< "$topics_line"
-    for term in "${terms[@]}"; do
-      term="$(echo "$term" | tr -d ' "')"
-      if ! grep -qx "$term" <<< "$known_topics"; then
-        echo "ERROR: $file uses unknown topic '$term'" >&2
-        errors=$((errors + 1))
-      fi
-    done
   fi
 done < <(find "$content_root" -name 'index.md' -print0)
 
