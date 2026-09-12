@@ -10,7 +10,13 @@ for year in 2025 2026; do
     dest="$dest_root/$rel"
     mkdir -p "$(dirname "$dest")"
     cp "$pdf" "$dest"
-  done < <(find "$repo_root/$year" -name '*.pdf' -print0)
+  done < <(find "$repo_root/$year" -name '*.pdf' -not -path '*/package/*' -not -path '*/svg-inkscape/*' -print0)
 done
+
+svg="$repo_root/2026/extra/docker-commands.svg"
+if [[ -f "$svg" ]]; then
+  mkdir -p "$dest_root/2026/extra"
+  cp "$svg" "$dest_root/2026/extra/docker-commands.svg"
+fi
 
 echo "Collected PDFs into $dest_root"

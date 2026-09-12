@@ -4,8 +4,9 @@
 <ul class="topic-list">
 {{ range $term, $weightedPages := .Site.Taxonomies.topics }}
   {{ $label := index $.Site.Data.topics $term }}
+  {{ $termPage := $.Site.GetPage (printf "/topics/%s" $term) }}
   <li>
-    <a href="/topics/{{ $term | urlize }}/">{{ if $label }}{{ $label }}{{ else }}{{ $term }}{{ end }}</a>
+    <a href="{{ $termPage.RelPermalink }}">{{ if $label }}{{ $label }}{{ else }}{{ $term }}{{ end }}</a>
     <span class="count">({{ len $weightedPages }})</span>
   </li>
 {{ end }}

@@ -100,6 +100,15 @@ for year in 2025 2026; do
     echo "title: \"$year\""
     echo "type: \"year\""
     echo "year: $year"
+    if [[ "$year" == "2026" ]]; then
+      echo "links:"
+      echo "  - title: \"Ведомость и варианты: ОИС. DevOps 2026\""
+      echo "    url: \"https://docs.google.com/spreadsheets/d/1Yn1ndqJN1kfMd_l4s7Owe69pmjhxSurJq5D-Abu8_c4/edit?usp=sharing\""
+      echo "  - title: \"Запись для 6311 и 6312\""
+      echo "    url: \"https://docs.google.com/spreadsheets/d/1gvJdCa0G3qM1yffGW0V1X46efWsCyGss_FIsigWkqZM/edit?usp=sharing\""
+      echo "  - title: \"Запись для 6313\""
+      echo "    url: \"https://docs.google.com/spreadsheets/d/12wzJg138y3UQszR306eBbdYeiUjwvcs1OmxCX4Hyhs4/edit?usp=sharing\""
+    fi
     echo "---"
   } > "$outdir/_index.md"
   count=$((count + 1))

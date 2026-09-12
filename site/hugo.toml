@@ -2,7 +2,11 @@ baseURL = "https://prafdin.github.io/devops-course/"
 languageCode = "ru"
 title = "Курс DevOps"
 
+# Item pages (lectures/assignments/extras) intentionally have no
+# layouts/_default/single.html — there's no per-item HTML page, only
+# PDF links via the topic/year pages. Disabling sitemap/RSS avoids
+# advertising those non-existent URLs.
+disableKinds = ["taxonomy", "sitemap", "RSS"]
+
 [taxonomies]
   topic = "topics"
-
-disableKinds = ["taxonomy"]

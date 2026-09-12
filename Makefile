@@ -28,4 +28,4 @@ clean:
 		make clean
 		cd ..
 	done
-	rm -rf site/content site/static/2025 site/static/2026 site/public
+	rm -rf site/content/2025 site/content/2026 site/static/2025 site/static/2026 site/public

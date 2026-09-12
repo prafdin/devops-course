@@ -64,14 +64,11 @@ matter, а не совпадение путей/номеров.
 ---
 title: "Docker: введение"
 topics: ["docker"]
-kind: "lecture"      # lecture | assignment | extra
+material: "lecture"      # lecture | assignment | extra — НЕ "kind": Hugo резервирует это имя для внутреннего page-kind enum
 year: 2026
 pdf: "/2026/07-docker-intro/07-docker-intro.pdf"   # путь относительно site root после сборки
 video: "https://disk.yandex.ru/i/eOyzlNKjqpFEaw"   # опционально
 weight: 7
-_build:
-  render: false
-  list: always
 ---
 ```
 
@@ -83,7 +80,7 @@ _build:
 slug (`docker`, не `docker-2026`), именно это даёт кросс-годовую
 группировку бесплатно, силами Hugo taxonomy.
 
-`kind` разделяет лекции/задания/прочее (`extra`) на странице темы и на
+`material` разделяет лекции/задания/прочее (`extra`) на странице темы и на
 годовых обзорных страницах экзаменационных материалов, которые не
 привязаны к отдельной теме.
 
@@ -113,7 +110,7 @@ slug (`docker`, не `docker-2026`), именно это даёт кросс-г�
 - `layouts/index.html` — сортированный список тем
   (`site.Taxonomies.topics`) со счётчиком материалов, ссылка на
   `/topics/<slug>/`.
-- `layouts/topics/topics.html` — страница темы: `.Pages`,
+- `layouts/_default/term.html` — страница темы: `.Pages`,
   сгруппированные по `.Params.year` (убывание), внутри года —
   отдельно `kind: lecture` и `kind: assignment`, каждая строка —
   заголовок + ссылка на PDF (+ ссылка на видео, если есть).
@@ -123,7 +120,7 @@ slug (`docker`, не `docker-2026`), именно это даёт кросс-г�
   фиксированной ширины 40em.
 - Годовые страницы с `others`/`extra` (вопросы к экзамену и т.п.,
   не привязанные к теме) — отдельная простая страница на год
-  (`layouts/_default/year.html` для `content/<year>/_index.md`),
+  (`layouts/year/list.html` для `content/<year>/_index.md`),
   вне taxonomy.
 
 ## Валидация
