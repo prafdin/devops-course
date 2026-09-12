@@ -14,7 +14,7 @@
 
 - Content source stays PDF — no LaTeX→HTML conversion (spec decision).
 - No JS framework, no Node toolchain — plain Hugo + hand-written CSS.
-- `site/content/`, `site/static/2025/`, `site/static/2026/`, `site/public/` are generated, not committed (matches existing convention of not committing `*.pdf`, `*.aux`, `package/`).
+- `site/content/2025/`, `site/content/2026/`, `site/static/2025/`, `site/static/2026/`, `site/public/` are generated, not committed (matches existing convention of not committing `*.pdf`, `*.aux`, `package/`). `site/content/_index.md` (the site root) is hand-authored, committed source — Hugo needs at least one content file to emit a home page even with a custom `layouts/index.html`, and the scaffold script never touches this path.
 - Hugo version pinned to `0.140.2` everywhere it's installed (local dev steps and CI) — no `latest`.
 - Every task that shells out to Hugo directly (not via `make`/CI, which assume `hugo` on `PATH`) uses the explicit path `"$HOME/.local/bin/hugo"` installed in Task 1, since each task may run in a fresh shell that hasn't re-sourced a profile.
 
@@ -336,12 +336,13 @@ grep -q 'type: "year"' site/content/2025/_index.md
 
 Expected: all `grep -q` calls succeed silently (no output, no non-zero exit under `set -e` if you wrap the block that way); the final line prints `OK: extra has no topics`.
 
-- [ ] **Step 4: Add `site/content/` to `.gitignore`**
+- [ ] **Step 4: Add the generated year content dirs to `.gitignore`**
 
-Append to `.gitignore`:
+Task 1 already committed `site/content/_index.md` as hand-authored source (required for Hugo to emit a home page). Do not ignore the whole `site/content/` directory — only the year subtrees this script generates. Append to `.gitignore`:
 
 ```
-site/content/
+site/content/2025/
+site/content/2026/
 ```
 
 - [ ] **Step 5: Commit**
