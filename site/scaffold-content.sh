@@ -87,9 +87,6 @@ for record in "${records[@]}"; do
       echo "video: \"$video\""
     fi
     echo "weight: $weight"
-    echo "_build:"
-    echo "  render: false"
-    echo "  list: always"
     echo "---"
   } > "$outdir/index.md"
   count=$((count + 1))
