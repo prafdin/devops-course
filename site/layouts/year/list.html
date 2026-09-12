@@ -1,0 +1,14 @@
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+<p><a href="{{ "/" | relURL }}">На главную (по темам)</a></p>
+{{ $extra := where .Site.RegularPages "Params.material" "extra" }}
+{{ $extra = where $extra "Params.year" .Params.year }}
+{{ if $extra }}
+<h2>Дополнительные материалы</h2>
+<ul>
+{{ range $extra.ByWeight }}
+  <li><a href="{{ .Params.pdf }}">{{ .Title }}</a></li>
+{{ end }}
+</ul>
+{{ end }}
+{{ end }}

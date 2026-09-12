@@ -1,0 +1,29 @@
+{{ define "main" }}
+{{ $label := index site.Data.topics .Data.Term }}
+<h1>{{ if $label }}{{ $label }}{{ else }}{{ .Data.Term }}{{ end }}</h1>
+{{ $byYear := .Pages.GroupByParam "year" }}
+{{ range $byYear.Reverse }}
+  <h2>{{ .Key }}</h2>
+  {{ $lectures := where .Pages "Params.material" "lecture" }}
+  {{ $assignments := where .Pages "Params.material" "assignment" }}
+  {{ if $lectures }}
+  <h3>Лекции</h3>
+  <ul>
+    {{ range $lectures.ByWeight }}
+    <li>
+      <a href="{{ .Params.pdf }}">{{ .Title }}</a>
+      {{ with .Params.video }}— <a href="{{ . }}">видео</a>{{ end }}
+    </li>
+    {{ end }}
+  </ul>
+  {{ end }}
+  {{ if $assignments }}
+  <h3>Задания</h3>
+  <ul>
+    {{ range $assignments.ByWeight }}
+    <li><a href="{{ .Params.pdf }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+  {{ end }}
+{{ end }}
+{{ end }}
