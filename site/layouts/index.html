@@ -1,11 +1,13 @@
 {{ define "main" }}
-<h1>{{ site.Title }}</h1>
-<p class="subtitle">Слайды лекций и методички лабораторных работ</p>
+<p class="eyebrow">Материалы курса</p>
+<h1>Выберите год прочтения</h1>
 <div class="year-grid">
 {{ range (sort .Site.Sections "Title" "desc") }}
+  {{ $lectures := len (where .RegularPages "Params.material" "lecture") }}
+  {{ $assignments := len (where .RegularPages "Params.material" "assignment") }}
   <a class="year-card" href="{{ .RelPermalink }}">
     <span class="year-card-number">{{ .Title }}</span>
-    <span class="year-card-label">год прочтения</span>
+    <span class="year-card-label">{{ $lectures }} лекций · {{ $assignments }} лабораторные</span>
   </a>
 {{ end }}
 </div>
