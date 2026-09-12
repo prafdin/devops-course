@@ -507,8 +507,7 @@ chmod +x site/check.sh
 - [ ] **Step 4: Build a fixture and verify the failure path**
 
 ```bash
-fixture=/tmp/claude-1000/-home-prafdin-repos-devops-course/a51e1560-d197-432b-9fa8-92cffb81be2e/scratchpad/check-fixture-broken
-rm -rf "$fixture"
+fixture="$(mktemp -d)/check-fixture-broken"
 mkdir -p "$fixture/content/broken" "$fixture/static" "$fixture/data"
 cat > "$fixture/data/topics.yaml" <<'EOF'
 docker: "Docker"
@@ -533,8 +532,7 @@ Expected: two `ERROR:` lines (missing pdf, unknown topic), then `2 problem(s) fo
 - [ ] **Step 5: Verify the success path with a valid fixture**
 
 ```bash
-fixture=/tmp/claude-1000/-home-prafdin-repos-devops-course/a51e1560-d197-432b-9fa8-92cffb81be2e/scratchpad/check-fixture-valid
-rm -rf "$fixture"
+fixture="$(mktemp -d)/check-fixture-valid"
 mkdir -p "$fixture/content/valid" "$fixture/static" "$fixture/data"
 cat > "$fixture/data/topics.yaml" <<'EOF'
 docker: "Docker"
