@@ -17,11 +17,18 @@ jobs:
       - run: sudo apt-get update --yes --fix-missing && sudo apt-get install --yes wget
       - uses: prafdin/latexmk-action@master # TODO: revert to yegor256 after resolve https://github.com/yegor256/latexmk-action/issues/102
         with:
-          cmd: make
+          cmd: make years-all
           depends: DEPENDS.txt
+      - uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.140.2'
+      - run: ./site/scaffold-content.sh
+      - run: ./site/collect-pdfs.sh
+      - run: ./site/check.sh site
+      - run: cd site && hugo --minify
       - uses: JamesIves/github-pages-deploy-action@v4.7.3
         with:
           branch: gh-pages
-          folder: package
+          folder: site/public
           clean: true
         if: github.ref == 'refs/heads/master'
