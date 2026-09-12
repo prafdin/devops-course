@@ -1,0 +1,16 @@
+{{ define "main" }}
+<h1>{{ site.Title }}</h1>
+<p>Темы курса:</p>
+<ul class="topic-list">
+{{ range $term, $weightedPages := .Site.Taxonomies.topics }}
+  {{ $label := index $.Site.Data.topics $term }}
+  <li>
+    <a href="/topics/{{ $term | urlize }}/">{{ if $label }}{{ $label }}{{ else }}{{ $term }}{{ end }}</a>
+    <span class="count">({{ len $weightedPages }})</span>
+  </li>
+{{ end }}
+</ul>
+<p>Материалы по годам целиком:
+{{ range (sort .Site.Sections "Title") }}<a href="{{ .RelPermalink }}">{{ .Title }}</a> {{ end }}
+</p>
+{{ end }}

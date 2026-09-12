@@ -1,0 +1,8 @@
+baseURL = "https://prafdin.github.io/devops-course/"
+languageCode = "ru"
+title = "Курс DevOps"
+
+[taxonomies]
+  topic = "topics"
+
+disableKinds = ["taxonomy"]
