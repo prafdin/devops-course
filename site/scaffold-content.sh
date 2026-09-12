@@ -78,7 +78,7 @@ for record in "${records[@]}"; do
     echo "---"
     echo "title: \"$title\""
     echo "year: $year"
-    echo "kind: \"$kind\""
+    echo "material: \"$kind\""
     if [[ -n "$topic" ]]; then
       echo "topics: [\"$topic\"]"
     fi
