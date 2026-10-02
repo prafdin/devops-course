@@ -12,7 +12,8 @@
 <ol class="material-list">
 {{ range $lectures.ByWeight }}
   <li>
-    <a href="{{ strings.TrimPrefix "/" .Params.pdf | relURL }}">{{ .Title }}</a>
+    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    <a class="pdf-link" href="{{ strings.TrimPrefix "/" .Params.pdf | relURL }}">pdf</a>
     {{ with .Params.video }}<a class="video-link" href="{{ . }}">видео</a>{{ end }}
   </li>
 {{ end }}

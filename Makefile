@@ -21,8 +21,8 @@ site: years-all site-build
 site-build:
 	./site/scaffold-content.sh
 	./site/collect-pdfs.sh
-	./site/check.sh site
 	cd site && hugo --minify
+	./check.sh .
 
 clean:
 	for d in $(DIRS); do

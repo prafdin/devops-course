@@ -88,6 +88,10 @@ for record in "${records[@]}"; do
       echo "video: \"$video\""
     fi
     echo "weight: $weight"
+    if [[ "$kind" != "lecture" ]]; then
+      echo "build:"
+      echo "  render: never"
+    fi
     echo "---"
   } > "$outdir/index.md"
   count=$((count + 1))

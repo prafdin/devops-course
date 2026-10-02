@@ -1,0 +1,19 @@
+{{ define "main" }}
+<article class="lecture">
+<p class="back-link"><a href="{{ .Parent.RelPermalink }}">← {{ .Parent.Title }} год</a></p>
+<h1>{{ .Title }}</h1>
+<p class="lecture-links">
+  <a class="button button-primary" href="{{ strings.TrimPrefix "/" .Params.pdf | relURL }}">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>
+    Открыть PDF
+  </a>
+  {{ with .Params.video }}
+  <a class="button" href="{{ . }}">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m10 8 6 4-6 4z"/></svg>
+    Смотреть видео
+  </a>
+  {{ end }}
+</p>
+{{ partial "giscus.html" . }}
+</article>
+{{ end }}
