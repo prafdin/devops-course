@@ -138,7 +138,8 @@ ol.material-list > li::before {
 .material-list > li:last-child { border-bottom: none; }
 .material-list > li > a:first-of-type { font-weight: 500; }
 
-.video-link {
+.video-link,
+.pdf-link {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
@@ -150,4 +151,38 @@ ol.material-list > li::before {
   padding: 0.15rem 0.65rem 0.15rem 0.5rem;
 }
 .video-link::before { content: "▶"; font-size: 0.65rem; }
-.video-link:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; }
+.video-link:hover,
+.pdf-link:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; }
+
+.lecture { margin-bottom: auto; }
+.lecture-links { display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 1.2rem 0 2.5rem; }
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.75rem 1.3rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--card-bg);
+  color: var(--fg);
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+.button svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.button:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(47, 111, 237, 0.16);
+  text-decoration: none;
+}
+.button-primary { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+.giscus { margin-top: 1rem; }
